@@ -1,0 +1,13 @@
+.jumbotron text-center{
+    background-color: #acacac;
+    color: #ffffff; /* Light text for better contrast */
+    font-size: 40px ;
+    font-weight: normal;
+}
+
+
+
+.text-muted {
+    color: #000000 !important;
+}
+

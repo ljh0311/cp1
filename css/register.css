@@ -1,0 +1,64 @@
+.alert {
+    margin: 0; /* Remove top and bottom margin */
+    padding: 15px;
+    border: 1px solid #d9534f;
+    border-radius: 4px;
+    color: #d9534f;
+}
+
+.error-heading {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.error-list {
+    list-style: none;
+    padding: 0;
+}
+
+.error-list li {
+    margin-bottom: 5px;
+}
+
+.error-list li:before {
+    content: "•";
+    color: #d9534f;
+    margin-right: 5px;
+}
+
+/* Custom CSS to adjust form size */
+.form-control {
+    font-size: 15px; /* Reduce font size */
+    padding: 6px; /* Reduce padding */
+}
+
+/* Adjust margins between form elements */
+.py-3 {
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+}
+
+
+
+.gradient-custom-3 {
+    background: #ffffff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover; /* Make background cover entire element */
+    height: 100vh; /* Set the height of the element to the viewport height */
+}
+
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #ffffff;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+
+    /* Make background cover entire element */
+    background-size: cover;
+}

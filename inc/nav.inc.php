@@ -1,66 +1,77 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="bright">
-    <style>
-        body {
-            padding-top: 120px;
+<?php
+// Only start session if it hasn't been started already
+if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+    session_start();
+}
 
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            /* Ensure the navbar appears on top of other content */
-        }
-    </style>
-    <div class="container-fluid">
-        <img class="rounded-circle" src="../images/logo.png" alt="Logo" width="160" height="90">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style="padding-right: 10px;">
+// Initialize error message variable
+$error_message = null;
+?>
+
+<nav class="navbar navbar-expand-lg fixed-top bg-white">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <img src="images/logo.png" alt="Logo" width="50" height="50" class="rounded-circle me-2">
+            <span class="brand-text">BookStore</span>
+        </a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
                 <?php
-                // Ensure the session has started
-                if (session_status() !== PHP_SESSION_ACTIVE) {
-                    session_start();
-                }
-                // Check if the user is logged in using session, not cookies
-                if (isset($_SESSION['userID'])) {
+                $nav_items = [
+                    'Home' => 'index.php',
+                    'Books' => 'books.php',
+                    'Categories' => 'categories.php',
+                    'About' => 'about.php'
+                ];
 
-                    echo '<li class="nav-item"><span class="nav-link">Welcome, ' . htmlspecialchars($_SESSION['fname']) . '</span></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>';
-
-                    $userTypeId = $_SESSION['userTypeId'];
-
-                    switch ($userTypeId) {
-                        case 1:
-                            echo '<li class="nav-item"><a class="nav-link" href="/dashboard/dashboard.php">Admin Dashboard</a></li>';
-                            echo '<li class="nav-item"><a class="nav-link" href="/registerTutor.php">Register Tutor</a></li>';
-                            break;
-                        case 2:
-                            echo '<li class="nav-item"><a class="nav-link" href="/timeTable.php">Timetable</a></li>';
-                            echo '<li class="nav-item"><a class="nav-link" href="/booking.php">Book Classes</a></li>';
-                            echo '<li class="nav-item"><a class="nav-link" href="/profile.php">Profile</a></li>';
-                            break;
-                        case 3:
-                            echo '<li class="nav-item"><a class="nav-link" href="/timeTable.php">Timetable</a></li>';
-                            echo '<li class="nav-item"><a class="nav-link" href="/profileTutor.php">Profile</a></li>';
-                            break;
-                    }
-                } else {
-                    // Display default menu items for guests if user is not logged in
-                    echo '<li class="nav-item"><span class="nav-link">Welcome guest! </span></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/aboutUs.php">About Us</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/Tutors.php">Our Tutors</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/contactUs.php">Contact Us</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/register.php">Register</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="/login.php">Login</a></li>';
+                foreach ($nav_items as $name => $url) {
+                    $is_active = basename($_SERVER['PHP_SELF']) === $url;
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link px-3' . ($is_active ? ' active' : '') . '" href="' . $url . '">' . $name . '</a>';
+                    echo '</li>';
                 }
                 ?>
             </ul>
+            
+            <div class="d-flex align-items-center gap-3">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="cart.php" class="nav-link position-relative">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                            <span id="cartCount">0</span>
+                        </span>
+                    </a>
+                    
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" 
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="avatar">
+                                <img src="<?php echo isset($_SESSION['avatar']) ? htmlspecialchars($_SESSION['avatar']) : 'images/avatar-placeholder.png'; ?>" 
+                                     alt="Avatar" class="rounded-circle" width="32" height="32">
+                            </div>
+                            <span><?php echo htmlspecialchars($_SESSION['first_name'] ?? 'User'); ?></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                            <li><a class="dropdown-item" href="profile.php"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="orders.php"><i class="fas fa-shopping-bag me-2"></i>Orders</a></li>
+                            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                                <li><a class="dropdown-item" href="admin/"><i class="fas fa-cog me-2"></i>Admin Panel</a></li>
+                            <?php endif; ?>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <a href="login.php" class="btn btn-outline-primary rounded-pill px-4">Login</a>
+                    <a href="register.php" class="btn btn-primary rounded-pill px-4">Register</a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </nav>

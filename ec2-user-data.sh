@@ -19,18 +19,18 @@ yum install -y php php-cli php-mysqlnd php-pdo php-xml php-curl php-mbstring php
 # Install Git
 yum install -y git
 
-# Create application directory
-mkdir -p /var/www/html/tutoring-system
+# Remove existing application directory if it exists
+rm -rf /var/www/html/*
+
+# Clone your repository
+git clone https://github.com/ljh0311/cp1.git /var/www/html/
 
 # Set proper permissions
 chown -R apache:apache /var/www/html/
 chmod -R 755 /var/www/html/
 
-# Clone your repository (replace with your actual repository URL)
-# git clone YOUR_REPOSITORY_URL /var/www/html/tutoring-system/
-
-# Copy application files (if not using Git)
-cat > /var/www/html/tutoring-system/dbConn.php << 'EOL'
+# Create dbConn.php with database configuration
+cat > /var/www/html/dbConn.php << 'EOL'
 <?php
 function getDbConnection() {
     // AWS RDS MySQL connection settings
@@ -52,24 +52,9 @@ function getDbConnection() {
 ?>
 EOL
 
-# Create test connection file
-cat > /var/www/html/tutoring-system/test_connection.php << 'EOL'
-<?php
-require_once 'dbConn.php';
-
-try {
-    $conn = getDbConnection();
-    echo "Successfully connected to the database!";
-    $conn->close();
-} catch (Exception $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-?>
-EOL
-
 # Set proper permissions for the PHP files
-chown apache:apache /var/www/html/tutoring-system/*.php
-chmod 644 /var/www/html/tutoring-system/*.php
+chown apache:apache /var/www/html/*.php
+chmod 644 /var/www/html/*.php
 
 # Configure PHP settings
 sed -i 's/memory_limit = .*/memory_limit = 256M/' /etc/php.ini
@@ -87,7 +72,7 @@ unzip awscliv2.zip
 ./aws/install
 
 # Create a health check file
-echo "<?php phpinfo(); ?>" > /var/www/html/tutoring-system/health.php
+echo "<?php phpinfo(); ?>" > /var/www/html/health.php
 
 # Output completion message to the system log
 echo "EC2 instance setup completed" >> /var/log/user-data.log 

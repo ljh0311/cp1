@@ -23,11 +23,13 @@ try {
     $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
     
     // Build query
-    $query = "SELECT * FROM books";
+    $query = "SELECT b.*, c.name as category 
+              FROM books b 
+              LEFT JOIN categories c ON b.category_id = c.category_id";
     if ($category) {
-        $query .= " WHERE category = :category";
+        $query .= " WHERE c.name = :category";
     }
-    $query .= " ORDER BY $sort $order";
+    $query .= " ORDER BY b.$sort $order";
     
     // Execute query
     if ($category) {

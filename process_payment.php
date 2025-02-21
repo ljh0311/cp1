@@ -182,13 +182,12 @@ try {
             error_log('Payment Debug: Shipping details: ' . $shipping_json);
             
             $result = $db->query(
-                "INSERT INTO orders (user_id, total_amount, status, shipping_address, created_at) 
-                 VALUES (?, ?, ?, ?, NOW())",
+                "INSERT INTO orders (user_id, total_amount, status) 
+                 VALUES (?, ?, ?)",
                 [
                     $user_id,
                     $total,
-                    'pending',
-                    $shipping_json
+                    'pending'
                 ]
             );
             
@@ -208,7 +207,7 @@ try {
             foreach ($items as $item) {
                 error_log('Payment Debug: Processing item ' . $item['book_id']);
                 $result = $db->query(
-                    "INSERT INTO order_items (order_id, book_id, quantity, price) 
+                    "INSERT INTO order_items (order_id, book_id, quantity, price_at_time) 
                      VALUES (?, ?, ?, ?)",
                     [$order_id, $item['book_id'], $item['quantity'], $item['price']]
                 );
@@ -219,7 +218,7 @@ try {
                 }
                 
                 $result = $db->query(
-                    "UPDATE books SET stock = stock - ? WHERE book_id = ?",
+                    "UPDATE books SET stock_quantity = stock_quantity - ? WHERE book_id = ?",
                     [$item['quantity'], $item['book_id']]
                 );
                 

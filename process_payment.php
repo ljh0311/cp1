@@ -114,7 +114,7 @@ try {
         // Get cart items
         error_log('Payment Debug: Fetching cart items');
         $cart_items = $db->query(
-            "SELECT ci.*, b.title, b.price, b.stock 
+            "SELECT ci.*, b.title, b.price, b.stock_quantity as stock 
              FROM cart_items ci 
              INNER JOIN books b ON ci.book_id = b.book_id 
              WHERE ci.user_id = ?",

@@ -1,8 +1,20 @@
 <?php
-require_once 'inc/session_start.php';
-require_once 'inc/config.php';
-require_once 'inc/ErrorHandler.php';
-require_once 'database/DatabaseManager.php';
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Define the root path
+define('ROOT_PATH', __DIR__);
+
+// Load configuration first
+require_once ROOT_PATH . '/inc/config.php';
+
+// Initialize session
+require_once ROOT_PATH . '/inc/session_start.php';
+
+// Load other required files
+require_once ROOT_PATH . '/inc/ErrorHandler.php';
+require_once ROOT_PATH . '/database/DatabaseManager.php';
 
 try {
     $db = DatabaseManager::getInstance();

@@ -83,4 +83,9 @@ define('SMTP_PORT', 587);
 define('SMTP_USER', 'your_email@example.com');
 define('SMTP_PASS', 'your_smtp_password');
 define('SMTP_FROM', 'noreply@example.com');
-define('SMTP_FROM_NAME', SITE_NAME); 
+define('SMTP_FROM_NAME', SITE_NAME);
+
+// Stripe configuration
+define('STRIPE_PUBLISHABLE_KEY', 'pk_test_your_publishable_key');
+define('STRIPE_SECRET_KEY', 'sk_test_your_secret_key');
+define('STRIPE_WEBHOOK_SECRET', 'whsec_your_webhook_secret'); 

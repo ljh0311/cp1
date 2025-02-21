@@ -135,12 +135,31 @@ $success_message = $sessionManager->getFlash('success');
                             <hr class="my-4">
                             
                             <h5 class="mb-4">Payment Information</h5>
-                            <div id="card-element" class="form-control mb-3">
-                                <!-- Stripe Card Element will be inserted here -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="card_number" class="form-label">Card Number</label>
+                                        <input type="text" class="form-control" id="card_number" maxlength="16" required 
+                               placeholder="Enter your 16-digit card number">
+                                        <div class="form-text">Visa (starts with 4), Mastercard (starts with 5), or AMEX (starts with 6)</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="expiry_date" class="form-label">Expiry Date</label>
+                                            <input type="text" class="form-control" id="expiry_date" 
+                                   placeholder="MM/YY" maxlength="5" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cvv" class="form-label">CVV</label>
+                                            <input type="text" class="form-control" id="cvv" 
+                                   placeholder="123" maxlength="3" required>
+                                        </div>
+                                    </div>
+                                    <div id="card-errors" class="alert alert-danger d-none" role="alert"></div>
+                                </div>
                             </div>
-                            <div id="card-errors" class="alert alert-danger d-none" role="alert"></div>
-                            
-                            <button type="submit" class="btn btn-primary w-100" id="submit-button">
+
+                            <button type="submit" class="btn btn-primary w-100 mt-4" id="submit-button">
                                 Pay $<?php echo number_format($total, 2); ?>
                             </button>
                         </form>
@@ -186,53 +205,75 @@ $success_message = $sessionManager->getFlash('success');
     <?php require_once 'inc/footer.inc.php'; ?>
 
     <script>
-        // Initialize Stripe
-        const stripe = Stripe('<?php echo STRIPE_PUBLISHABLE_KEY; ?>');
-        const elements = stripe.elements();
-        
-        // Create card Element
-        const card = elements.create('card');
-        card.mount('#card-element');
-        
         // Handle form submission
         const form = document.getElementById('payment-form');
         const submitButton = document.getElementById('submit-button');
+        const cardErrors = document.getElementById('card-errors');
+        const cardNumberInput = document.getElementById('card_number');
+        const expiryDateInput = document.getElementById('expiry_date');
+        const cvvInput = document.getElementById('cvv');
+
+        // Format expiry date as MM/YY
+        expiryDateInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2);
+            }
+            e.target.value = value;
+        });
+
+        // Only allow numbers in card number input
+        cardNumberInput.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Only allow numbers in CVV
+        cvvInput.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
         
         form.addEventListener('submit', async function(event) {
             event.preventDefault();
             
             submitButton.disabled = true;
             submitButton.textContent = 'Processing...';
+            cardErrors.classList.add('d-none');
+
+            // Validate card number
+            const cardNumber = cardNumberInput.value.replace(/\s/g, '');
+            if (cardNumber.length !== 16) {
+                cardErrors.textContent = 'Card number must be 16 digits';
+                cardErrors.classList.remove('d-none');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Pay $<?php echo number_format($total, 2); ?>';
+                return;
+            }
+
+            const firstDigit = cardNumber.charAt(0);
+            let cardType = '';
+            if (firstDigit === '4') {
+                cardType = 'Visa';
+            } else if (firstDigit === '5') {
+                cardType = 'Mastercard';
+            } else if (firstDigit === '6') {
+                cardType = 'AMEX';
+            } else {
+                cardErrors.textContent = 'Invalid card type. Must start with 4 (Visa), 5 (Mastercard), or 6 (AMEX)';
+                cardErrors.classList.remove('d-none');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Pay $<?php echo number_format($total, 2); ?>';
+                return;
+            }
             
             try {
-                const {paymentMethod, error} = await stripe.createPaymentMethod({
-                    type: 'card',
-                    card: card,
-                    billing_details: {
-                        name: document.getElementById('firstName').value + ' ' + 
-                             document.getElementById('lastName').value,
-                        email: document.getElementById('email').value,
-                        address: {
-                            line1: document.getElementById('address').value,
-                            city: document.getElementById('city').value,
-                            state: document.getElementById('state').value,
-                            postal_code: document.getElementById('zip').value
-                        }
-                    }
-                });
-                
-                if (error) {
-                    throw error;
-                }
-                
-                const response = await fetch('/process_payment.php', {
+                const response = await fetch('process_payment.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     credentials: 'same-origin',
                     body: JSON.stringify({
-                        payment_method_id: paymentMethod.id,
+                        payment_method_id: cardNumber,
                         shipping_details: {
                             first_name: document.getElementById('firstName').value,
                             last_name: document.getElementById('lastName').value,
@@ -254,9 +295,8 @@ $success_message = $sessionManager->getFlash('success');
                 }
                 
             } catch (error) {
-                const errorElement = document.getElementById('card-errors');
-                errorElement.textContent = error.message;
-                errorElement.classList.remove('d-none');
+                cardErrors.textContent = error.message;
+                cardErrors.classList.remove('d-none');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Pay $<?php echo number_format($total, 2); ?>';
             }

@@ -1,11 +1,13 @@
 <?php
-class DatabaseManager {
+class DatabaseManager
+{
     private static $instance = null;
     private $conn = null;
     private $isUsingFallback = false;
     private $dbType = '';
 
-    private function __construct() {
+    private function __construct()
+    {
         try {
             // Try MySQL first
             require_once 'dbConn.php';
@@ -23,18 +25,20 @@ class DatabaseManager {
         }
     }
 
-    private function initializeSQLite() {
+    private function initializeSQLite()
+    {
         $dbPath = __DIR__ . '/fallback.db';
         $this->conn = new SQLite3($dbPath);
-        
+
         // Create tables if they don't exist
         $this->createFallbackTables();
-        
+
         // Insert demo data if tables are empty
         $this->insertDemoData();
     }
 
-    private function createFallbackTables() {
+    private function createFallbackTables()
+    {
         // Books table
         $this->conn->exec("CREATE TABLE IF NOT EXISTS books (
             book_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,22 +72,23 @@ class DatabaseManager {
         )");
     }
 
-    private function insertDemoData() {
+    private function insertDemoData()
+    {
         // Check if books table is empty
         $result = $this->conn->query("SELECT COUNT(*) as count FROM books");
         $row = $result->fetchArray(SQLITE3_ASSOC);
-        
+
         if ($row['count'] == 0) {
             // Insert demo books
             $demoBooks = require __DIR__ . '/../inc/default_data.php';
             $books = DefaultData::getFeaturedBooks();
-            
+
             foreach ($books as $book) {
                 $stmt = $this->conn->prepare("
                     INSERT INTO books (title, author, price, image_url, description, featured, category)
                     VALUES (:title, :author, :price, :image_url, :description, :featured, :category)
                 ");
-                
+
                 $stmt->bindValue(':title', $book['title'], SQLITE3_TEXT);
                 $stmt->bindValue(':author', $book['author'], SQLITE3_TEXT);
                 $stmt->bindValue(':price', $book['price'], SQLITE3_FLOAT);
@@ -91,28 +96,32 @@ class DatabaseManager {
                 $stmt->bindValue(':description', $book['description'], SQLITE3_TEXT);
                 $stmt->bindValue(':featured', $book['featured'], SQLITE3_INTEGER);
                 $stmt->bindValue(':category', $book['category'], SQLITE3_TEXT);
-                
+
                 $stmt->execute();
             }
         }
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$instance === null) {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->conn;
     }
 
-    public function isUsingFallback() {
+    public function isUsingFallback()
+    {
         return $this->isUsingFallback;
     }
 
-    public function query($sql, $params = []) {
+    public function query($sql, $params = [])
+    {
         try {
             if ($this->dbType === 'mysql') {
                 $stmt = $this->conn->prepare($sql);
@@ -135,7 +144,8 @@ class DatabaseManager {
         }
     }
 
-    public function fetchAll($result) {
+    public function fetchAll($result)
+    {
         $rows = [];
         if ($this->dbType === 'mysql') {
             return $result->fetchAll(PDO::FETCH_ASSOC);
@@ -147,11 +157,12 @@ class DatabaseManager {
         }
     }
 
-    public function fetch($result) {
+    public function fetch($result)
+    {
         if ($this->dbType === 'mysql') {
             return $result->fetch(PDO::FETCH_ASSOC);
         } else {
             return $result->fetchArray(SQLITE3_ASSOC);
         }
     }
-} 
+}

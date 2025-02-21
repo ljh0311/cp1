@@ -1,16 +1,22 @@
 <?php
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Define the root path
 define('ROOT_PATH', __DIR__);
 
 // Start session before any output
 session_start();
 
-// Load autoloader and configuration
-require_once ROOT_PATH . '/inc/autoload.php';
+// Load configuration and required files
 require_once ROOT_PATH . '/inc/config.php';
-require_once ROOT_PATH . '/inc/ErrorHandler.php';
+require_once ROOT_PATH . '/inc/ErrorHandler.php';  // Make sure this path is correct
 require_once ROOT_PATH . '/inc/default_data.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
+
+// Initialize autoloader after config is loaded
+require_once ROOT_PATH . '/inc/autoload.php';
 
 // Initialize variables with default data
 $featured_books = DefaultData::getFeaturedBooks();

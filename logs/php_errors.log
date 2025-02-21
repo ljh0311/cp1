@@ -182,3 +182,147 @@ Stack trace:
 #2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(23): DatabaseManager::getInstance()
 #3 {main}
   thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 28
+[21-Feb-2025 10:40:38 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:40:38 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:28
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(17): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(102): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(25): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 28
+[21-Feb-2025 10:40:40 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:40:40 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:28
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(17): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(102): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(25): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 28
+[21-Feb-2025 10:41:06 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:41:06 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:28
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(17): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(102): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 28
+[21-Feb-2025 10:41:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:41:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:28
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(17): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(102): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 28
+[21-Feb-2025 10:42:48 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:42:48 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:46:38 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:46:38 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:46:44 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:46:44 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:46:44 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:46:44 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:46:48 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:46:48 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:46:48 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:46:48 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:24 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:24 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:47:24 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:47:24 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31

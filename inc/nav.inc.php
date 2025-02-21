@@ -1,5 +1,6 @@
 <?php
 // Initialize error message variable
+require_once __DIR__ . '/config.php';
 $error_message = null;
 ?>
 

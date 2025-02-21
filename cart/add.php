@@ -1,11 +1,21 @@
 <?php
+// Set headers for CORS and JSON response
+header('Access-Control-Allow-Origin: http://18.208.109.129');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With');
+header('Access-Control-Allow-Credentials: true');
+header('Content-Type: application/json');
+
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 require_once '../inc/config.php';
 require_once '../inc/session_config.php';
 require_once '../inc/ErrorHandler.php';
 require_once '../database/DatabaseManager.php';
-
-// Set JSON response header early
-header('Content-Type: application/json');
 
 // Ensure all errors are caught and returned as JSON
 error_reporting(E_ALL);

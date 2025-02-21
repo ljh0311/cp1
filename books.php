@@ -139,13 +139,15 @@ if (DEBUG_MODE) {
 
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', async function() {
+                // Store the original button text
+                const originalText = this.innerHTML;
+                
                 try {
                     // Disable button while processing
                     this.disabled = true;
-                    const originalText = this.innerHTML;
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
 
-                    const response = await fetch('http://18.208.109.129/cart/add.php', {
+                    const response = await fetch('/cart/add.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -158,6 +160,10 @@ if (DEBUG_MODE) {
                         credentials: 'include' // Important: send cookies with request
                     });
                     
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
                     // Get the response text first for debugging
                     const responseText = await response.text();
                     console.log('Server response:', responseText);
@@ -168,7 +174,7 @@ if (DEBUG_MODE) {
                         data = JSON.parse(responseText);
                     } catch (parseError) {
                         console.error('Failed to parse server response:', responseText);
-                        throw new Error('Invalid server response');
+                        throw new Error('Server returned invalid JSON response');
                     }
 
                     if (data.success) {
@@ -178,11 +184,19 @@ if (DEBUG_MODE) {
                         alert.innerHTML = `
                             <div class="container">
                                 <i class="fas fa-check-circle me-2"></i>
-                                Book added to cart successfully!
+                                ${data.message || 'Book added to cart successfully!'}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         `;
                         document.body.insertBefore(alert, document.body.firstChild);
+
+                        // Update cart count if available
+                        if (data.cart_count !== undefined) {
+                            const cartCountElement = document.getElementById('cartCount');
+                            if (cartCountElement) {
+                                cartCountElement.textContent = data.cart_count;
+                            }
+                        }
                     } else {
                         throw new Error(data.message || 'Failed to add book to cart');
                     }
@@ -203,6 +217,13 @@ if (DEBUG_MODE) {
                     // Re-enable button and restore original text
                     this.disabled = false;
                     this.innerHTML = originalText;
+
+                    // Remove alerts after 3 seconds
+                    setTimeout(() => {
+                        document.querySelectorAll('.alert').forEach(alert => {
+                            alert.remove();
+                        });
+                    }, 3000);
                 }
             });
         });

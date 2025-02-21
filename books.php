@@ -148,7 +148,7 @@ if (DEBUG_MODE) {
                     this.disabled = true;
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
 
-                    const response = await fetch('/cart/add.php', {
+                    const response = await fetch('http://18.208.109.129/cart/add.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ if (DEBUG_MODE) {
                         body: JSON.stringify({
                             book_id: this.dataset.bookId
                         }),
-                        credentials: 'same-origin'  // Changed from 'include' to 'same-origin'
+                        credentials: 'include'
                     });
                     
                     // Get the response text first for debugging

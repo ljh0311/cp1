@@ -1,55 +1,34 @@
 <?php
-// Set headers for CORS and JSON response
-header('Access-Control-Allow-Origin: http://18.208.109.129');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With');
-header('Access-Control-Allow-Credentials: true');
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
+}
+
+// Set JSON response header
 header('Content-Type: application/json');
 
-// Handle preflight OPTIONS request
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
-
-require_once '../inc/config.php';
-require_once '../inc/session_config.php';
-require_once '../inc/ErrorHandler.php';
-require_once '../database/DatabaseManager.php';
-
-// Ensure all errors are caught and returned as JSON
-error_reporting(E_ALL);
-ini_set('display_errors', 0);
-
-// Function to handle errors
-function handleError($errno, $errstr, $errfile, $errline) {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Server error: ' . $errstr,
-        'debug' => defined('DEBUG_MODE') && DEBUG_MODE ? [
-            'error' => $errstr,
-            'file' => $errfile,
-            'line' => $errline,
-            'session_id' => session_id(),
-            'session_status' => session_status(),
-            'session_data' => $_SESSION
-        ] : null
-    ]);
-    exit();
-}
-
-// Set error handler
-set_error_handler('handleError');
+// Debug log
+error_log("=== Cart Add Debug ===");
+error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
+error_log("Request URI: " . $_SERVER['REQUEST_URI']);
+error_log("Current Directory: " . __DIR__);
+error_log("Root Path: " . ROOT_PATH);
 
 try {
-    // Debug session information
-    if (defined('DEBUG_MODE') && DEBUG_MODE) {
-        error_log("Session ID: " . session_id());
-        error_log("Session status: " . session_status());
-        error_log("Session data: " . print_r($_SESSION, true));
-        error_log("Request headers: " . print_r(getallheaders(), true));
-    }
+    // Load required files
+    require_once ROOT_PATH . '/inc/config.php';
+    require_once ROOT_PATH . '/inc/session_config.php';
+    require_once ROOT_PATH . '/inc/ErrorHandler.php';
+    require_once ROOT_PATH . '/database/DatabaseManager.php';
+
+    // Debug session
+    error_log("Session ID: " . session_id());
+    error_log("Session Status: " . session_status());
+    error_log("Session Data: " . print_r($_SESSION, true));
 
     // Verify session status
     if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -60,13 +39,8 @@ try {
     if (!isset($_SESSION['user_id'])) {
         http_response_code(401);
         echo json_encode([
-            'success' => false, 
-            'message' => 'Please login to add items to cart',
-            'debug' => defined('DEBUG_MODE') && DEBUG_MODE ? [
-                'session_id' => session_id(),
-                'session_status' => session_status(),
-                'session_data' => $_SESSION
-            ] : null
+            'success' => false,
+            'message' => 'Please login to add items to cart'
         ]);
         exit();
     }
@@ -81,6 +55,8 @@ try {
     if (!$json) {
         throw new Exception('No data received');
     }
+
+    error_log("Received JSON data: " . $json);
 
     $data = json_decode($json, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
@@ -155,12 +131,14 @@ try {
             [$user_id]
         );
         
+        $count_data = $db->fetch($cart_count);
+        
         $db->commit();
         
         echo json_encode([
             'success' => true,
             'message' => 'Item added to cart successfully',
-            'cart_count' => $cart_count[0]['total'] ?? 0
+            'cart_count' => $count_data['total'] ?? 0
         ]);
         
     } catch (Exception $e) {
@@ -169,20 +147,16 @@ try {
     }
     
 } catch (Exception $e) {
+    error_log("Error in cart/add.php: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
+    
     if (isset($db) && $db->inTransaction()) {
         $db->rollBack();
     }
     
-    http_response_code(400);
+    http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => $e->getMessage(),
-        'debug' => defined('DEBUG_MODE') && DEBUG_MODE ? [
-            'error' => $e->getMessage(),
-            'trace' => $e->getTraceAsString(),
-            'session_id' => session_id(),
-            'session_status' => session_status(),
-            'session_data' => $_SESSION
-        ] : null
+        'message' => $e->getMessage()
     ]);
 } 

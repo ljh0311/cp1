@@ -140,7 +140,12 @@ if (DEBUG_MODE) {
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', async function() {
                 try {
-                    const response = await fetch('/cart/add.php', {
+                    // Disable button while processing
+                    this.disabled = true;
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+
+                    const response = await fetch('http://18.208.109.129/cart/add.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -149,18 +154,55 @@ if (DEBUG_MODE) {
                         },
                         body: JSON.stringify({
                             book_id: this.dataset.bookId
-                        })
+                        }),
+                        credentials: 'include' // Important: send cookies with request
                     });
                     
-                    const data = await response.json();
+                    // Get the response text first for debugging
+                    const responseText = await response.text();
+                    console.log('Server response:', responseText);
+                    
+                    // Try to parse the response as JSON
+                    let data;
+                    try {
+                        data = JSON.parse(responseText);
+                    } catch (parseError) {
+                        console.error('Failed to parse server response:', responseText);
+                        throw new Error('Invalid server response');
+                    }
+
                     if (data.success) {
-                        alert('Book added to cart!');
+                        // Show success message
+                        const alert = document.createElement('div');
+                        alert.className = 'alert alert-success alert-dismissible fade show';
+                        alert.innerHTML = `
+                            <div class="container">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Book added to cart successfully!
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        `;
+                        document.body.insertBefore(alert, document.body.firstChild);
                     } else {
                         throw new Error(data.message || 'Failed to add book to cart');
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    alert(error.message || 'Failed to add book to cart. Please try again.');
+                    // Show error message
+                    const alert = document.createElement('div');
+                    alert.className = 'alert alert-danger alert-dismissible fade show';
+                    alert.innerHTML = `
+                        <div class="container">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            ${error.message || 'Failed to add book to cart. Please try again.'}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    `;
+                    document.body.insertBefore(alert, document.body.firstChild);
+                } finally {
+                    // Re-enable button and restore original text
+                    this.disabled = false;
+                    this.innerHTML = originalText;
                 }
             });
         });

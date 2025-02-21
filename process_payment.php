@@ -147,14 +147,14 @@ try {
         'message' => 'Payment successful!'
     ]);
     
-} catch (\Stripe\Exception\CardException $e) {
+} catch (PDOException $e) {
     if (isset($db) && $db->inTransaction()) {
         $db->rollBack();
     }
-    http_response_code(400);
+    http_response_code(500);
     echo json_encode([
-        'success' => false,
-        'message' => $e->getMessage()
+        'success' => false, 
+        'message' => 'Database error occurred'
     ]);
 } catch (Exception $e) {
     if (isset($db) && $db->inTransaction()) {

@@ -11,15 +11,6 @@ if (!defined('ROOT_PATH')) {
 // Load configuration and start session BEFORE any output
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
-
-// Debug session if needed
-if (DEBUG_MODE) {
-    error_log("Session status: " . session_status());
-    error_log("Session ID: " . session_id());
-    error_log("Session data: " . print_r($_SESSION, true));
-}
-
-// Load other required files
 require_once 'inc/ErrorHandler.php';
 require_once 'database/DatabaseManager.php';
 
@@ -33,6 +24,13 @@ $stats = [
     'satisfaction_rate' => 0
 ];
 $db_connected = false;
+
+// Debug session if needed
+if (DEBUG_MODE) {
+    error_log("Session status: " . session_status());
+    error_log("Session ID: " . session_id());
+    error_log("Session data: " . print_r($_SESSION, true));
+}
 
 try {
     $db = DatabaseManager::getInstance();

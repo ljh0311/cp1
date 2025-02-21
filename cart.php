@@ -1,6 +1,8 @@
 <?php
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
+require_once 'inc/ErrorHandler.php';
+require_once 'database/DatabaseManager.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {

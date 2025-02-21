@@ -55,17 +55,38 @@ try {
         $total += $item['price'] * $item['quantity'];
     }
     
-    // Initialize Stripe
-    \Stripe\Stripe::setApiKey('your_secret_key'); // Replace with your Stripe secret key
+    // Validate credit card number
+    $card_number = $data['payment_method_id'];
+    $first_digit = substr($card_number, 0, 1);
     
-    // Create payment intent
-    $payment_intent = \Stripe\PaymentIntent::create([
-        'amount' => $total * 100, // Convert to cents
-        'currency' => 'usd',
-        'payment_method' => $data['payment_method_id'],
-        'confirm' => true,
-        'return_url' => 'https://' . $_SERVER['HTTP_HOST'] . '/order_confirmation.php'
-    ]);
+    // Check card type based on first digit
+    $valid_card = false;
+    $card_type = '';
+    switch($first_digit) {
+        case '4':
+            $valid_card = true;
+            $card_type = 'Visa';
+            break;
+        case '5':
+            $valid_card = true; 
+            $card_type = 'Mastercard';
+            break;
+        case '6':
+            $valid_card = true;
+            $card_type = 'AMEX';
+            break;
+        default:
+            throw new Exception('Invalid card type. Must be Visa, Mastercard or AMEX.');
+    }
+    
+    if (!$valid_card) {
+        throw new Exception('Invalid credit card number.');
+    }
+    
+    // Mock payment intent ID for order tracking
+    $payment_intent = (object) [
+        'id' => 'MOCK_' . time() . '_' . rand(1000,9999)
+    ];
     
     // Start transaction
     $db->beginTransaction();

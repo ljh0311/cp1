@@ -216,19 +216,19 @@ try {
                 let total = 0;
                 
                 items.forEach(item => {
-                    const priceText = item.querySelector('.fw-bold').textContent;
+                    const priceText = item.querySelector('.col-3 .fw-bold').textContent;
                     const price = parseFloat(priceText.replace('$', ''));
                     if (!isNaN(price)) {
                         total += price;
                     }
                 });
                 
-                // Update subtotal and total
-                document.querySelectorAll('.card-body span:last-child').forEach(span => {
-                    if (span.previousElementSibling.textContent.toLowerCase().includes('total')) {
-                        span.textContent = '$' + total.toFixed(2);
-                    }
-                });
+                // Update both subtotal and total
+                const subtotalSpan = document.querySelector('.d-flex:has(span:contains("Subtotal")) span:last-child');
+                const totalSpan = document.querySelector('.d-flex:has(span.fw-bold:contains("Total")) span:last-child');
+                
+                if (subtotalSpan) subtotalSpan.textContent = '$' + total.toFixed(2);
+                if (totalSpan) totalSpan.textContent = '$' + total.toFixed(2);
             }
 
             // Function to show alert messages

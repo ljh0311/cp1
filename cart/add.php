@@ -1,6 +1,8 @@
 <?php
 require_once '../inc/config.php';
 require_once '../inc/session_config.php';
+require_once '../inc/ErrorHandler.php';
+require_once '../database/DatabaseManager.php';
 
 // Set JSON response header early
 header('Content-Type: application/json');
@@ -36,6 +38,12 @@ try {
         error_log("Session ID: " . session_id());
         error_log("Session status: " . session_status());
         error_log("Session data: " . print_r($_SESSION, true));
+        error_log("Request headers: " . print_r(getallheaders(), true));
+    }
+
+    // Verify session status
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        throw new Exception('Session is not active');
     }
 
     // Check if user is logged in
@@ -58,6 +66,12 @@ try {
         throw new Exception('Invalid request method');
     }
 
+    // Check if it's an AJAX request
+    if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || 
+        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+        throw new Exception('Invalid request type');
+    }
+
     // Get JSON data
     $json = file_get_contents('php://input');
     if (!$json) {
@@ -77,6 +91,10 @@ try {
     $user_id = (int)$_SESSION['user_id'];
     $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
 
+    if ($quantity < 1) {
+        throw new Exception('Invalid quantity');
+    }
+
     // Initialize database connection
     $db = DatabaseManager::getInstance();
     
@@ -86,53 +104,71 @@ try {
         [$book_id]
     );
     
-    if (empty($book)) {
+    $book_data = $db->fetch($book);
+    if (!$book_data) {
         throw new Exception('Book not found or not available');
     }
     
-    if ($book[0]['stock_quantity'] < $quantity) {
+    if ($book_data['stock_quantity'] < $quantity) {
         throw new Exception('Not enough stock available');
     }
     
-    // Check if item already exists in cart
-    $existing_item = $db->query(
-        "SELECT cart_item_id, quantity FROM cart_items WHERE user_id = ? AND book_id = ?",
-        [$user_id, $book_id]
-    );
+    // Start transaction
+    $db->beginTransaction();
     
-    if (!empty($existing_item)) {
-        // Update quantity if total doesn't exceed stock
-        $new_quantity = $existing_item[0]['quantity'] + $quantity;
-        if ($new_quantity > $book[0]['stock_quantity']) {
-            throw new Exception('Cannot add more items than available in stock');
+    try {
+        // Check if item already exists in cart
+        $existing_item = $db->query(
+            "SELECT cart_item_id, quantity FROM cart_items WHERE user_id = ? AND book_id = ? FOR UPDATE",
+            [$user_id, $book_id]
+        );
+        
+        $existing_data = $db->fetch($existing_item);
+        
+        if ($existing_data) {
+            // Update quantity if total doesn't exceed stock
+            $new_quantity = $existing_data['quantity'] + $quantity;
+            if ($new_quantity > $book_data['stock_quantity']) {
+                throw new Exception('Cannot add more items than available in stock');
+            }
+            
+            $db->query(
+                "UPDATE cart_items SET quantity = ?, updated_at = CURRENT_TIMESTAMP WHERE cart_item_id = ?",
+                [$new_quantity, $existing_data['cart_item_id']]
+            );
+        } else {
+            // Add new item to cart
+            $db->query(
+                "INSERT INTO cart_items (user_id, book_id, quantity, created_at, updated_at) 
+                 VALUES (?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
+                [$user_id, $book_id, $quantity]
+            );
         }
         
-        $db->query(
-            "UPDATE cart_items SET quantity = ?, updated_at = CURRENT_TIMESTAMP WHERE cart_item_id = ?",
-            [$new_quantity, $existing_item[0]['cart_item_id']]
+        // Get updated cart count
+        $cart_count = $db->query(
+            "SELECT SUM(quantity) as total FROM cart_items WHERE user_id = ?",
+            [$user_id]
         );
-    } else {
-        // Add new item to cart
-        $db->query(
-            "INSERT INTO cart_items (user_id, book_id, quantity, created_at, updated_at) 
-             VALUES (?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
-            [$user_id, $book_id, $quantity]
-        );
+        
+        $db->commit();
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Item added to cart successfully',
+            'cart_count' => $cart_count[0]['total'] ?? 0
+        ]);
+        
+    } catch (Exception $e) {
+        $db->rollBack();
+        throw $e;
     }
     
-    // Get updated cart count
-    $cart_count = $db->query(
-        "SELECT SUM(quantity) as total FROM cart_items WHERE user_id = ?",
-        [$user_id]
-    );
-    
-    echo json_encode([
-        'success' => true,
-        'message' => 'Item added to cart successfully',
-        'cart_count' => $cart_count[0]['total'] ?? 0
-    ]);
-    
 } catch (Exception $e) {
+    if (isset($db) && $db->inTransaction()) {
+        $db->rollBack();
+    }
+    
     http_response_code(400);
     echo json_encode([
         'success' => false,

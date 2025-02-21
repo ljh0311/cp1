@@ -11,37 +11,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Book ID is missing');
                 }
 
-                console.log('Adding book to cart:', bookId); // Debug log
-
                 // Disable button while processing
                 this.disabled = true;
+                const originalText = this.innerHTML;
                 this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
                 const response = await fetch('/cart/add.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
                     body: JSON.stringify({
                         book_id: bookId,
                         quantity: 1
-                    })
+                    }),
+                    credentials: 'same-origin' // Important: send cookies with request
                 });
 
-                // Log the raw response for debugging
+                // Get the response text first for debugging
                 const responseText = await response.text();
-                console.log('Raw server response:', responseText);
-
+                
                 // Try to parse the response as JSON
                 let data;
                 try {
                     data = JSON.parse(responseText);
                 } catch (parseError) {
-                    console.error('Failed to parse server response:', parseError);
+                    console.error('Failed to parse server response:', responseText);
                     throw new Error('Invalid server response');
                 }
-                
+
                 // Create alert element
                 const alert = document.createElement('div');
                 alert.className = `alert alert-${data.success ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert.style.right = '20px';
                 alert.style.zIndex = '1050';
                 
+                // Set alert content
                 alert.innerHTML = `
                     <div class="d-flex align-items-center">
                         <i class="fas fa-${data.success ? 'check-circle' : 'exclamation-circle'} me-2"></i>
@@ -65,8 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const cartCount = document.getElementById('cartCount');
                     if (cartCount) {
                         cartCount.textContent = data.cart_count;
-                        
-                        // Animate the cart count
                         cartCount.classList.add('cart-count-animation');
                         setTimeout(() => {
                             cartCount.classList.remove('cart-count-animation');
@@ -103,9 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert.remove();
                 }, 3000);
             } finally {
-                // Re-enable button and restore text
+                // Re-enable button and restore original text
                 this.disabled = false;
-                this.innerHTML = 'Add to Cart';
+                this.innerHTML = originalText;
             }
         });
     });

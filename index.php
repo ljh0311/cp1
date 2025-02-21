@@ -35,7 +35,9 @@ try {
     $stats_query = "SELECT 
         (SELECT COUNT(DISTINCT user_id) FROM orders) as total_students,
         (SELECT COUNT(*) FROM books) as total_books,
-        (SELECT COUNT(*) FROM orders) as total_orders";
+        (SELECT COUNT(*) FROM orders) as total_orders,
+        (SELECT COALESCE(ROUND((COUNT(CASE WHEN status = 'completed' THEN 1 END) * 100.0 / 
+            NULLIF(COUNT(*), 0)), 0), 0) FROM orders) as satisfaction_rate";
     
     $result = $db->query($stats_query);
     if ($row = $db->fetch($result)) {

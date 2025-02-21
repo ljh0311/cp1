@@ -1,6 +1,7 @@
 <?php
 // Initialize error message variable
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../database/DatabaseManager.php';
 $error_message = null;
 
 // Get cart count if user is logged in

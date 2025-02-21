@@ -1,6 +1,17 @@
 <?php
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
+
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
+require_once 'database/DatabaseManager.php';
+
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

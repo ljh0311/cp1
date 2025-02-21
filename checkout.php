@@ -2,6 +2,7 @@
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
+require_once ROOT_PATH . '/inc/SessionManager.php';
 
 // Get session manager instance
 $sessionManager = SessionManager::getInstance();

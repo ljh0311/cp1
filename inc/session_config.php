@@ -1,34 +1,17 @@
 <?php
-// Define session save path - try system directory first, then fallback to local
-$systemSessionPath = '/var/lib/php/sessions';
-$localSessionPath = dirname(__DIR__) . '/sessions';
+// Define session save path relative to the project root
+$sessionPath = dirname(__DIR__) . '/sessions';
 
-// Determine which session path to use
-if (is_writable($systemSessionPath)) {
-    $sessionPath = $systemSessionPath;
-} else {
-    $sessionPath = $localSessionPath;
-    
-    // Create local sessions directory if it doesn't exist
-    if (!file_exists($sessionPath)) {
-        @mkdir($sessionPath, 0733, true);
-        @chmod($sessionPath, 0733);
-    }
+// Create sessions directory if it doesn't exist
+if (!file_exists($sessionPath)) {
+    @mkdir($sessionPath, 0777, true);
 }
 
-// Verify session directory is writable
+// Ensure session directory is writable
 if (!is_writable($sessionPath)) {
     error_log("ERROR: Session directory is not writable: $sessionPath");
-    // Try to create a temporary session directory as last resort
-    $tempPath = sys_get_temp_dir() . '/php_sessions';
-    if (!file_exists($tempPath)) {
-        @mkdir($tempPath, 0733, true);
-    }
-    if (is_writable($tempPath)) {
-        $sessionPath = $tempPath;
-    } else {
-        error_log("CRITICAL: No writable session directory available!");
-    }
+    // Try to use system temp directory as fallback
+    $sessionPath = sys_get_temp_dir();
 }
 
 // Set session handler and path
@@ -80,16 +63,6 @@ if (isset($_SESSION['user_agent'])) {
     $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 }
 
-// Set session cookie parameters
-session_set_cookie_params([
-    'lifetime' => 7200,
-    'path' => '/',
-    'domain' => $_SERVER['HTTP_HOST'],
-    'secure' => isset($_SERVER['HTTPS']),
-    'httponly' => true,
-    'samesite' => 'Lax'
-]);
-
 // Debug session if needed
 if (defined('DEBUG_MODE') && DEBUG_MODE) {
     error_log("Session Configuration:");
@@ -98,5 +71,6 @@ if (defined('DEBUG_MODE') && DEBUG_MODE) {
     error_log("Session Status: " . session_status());
     error_log("Session ID: " . session_id());
     error_log("Session Name: " . session_name());
+    error_log("Session Cookie Domain: " . $_SERVER['HTTP_HOST']);
     error_log("Session Data: " . print_r($_SESSION, true));
 } 

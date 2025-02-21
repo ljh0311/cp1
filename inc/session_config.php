@@ -1,26 +1,27 @@
 <?php
-// Set session save path to our sessions directory
-$session_path = __DIR__ . '/../sessions';
-if (!file_exists($session_path)) {
-    mkdir($session_path, 0700, true);
-}
-session_save_path($session_path);
-
-// Set secure session parameters
-ini_set('session.gc_maxlifetime', 7200);  // 2 hours
-ini_set('session.cookie_lifetime', 7200);  // 2 hours
-ini_set('session.cookie_httponly', 1);     // Protect against XSS
-ini_set('session.use_only_cookies', 1);    // Force cookies only
-ini_set('session.cookie_samesite', 'Lax'); // Protect against CSRF
-ini_set('session.use_strict_mode', 1);     // Enforce strict session id validation
-ini_set('session.gc_probability', 1);
-ini_set('session.gc_divisor', 100);        // 1% chance of cleanup on each request
-
-// Custom session name for your application
-session_name('BOOKSTORE_SESSID');
-
-// Start session if not already started
+// Only configure session if it hasn't started yet
 if (session_status() === PHP_SESSION_NONE) {
+    // Set session save path to our sessions directory
+    $session_path = __DIR__ . '/../sessions';
+    if (!file_exists($session_path)) {
+        mkdir($session_path, 0700, true);
+    }
+    session_save_path($session_path);
+
+    // Set secure session parameters
+    ini_set('session.gc_maxlifetime', 7200);  // 2 hours
+    ini_set('session.cookie_lifetime', 7200);  // 2 hours
+    ini_set('session.cookie_httponly', 1);     // Protect against XSS
+    ini_set('session.use_only_cookies', 1);    // Force cookies only
+    ini_set('session.cookie_samesite', 'Lax'); // Protect against CSRF
+    ini_set('session.use_strict_mode', 1);     // Enforce strict session id validation
+    ini_set('session.gc_probability', 1);
+    ini_set('session.gc_divisor', 100);        // 1% chance of cleanup on each request
+
+    // Custom session name for your application
+    session_name('BOOKSTORE_SESSID');
+
+    // Start session
     session_start();
 }
 

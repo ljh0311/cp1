@@ -1,17 +1,25 @@
 <?php
-session_start();
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
+}
+
 require_once '../inc/config.php';
 require_once '../inc/session_config.php';
+require_once '../database/DatabaseManager.php';
 
 // Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header('Location: ../index.php');
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
+    header('Location: ../login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
     exit();
 }
 
 try {
-    $db = new DatabaseManager();
-    $books = $db->query("SELECT * FROM books ORDER BY created_at DESC");
+    $db = DatabaseManager::getInstance();
+    $books = $db->query(
+        "SELECT * FROM books ORDER BY created_at DESC"
+    );
+    $books = $db->fetchAll($books);
 } catch (Exception $e) {
     error_log("Error fetching books: " . $e->getMessage());
     $books = [];

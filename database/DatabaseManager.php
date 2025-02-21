@@ -98,6 +98,15 @@ class DatabaseManager
                     'description' => 'Master the core concepts of modern web development.',
                     'featured' => 1,
                     'category' => 'Web Development'
+                ],
+                [
+                    'title' => 'Database Design Patterns',
+                    'author' => 'Mike Johnson',
+                    'price' => 39.99,
+                    'image_url' => 'images/placeholders/book3.jpg',
+                    'description' => 'Learn effective database design strategies.',
+                    'featured' => 1,
+                    'category' => 'Database'
                 ]
             ];
 

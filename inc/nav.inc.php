@@ -40,9 +40,6 @@ if (isset($_SESSION['user_id'])) {
                     <a class="nav-link" href="/books.php">Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/categories.php">Categories</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/about.php">About</a>
                 </li>
             </ul>

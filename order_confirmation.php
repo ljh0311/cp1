@@ -64,11 +64,9 @@ try {
     
     $items = $db->fetchAll($items_query);
     
-    // Parse shipping details
-    $shipping = json_decode($order['shipping_address'], true);
-    
 } catch (Exception $e) {
-    ErrorHandler::logError($e->getMessage());
+    error_log("Error in order_confirmation.php: " . $e->getMessage());
+    $sessionManager->setFlash('error', 'Error retrieving order details.');
     header('Location: index.php');
     exit();
 }
@@ -99,17 +97,9 @@ try {
                         
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <h5 class="mb-3">Shipping Details</h5>
-                                <address class="mb-0">
-                                    <?php echo htmlspecialchars($shipping['first_name'] . ' ' . $shipping['last_name']); ?><br>
-                                    <?php echo htmlspecialchars($shipping['address']); ?><br>
-                                    <?php echo htmlspecialchars($shipping['city'] . ', ' . $shipping['state'] . ' ' . $shipping['zip']); ?><br>
-                                    <?php echo htmlspecialchars($shipping['email']); ?>
-                                </address>
-                            </div>
-                            <div class="col-md-6">
-                                <h5 class="mb-3">Order Summary</h5>
-                                <p class="mb-1">Status: <span class="badge bg-success">Paid</span></p>
+                                <h5 class="mb-3">Order Details</h5>
+                                <p class="mb-1">Status: <span class="badge bg-success"><?php echo ucfirst($order['status']); ?></span></p>
+                                <p class="mb-1">Email: <?php echo htmlspecialchars($order['email']); ?></p>
                                 <p class="mb-0">Total: $<?php echo number_format($order['total_amount'], 2); ?></p>
                             </div>
                         </div>
@@ -139,8 +129,8 @@ try {
                                                 </div>
                                             </td>
                                             <td><?php echo $item['quantity']; ?></td>
-                                            <td>$<?php echo number_format($item['price'], 2); ?></td>
-                                            <td>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                                            <td>$<?php echo number_format($item['price_at_time'], 2); ?></td>
+                                            <td>$<?php echo number_format($item['price_at_time'] * $item['quantity'], 2); ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

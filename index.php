@@ -6,13 +6,16 @@ ini_set('display_errors', 1);
 // Define the root path
 define('ROOT_PATH', __DIR__);
 
-// Load configuration and required files
+// Load session configuration first
+require_once ROOT_PATH . '/inc/session_config.php';
+
+// Start session
+session_start();
+
+// Load other configuration and required files
 require_once ROOT_PATH . '/inc/config.php';
 require_once ROOT_PATH . '/inc/ErrorHandler.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
-
-// Start session after config is loaded
-session_start();
 
 // Initialize variables with empty data
 $featured_books = [];

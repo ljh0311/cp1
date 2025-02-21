@@ -5,17 +5,19 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'inc/default_data.php';
+require_once 'database/DatabaseManager.php';
 
 // Initialize variables with default data
 $featured_books = DefaultData::getFeaturedBooks();
 $categories = DefaultData::getCategories();
 $stats = DefaultData::getStats();
 $db_connected = false;
+$using_fallback = false;
 
 try {
-    require_once 'database/dbConn.php';
-    $conn = getDbConnection();
+    $db = DatabaseManager::getInstance();
     $db_connected = true;
+    $using_fallback = $db->isUsingFallback();
 
     // Get statistics
     $stats_query = "SELECT 
@@ -23,25 +25,20 @@ try {
         (SELECT COUNT(*) FROM books) as total_books,
         (SELECT COUNT(*) FROM orders) as total_orders";
     
-    $result = $conn->query($stats_query);
-    if ($result && $row = $result->fetch_assoc()) {
+    $result = $db->query($stats_query);
+    if ($row = $db->fetch($result)) {
         $stats = array_merge($stats, $row);
     }
 
     // Get featured books
     $books_query = "SELECT * FROM books WHERE featured = 1 ORDER BY created_at DESC LIMIT 4";
-    $result = $conn->query($books_query);
-    if ($result && $result->num_rows > 0) {
-        $featured_books = [];
-        while ($row = $result->fetch_assoc()) {
-            $featured_books[] = $row;
-        }
-    }
+    $result = $db->query($books_query);
+    $featured_books = $db->fetchAll($result);
 
-    $conn->close();
 } catch (Exception $e) {
     // Log the error but continue with default data
-    error_log("Database connection failed: " . $e->getMessage());
+    error_log("Database error: " . $e->getMessage());
+    $using_fallback = true;
 }
 ?>
 
@@ -58,7 +55,15 @@ try {
     <div class="alert alert-warning alert-dismissible fade show m-0" role="alert">
         <div class="container">
             <i class="fas fa-exclamation-triangle me-2"></i>
-            Currently showing demo content. Some features may be limited.
+            Database connection failed. Showing demo content only.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <?php elseif ($using_fallback): ?>
+    <div class="alert alert-info alert-dismissible fade show m-0" role="alert">
+        <div class="container">
+            <i class="fas fa-info-circle me-2"></i>
+            Using local database. Some features may be limited.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>

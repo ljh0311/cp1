@@ -1,5 +1,5 @@
 module.exports = {
-    php: "php",  // Use PHP from system PATH instead of absolute path
+    php: "C:/Users/user/Documents/SITstuffs/php/php.exe",  // Using forward slashes for Windows path
     // Additional configurations can be added here
     host: "localhost",
     port: 8000,

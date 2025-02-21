@@ -65,6 +65,68 @@ if (DEBUG_MODE) {
 <head>
     <title>Books - <?php echo SITE_NAME; ?></title>
     <?php require_once 'inc/head.inc.php'; ?>
+    <style>
+        .book-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .book-card .card-img-top {
+            height: 300px;
+            object-fit: cover;
+            border-top-left-radius: calc(0.375rem - 1px);
+            border-top-right-radius: calc(0.375rem - 1px);
+        }
+        .book-price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0d6efd;
+        }
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+        }
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 2.8rem;
+        }
+        .book-author {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .add-to-cart {
+            transition: all 0.2s;
+        }
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+        .add-to-cart:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+    </style>
 </head>
 <body>
     <?php require_once 'inc/nav.inc.php'; ?>
@@ -104,32 +166,49 @@ if (DEBUG_MODE) {
                 No books found. Please check back later.
             </div>
         <?php else: ?>
-            <div class="row g-4">
+            <div class="book-grid">
                 <?php foreach ($books as $book): ?>
-                    <div class="col-md-3">
-                        <div class="card book-card h-100">
-                            <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
-                                 class="card-img-top" 
-                                 alt="<?php echo htmlspecialchars($book['title']); ?>">
-                            <div class="card-body">
-                                <div class="badge bg-primary mb-2">
+                    <div class="book-card card h-100 position-relative">
+                        <?php if ($book['category']): ?>
+                            <div class="category-badge">
+                                <span class="badge bg-primary">
                                     <?php echo htmlspecialchars($book['category']); ?>
-                                </div>
-                                <h5 class="card-title">
-                                    <?php echo htmlspecialchars($book['title']); ?>
-                                </h5>
-                                <p class="card-text text-muted">
-                                    <?php echo htmlspecialchars($book['author']); ?>
-                                </p>
+                                </span>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <img src="<?php echo !empty($book['image_url']) ? htmlspecialchars($book['image_url']) : 'images/placeholders/book-placeholder.jpg'; ?>" 
+                             class="card-img-top" 
+                             alt="<?php echo htmlspecialchars($book['title']); ?>"
+                             onerror="this.src='images/placeholders/book-placeholder.jpg'">
+                             
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="book-title">
+                                <?php echo htmlspecialchars($book['title']); ?>
+                            </h5>
+                            <p class="book-author mb-2">
+                                By <?php echo htmlspecialchars($book['author']); ?>
+                            </p>
+                            <div class="mt-auto">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="book-price">
                                         $<?php echo number_format($book['price'], 2); ?>
                                     </span>
                                     <button class="btn btn-primary rounded-pill add-to-cart" 
-                                            data-book-id="<?php echo $book['book_id']; ?>">
-                                        Add to Cart
+                                            data-book-id="<?php echo $book['book_id']; ?>"
+                                            <?php echo ($book['stock_quantity'] <= 0) ? 'disabled' : ''; ?>>
+                                        <?php if ($book['stock_quantity'] <= 0): ?>
+                                            Out of Stock
+                                        <?php else: ?>
+                                            Add to Cart
+                                        <?php endif; ?>
                                     </button>
                                 </div>
+                                <?php if ($book['stock_quantity'] > 0 && $book['stock_quantity'] <= 5): ?>
+                                    <small class="text-danger d-block mt-2">
+                                        Only <?php echo $book['stock_quantity']; ?> left in stock!
+                                    </small>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -151,11 +230,9 @@ if (DEBUG_MODE) {
 
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', async function() {
-                // Store the original button text
                 const originalText = this.innerHTML;
                 
                 try {
-                    // Disable button while processing
                     this.disabled = true;
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
 
@@ -172,17 +249,14 @@ if (DEBUG_MODE) {
                         credentials: 'same-origin'
                     });
                     
-                    // Get the response text first for debugging
                     const responseText = await response.text();
                     console.log('Server response:', responseText);
                     
-                    // Check if the response indicates we need to login
                     if (response.status === 401) {
                         window.location.href = 'login.php?redirect=' + encodeURIComponent(window.location.pathname);
                         return;
                     }
                     
-                    // Try to parse the response as JSON
                     let data;
                     try {
                         data = JSON.parse(responseText);
@@ -192,7 +266,6 @@ if (DEBUG_MODE) {
                     }
 
                     if (data.success) {
-                        // Show success message
                         const alert = document.createElement('div');
                         alert.className = 'alert alert-success alert-dismissible fade show position-fixed';
                         alert.style.top = '20px';
@@ -207,7 +280,6 @@ if (DEBUG_MODE) {
                         `;
                         document.body.appendChild(alert);
 
-                        // Update cart count if available
                         if (data.cart_count !== undefined) {
                             const cartCountElement = document.getElementById('cartCount');
                             if (cartCountElement) {
@@ -223,7 +295,6 @@ if (DEBUG_MODE) {
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    // Show error message
                     const alert = document.createElement('div');
                     alert.className = 'alert alert-danger alert-dismissible fade show position-fixed';
                     alert.style.top = '20px';
@@ -238,11 +309,9 @@ if (DEBUG_MODE) {
                     `;
                     document.body.appendChild(alert);
                 } finally {
-                    // Re-enable button and restore original text
                     this.disabled = false;
                     this.innerHTML = originalText;
 
-                    // Remove alerts after 3 seconds
                     setTimeout(() => {
                         document.querySelectorAll('.alert').forEach(alert => {
                             alert.remove();

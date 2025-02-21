@@ -126,11 +126,100 @@ try {
     <?php ErrorHandler::displayErrors(); ?>
 
     <!-- Hero Section -->
-    <section class="hero bg-primary text-white py-5">
+    <style>
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.8), rgba(13, 110, 253, 0.9)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: -56px; /* Negative margin to pull up under navbar */
+            padding-top: 76px; /* Add padding to account for navbar */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .hero .btn-light {
+            background: white;
+            color: #0d6efd;
+        }
+
+        .hero .btn-light:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .btn-outline-light {
+            border-width: 2px;
+        }
+
+        .hero .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 60vh;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero .btn {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="hero text-white">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Discover Your Next Favorite Book</h1>
+                <div class="col-lg-8 col-md-10">
+                    <h1 class="mb-4">Discover Your Next Favorite Book</h1>
                     <p class="lead mb-4">Access a vast collection of academic books, study materials, and resources.</p>
                     <div class="d-flex gap-3">
                         <a href="books.php" class="btn btn-light btn-lg rounded-pill">Browse Books</a>

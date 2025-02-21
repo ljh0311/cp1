@@ -4,6 +4,10 @@ require_once 'inc/session_start.php';
 require_once 'inc/ErrorHandler.php';
 require_once 'database/DatabaseManager.php';
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Redirect if already logged in
 if (isset($_SESSION['user_id'])) {
     header('Location: index.php');
@@ -17,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
     $remember_me = isset($_POST['remember_me']);
+
+    // Debug information
+    error_log("Login attempt - Username: " . $username);
 
     // Validate input
     if (empty($username)) {
@@ -39,6 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $db->query($query, [':username' => $username]);
             $user = $db->fetch($stmt);
 
+            // Debug information
+            error_log("User found: " . ($user ? 'Yes' : 'No'));
+            if ($user) {
+                error_log("Password verification result: " . (password_verify($password, $user['password_hash']) ? 'Success' : 'Failed'));
+            }
+
             if ($user && password_verify($password, $user['password_hash'])) {
                 // Start session and set user data
                 $_SESSION['user_id'] = $user['user_id'];
@@ -51,14 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $token = bin2hex(random_bytes(32));
                     setcookie('remember_token', $token, time() + 30*24*60*60, '/', '', true, true);
                     
-                    // Store token in database (you'll need to create a remember_tokens table)
+                    // Store token in database
                     $db->query("INSERT INTO remember_tokens (user_id, token, expires_at) 
                               VALUES (:user_id, :token, DATE_ADD(NOW(), INTERVAL 30 DAY))",
                               [':user_id' => $user['user_id'], ':token' => $token]);
                 }
 
                 // Log successful login
-                ErrorHandler::logError("User {$user['username']} logged in successfully", __FILE__, __LINE__, 'INFO');
+                error_log("User {$user['username']} logged in successfully");
 
                 // Redirect to home page
                 header('Location: index.php');
@@ -67,10 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $errors['login'] = 'Invalid username/email or password';
                 
                 // Log failed login attempt
-                ErrorHandler::logError("Failed login attempt for username: $username", __FILE__, __LINE__, 'WARNING');
+                error_log("Failed login attempt for username: $username");
             }
         } catch (Exception $e) {
-            ErrorHandler::logError("Login failed: " . $e->getMessage());
+            error_log("Login error: " . $e->getMessage());
             $errors['general'] = 'Login failed. Please try again later.';
         }
     }

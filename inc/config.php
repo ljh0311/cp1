@@ -11,7 +11,7 @@ define('DEBUG_MODE', true);
 define('DB_HOST', 'cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com');
 define('DB_NAME', 'MyBookDB');
 define('DB_USER', 'admin');
-define('DB_PASS', 'admin123');
+define('DB_PASS', 'BookStore123!');  // Use the new password you set in RDS
 define('DB_CHARSET', 'utf8mb4');
 
 // Application settings

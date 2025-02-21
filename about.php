@@ -123,8 +123,10 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="about-card h-100">
-                        <img src="images/placeholders/vision-placeholder.jpg" alt="Our Vision" class="w-100">
                         <div class="card-body p-4">
+                            <div class="text-primary mb-4">
+                                <i class="fas fa-eye fa-3x"></i>
+                            </div>
                             <h2 class="h4 mb-3">Our Vision</h2>
                             <p class="mb-0">To be the leading online platform for IT educational resources, making quality technical literature accessible to students and professionals worldwide.</p>
                         </div>
@@ -132,8 +134,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
                 <div class="col-md-6">
                     <div class="about-card h-100">
-                        <img src="images/placeholders/mission-placeholder.jpg" alt="Our Mission" class="w-100">
                         <div class="card-body p-4">
+                            <div class="text-primary mb-4">
+                                <i class="fas fa-bullseye fa-3x"></i>
+                            </div>
                             <h2 class="h4 mb-3">Our Mission</h2>
                             <p class="mb-0">To streamline access to high-quality IT educational materials, fostering learning and professional growth in the technology sector through carefully curated resources.</p>
                         </div>

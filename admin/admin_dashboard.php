@@ -165,11 +165,11 @@ $page_title = "Admin Dashboard";
     </style>
 </head>
 <body>
-    <div class="admin-container">
-        <aside class="admin-sidebar">
-            <h2>Dashboard</h2>
-            <nav>
-                <ul>
+<div class="admin-container">
+    <aside class="admin-sidebar">
+        <h2>Dashboard</h2>
+        <nav>
+            <ul>
                     <li>
                         <a href="?page=books" class="<?php echo $current_page === 'books' ? 'active' : ''; ?>">
                             <i class="fas fa-book me-2"></i>Books
@@ -190,11 +190,11 @@ $page_title = "Admin Dashboard";
                             <i class="fas fa-home me-2"></i>Back to Site
                         </a>
                     </li>
-                </ul>
-            </nav>
-        </aside>
+            </ul>
+        </nav>
+    </aside>
 
-        <main class="admin-content">
+    <main class="admin-content">
             <div class="stats-cards">
                 <div class="stat-card">
                     <h3>Total Books</h3>
@@ -223,17 +223,17 @@ $page_title = "Admin Dashboard";
                 </div>
                 <div class="data-table table-responsive">
                     <table class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Author</th>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
                                 <th>Category</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
                             <?php foreach ($data as $book): ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($book['title']); ?></td>
@@ -334,20 +334,20 @@ $page_title = "Admin Dashboard";
                                         <button class="btn btn-sm btn-danger" onclick="deleteItem('user', <?php echo $user['user_id']; ?>)">
                                             <i class="fas fa-trash"></i>
                                         </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
             <?php endif; ?>
-        </main>
-    </div>
+    </main>
+</div>
 
     <!-- Book Modal -->
     <div class="modal fade" id="bookModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+    <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Book</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -454,273 +454,247 @@ $page_title = "Admin Dashboard";
                             </select>
                         </div>
                     </form>
-                </div>
+            </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary" onclick="saveUser()">Save</button>
-                </div>
             </div>
-        </div>
+            </div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Bootstrap modals
-            const bookModal = new bootstrap.Modal(document.getElementById('bookModal'));
-            const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
-            
-            // Book Management
-            const bookForm = document.getElementById('bookForm');
-            
-            // Add new book button
-            const addBookBtn = document.querySelector('[data-bs-target="#bookModal"]');
-            if (addBookBtn) {
-                addBookBtn.addEventListener('click', function() {
-                    bookForm.reset();
-                    document.getElementById('book_id').value = '';
-                    document.querySelector('#bookModal .modal-title').textContent = 'Add New Book';
-                });
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Bootstrap modals
+    const bookModal = new bootstrap.Modal(document.getElementById('bookModal'));
+    const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
+    const userModal = new bootstrap.Modal(document.getElementById('userModal'));
+    
+    // Book Management
+    const bookForm = document.getElementById('bookForm');
+    
+    // Show Add Book Modal
+    function showAddModal(type) {
+        if (type === 'book') {
+            bookForm.reset();
+            document.getElementById('book_id').value = '';
+            document.querySelector('#bookModal .modal-title').textContent = 'Add New Book';
+            bookModal.show();
+        }
+    }
+    
+    // Edit Book
+    function editBook(bookId) {
+        fetch(`process_book.php?action=get&id=${bookId}`)
+            .then(response => response.json())
+            .then(book => {
+                document.getElementById('book_id').value = book.book_id;
+                document.getElementById('title').value = book.title;
+                document.getElementById('author').value = book.author;
+                document.getElementById('category_id').value = book.category_id || '';
+                document.getElementById('isbn').value = book.isbn || '';
+                document.getElementById('price').value = book.price;
+                document.getElementById('stock_quantity').value = book.stock_quantity;
+                document.getElementById('description').value = book.description;
+                
+                document.querySelector('#bookModal .modal-title').textContent = 'Edit Book';
+                bookModal.show();
+            })
+            .catch(error => {
+                alert('Error loading book details: ' + error.message);
+            });
+    }
+    
+    // Save Book
+    document.getElementById('saveBook')?.addEventListener('click', function() {
+        const formData = new FormData(bookForm);
+        const bookId = document.getElementById('book_id').value;
+        
+        if (bookId) {
+            formData.append('book_id', bookId);
+        }
+        
+        fetch('process_book.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                bookModal.hide();
+                location.reload();
+            } else {
+                throw new Error(result.message || 'Failed to save book');
             }
-            
-            // Edit book buttons
-            document.querySelectorAll('.edit-book').forEach(button => {
-                button.addEventListener('click', async function() {
-                    const bookId = this.dataset.bookId;
-                    try {
-                        const response = await fetch(`process_book.php?action=get&id=${bookId}`);
-                        if (!response.ok) throw new Error('Failed to fetch book details');
-                        
-                        const book = await response.json();
-                        document.getElementById('book_id').value = book.book_id;
-                        document.getElementById('title').value = book.title;
-                        document.getElementById('author').value = book.author;
-                        document.getElementById('category_id').value = book.category_id || '';
-                        document.getElementById('isbn').value = book.isbn || '';
-                        document.getElementById('price').value = book.price;
-                        document.getElementById('stock_quantity').value = book.stock_quantity;
-                        document.getElementById('description').value = book.description;
-                        
-                        document.querySelector('#bookModal .modal-title').textContent = 'Edit Book';
-                        bookModal.show();
-                    } catch (error) {
-                        alert('Error loading book details: ' + error.message);
-                    }
-                });
-            });
-            
-            // Save book
-            document.getElementById('saveBook')?.addEventListener('click', async function() {
-                try {
-                    const formData = new FormData(bookForm);
-                    const response = await fetch('process_book.php', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    
-                    if (!response.ok) throw new Error('Failed to save book');
-                    
-                    const result = await response.json();
-                    if (result.success) {
-                        location.reload();
-                    } else {
-                        throw new Error(result.message || 'Failed to save book');
-                    }
-                } catch (error) {
-                    alert('Error: ' + error.message);
-                }
-            });
-            
-            // Delete book
-            document.querySelectorAll('.delete-book').forEach(button => {
-                button.addEventListener('click', async function() {
-                    if (!confirm(`Are you sure you want to delete "${this.dataset.bookTitle}"?`)) return;
-                    
-                    try {
-                        const response = await fetch('process_book.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=delete&id=${this.dataset.bookId}`
-                        });
-                        
-                        if (!response.ok) throw new Error('Failed to delete book');
-                        
-                        const result = await response.json();
-                        if (result.success) {
-                            location.reload();
-                        } else {
-                            throw new Error(result.message || 'Failed to delete book');
-                        }
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                    }
-                });
-            });
-            
-            // Order Management
-            // Update order status
-            document.querySelectorAll('.order-status').forEach(select => {
-                select.addEventListener('change', async function() {
-                    const originalValue = this.value;
-                    try {
-                        const response = await fetch('process_order.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=update_status&id=${this.dataset.orderId}&status=${this.value}`
-                        });
-                        
-                        if (!response.ok) throw new Error('Failed to update order status');
-                        
-                        const result = await response.json();
-                        if (!result.success) {
-                            throw new Error(result.message || 'Failed to update order status');
-                        }
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                        this.value = originalValue;
-                    }
-                });
-            });
-            
-            // View order
-            document.querySelectorAll('.view-order').forEach(button => {
-                button.addEventListener('click', async function() {
-                    try {
-                        const response = await fetch(`process_order.php?action=get&id=${this.dataset.orderId}`);
-                        if (!response.ok) throw new Error('Failed to load order details');
-                        
-                        const order = await response.json();
-                        const modalBody = document.querySelector('#orderModal .modal-body');
-                        modalBody.innerHTML = `
-                            <div class="mb-4">
-                                <h6>Order #${String(order.order_id).padStart(8, '0')}</h6>
-                                <p class="mb-1">Customer: ${order.email}</p>
-                                <p class="mb-1">Date: ${new Date(order.created_at).toLocaleDateString()}</p>
-                                <p class="mb-1">Status: ${order.status}</p>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Item</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${order.items.map(item => `
-                                            <tr>
-                                                <td>${item.title}</td>
-                                                <td>${item.quantity}</td>
-                                                <td>$${Number(item.price_at_time).toFixed(2)}</td>
-                                                <td>$${(item.quantity * item.price_at_time).toFixed(2)}</td>
-                                            </tr>
-                                        `).join('')}
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="3" class="text-end"><strong>Total:</strong></td>
-                                            <td><strong>$${Number(order.total_amount).toFixed(2)}</strong></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        `;
-                        
-                        orderModal.show();
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                    }
-                });
-            });
-            
-            // Delete order
-            document.querySelectorAll('.delete-order').forEach(button => {
-                button.addEventListener('click', async function() {
-                    if (!confirm('Are you sure you want to delete this order?')) return;
-                    
-                    try {
-                        const response = await fetch('process_order.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=delete&id=${this.dataset.orderId}`
-                        });
-                        
-                        if (!response.ok) throw new Error('Failed to delete order');
-                        
-                        const result = await response.json();
-                        if (result.success) {
-                            location.reload();
-                        } else {
-                            throw new Error(result.message || 'Failed to delete order');
-                        }
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                    }
-                });
-            });
-            
-            // User Management
-            // Update user status
-            document.querySelectorAll('.user-status').forEach(select => {
-                select.addEventListener('change', async function() {
-                    const originalValue = this.value;
-                    try {
-                        const response = await fetch('process_user.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=update_status&user_id=${this.dataset.userId}&status=${this.value}`
-                        });
-                        
-                        if (!response.ok) throw new Error('Failed to update user status');
-                        
-                        const result = await response.json();
-                        if (!result.success) {
-                            throw new Error(result.message || 'Failed to update user status');
-                        }
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                        this.value = originalValue;
-                    }
-                });
-            });
-            
-            // Delete user
-            document.querySelectorAll('.delete-user').forEach(button => {
-                button.addEventListener('click', async function() {
-                    if (!confirm(`Are you sure you want to delete user "${this.dataset.username}"?`)) return;
-                    
-                    try {
-                        const response = await fetch('process_user.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=delete&id=${this.dataset.userId}`
-                        });
-                        
-                        if (!response.ok) throw new Error('Failed to delete user');
-                        
-                        const result = await response.json();
-                        if (result.success) {
-                            location.reload();
-                        } else {
-                            throw new Error(result.message || 'Failed to delete user');
-                        }
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                    }
-                });
-            });
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
         });
-    </script>
+    });
+    
+    // Delete Item (Book, Order, or User)
+    function deleteItem(type, id) {
+        const confirmMessage = {
+            book: 'Are you sure you want to delete this book?',
+            order: 'Are you sure you want to delete this order?',
+            user: 'Are you sure you want to delete this user?'
+        };
+        
+        if (!confirm(confirmMessage[type])) return;
+        
+        const endpoints = {
+            book: 'process_book.php',
+            order: 'process_order.php',
+            user: 'process_user.php'
+        };
+        
+        fetch(endpoints[type], {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `action=delete&id=${id}`
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                location.reload();
+            } else {
+                throw new Error(result.message || `Failed to delete ${type}`);
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+        });
+    }
+    
+    // View Order
+    function viewOrder(orderId) {
+        fetch(`process_order.php?action=get&id=${orderId}`)
+            .then(response => response.json())
+            .then(order => {
+                const modalBody = document.querySelector('#orderModal .modal-body');
+                modalBody.innerHTML = `
+                    <div class="mb-4">
+                        <h6>Order #${String(order.order_id).padStart(8, '0')}</h6>
+                        <p class="mb-1">Customer: ${order.email}</p>
+                        <p class="mb-1">Date: ${new Date(order.created_at).toLocaleDateString()}</p>
+                        <p class="mb-1">Status: 
+                            <select class="form-select form-select-sm d-inline-block w-auto" 
+                                    onchange="updateOrderStatus(${order.order_id}, this.value)">
+                                <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
+                                <option value="completed" ${order.status === 'completed' ? 'selected' : ''}>Completed</option>
+                                <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${order.items.map(item => `
+                                    <tr>
+                                        <td>${item.title}</td>
+                                        <td>${item.quantity}</td>
+                                        <td>$${Number(item.price_at_time).toFixed(2)}</td>
+                                        <td>$${(item.quantity * item.price_at_time).toFixed(2)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                    <td><strong>$${Number(order.total_amount).toFixed(2)}</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                `;
+                orderModal.show();
+            })
+            .catch(error => {
+                alert('Error loading order details: ' + error.message);
+            });
+    }
+    
+    // Update Order Status
+    function updateOrderStatus(orderId, status) {
+        fetch('process_order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `action=update_status&id=${orderId}&status=${status}`
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (!result.success) {
+                throw new Error(result.message || 'Failed to update order status');
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+            location.reload(); // Reload to reset the status
+        });
+    }
+    
+    // Edit User
+    function editUser(userId) {
+        fetch(`process_user.php?action=get&id=${userId}`)
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('userId').value = user.user_id;
+                document.querySelector('#userModal select[name="status"]').value = user.status;
+                userModal.show();
+            })
+            .catch(error => {
+                alert('Error loading user details: ' + error.message);
+            });
+    }
+    
+    // Save User
+    function saveUser() {
+        const userId = document.getElementById('userId').value;
+        const status = document.querySelector('#userModal select[name="status"]').value;
+        
+        fetch('process_user.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `action=update_status&user_id=${userId}&status=${status}`
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                userModal.hide();
+                location.reload();
+            } else {
+                throw new Error(result.message || 'Failed to update user');
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+        });
+    }
+    
+    // Make functions globally available
+    window.showAddModal = showAddModal;
+    window.editBook = editBook;
+    window.deleteItem = deleteItem;
+    window.viewOrder = viewOrder;
+    window.updateOrderStatus = updateOrderStatus;
+    window.editUser = editUser;
+    window.saveUser = saveUser;
+});
+</script>
 </body>
 </html>

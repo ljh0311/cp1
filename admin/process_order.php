@@ -28,10 +28,9 @@ try {
              JOIN users u ON o.user_id = u.user_id 
              WHERE o.order_id = ?",
             [$order_id]
-        );
+        )->fetch();
         
-        $result = $db->fetch($order);
-        if (!$result) {
+        if (!$order) {
             throw new Exception('Order not found');
         }
         
@@ -42,29 +41,26 @@ try {
              JOIN books b ON oi.book_id = b.book_id 
              WHERE oi.order_id = ?",
             [$order_id]
-        );
+        )->fetchAll();
         
-        $result['items'] = $db->fetchAll($items);
+        $order['items'] = $items;
         
-        echo json_encode($result);
+        echo json_encode($order);
         exit;
     }
     
     // Handle POST requests
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'] ?? '';
+        $order_id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
         
-        if ($action === 'delete') {
-            $order_id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-            if (!$order_id) {
-                throw new Exception('Invalid order ID');
-            }
-            
-            // Start transaction
-            $db->beginTransaction();
-            
-            try {
-                // Delete order items first
+        if (!$order_id) {
+            throw new Exception('Invalid order ID');
+        }
+        
+        switch ($action) {
+            case 'delete':
+                // First delete order items
                 $db->query(
                     "DELETE FROM order_items WHERE order_id = ?",
                     [$order_id]
@@ -76,29 +72,27 @@ try {
                     [$order_id]
                 );
                 
-                $db->commit();
                 echo json_encode(['success' => true, 'message' => 'Order deleted successfully']);
-            } catch (Exception $e) {
-                $db->rollback();
-                throw $e;
-            }
-        } elseif ($action === 'update_status') {
-            $order_id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-            $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
-            
-            if (!$order_id || !$status) {
-                throw new Exception('Invalid order ID or status');
-            }
-            
-            // Update order status
-            $db->query(
-                "UPDATE orders SET status = ? WHERE order_id = ?",
-                [$status, $order_id]
-            );
-            
-            echo json_encode(['success' => true, 'message' => 'Order status updated successfully']);
-        } else {
-            throw new Exception('Invalid action');
+                break;
+                
+            case 'update_status':
+                $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
+                $allowed_statuses = ['pending', 'processing', 'completed', 'cancelled'];
+                
+                if (!in_array($status, $allowed_statuses)) {
+                    throw new Exception('Invalid status');
+                }
+                
+                $db->query(
+                    "UPDATE orders SET status = ? WHERE order_id = ?",
+                    [$status, $order_id]
+                );
+                
+                echo json_encode(['success' => true, 'message' => 'Order status updated successfully']);
+                break;
+                
+            default:
+                throw new Exception('Invalid action');
         }
     }
     

@@ -24,14 +24,13 @@ try {
         $book = $db->query(
             "SELECT * FROM books WHERE book_id = ?",
             [$book_id]
-        );
+        )->fetch();
         
-        $result = $db->fetch($book);
-        if (!$result) {
+        if (!$book) {
             throw new Exception('Book not found');
         }
         
-        echo json_encode($result);
+        echo json_encode($book);
         exit;
     }
     
@@ -45,11 +44,22 @@ try {
                 throw new Exception('Invalid book ID');
             }
             
-            // Delete book
+            // Get current image path
+            $current_image = $db->query(
+                "SELECT image_url FROM books WHERE book_id = ?",
+                [$book_id]
+            )->fetch()['image_url'];
+            
+            // Delete book from database
             $db->query(
                 "DELETE FROM books WHERE book_id = ?",
                 [$book_id]
             );
+            
+            // Delete image file if it exists
+            if ($current_image && file_exists("../public/images/books/$current_image")) {
+                unlink("../public/images/books/$current_image");
+            }
             
             echo json_encode(['success' => true, 'message' => 'Book deleted successfully']);
             exit;
@@ -70,59 +80,60 @@ try {
             'price' => filter_var($_POST['price'], FILTER_VALIDATE_FLOAT),
             'stock_quantity' => filter_var($_POST['stock_quantity'], FILTER_VALIDATE_INT),
             'description' => trim($_POST['description']),
-            'category_id' => filter_var($_POST['category_id'], FILTER_VALIDATE_INT),
+            'category_id' => filter_var($_POST['category_id'], FILTER_VALIDATE_INT) ?: null,
             'isbn' => trim($_POST['isbn'] ?? '')
         ];
         
-        // Handle file upload
+        // Handle image upload
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $file = $_FILES['image'];
-            $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+            $allowed_types = ['image/jpeg', 'image/png', 'image/webp'];
             
             if (!in_array($file['type'], $allowed_types)) {
-                throw new Exception('Invalid file type. Only JPG, PNG and GIF are allowed.');
+                throw new Exception('Invalid image type. Only JPG, PNG, and WebP are allowed.');
             }
             
             $max_size = 5 * 1024 * 1024; // 5MB
             if ($file['size'] > $max_size) {
-                throw new Exception('File is too large. Maximum size is 5MB.');
-            }
-            
-            $upload_dir = '../images/books/';
-            if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
+                throw new Exception('Image size too large. Maximum size is 5MB.');
             }
             
             $filename = uniqid() . '_' . basename($file['name']);
-            $filepath = $upload_dir . $filename;
+            $upload_path = "../public/images/books/$filename";
             
-            if (move_uploaded_file($file['tmp_name'], $filepath)) {
-                $data['image_url'] = 'images/books/' . $filename;
+            if (!move_uploaded_file($file['tmp_name'], $upload_path)) {
+                throw new Exception('Failed to upload image');
             }
+            
+            $data['image_url'] = $filename;
         }
         
+        // Update or insert book
         if (isset($_POST['book_id']) && !empty($_POST['book_id'])) {
-            // Update existing book
             $book_id = filter_var($_POST['book_id'], FILTER_VALIDATE_INT);
             if (!$book_id) {
                 throw new Exception('Invalid book ID');
             }
             
-            $set_clauses = [];
-            $params = [];
-            
-            foreach ($data as $key => $value) {
-                if ($value !== '') {
-                    $set_clauses[] = "$key = ?";
-                    $params[] = $value;
+            // Get current image if updating
+            if (!isset($data['image_url'])) {
+                $current_image = $db->query(
+                    "SELECT image_url FROM books WHERE book_id = ?",
+                    [$book_id]
+                )->fetch()['image_url'];
+                if ($current_image) {
+                    $data['image_url'] = $current_image;
                 }
             }
             
-            $params[] = $book_id;
+            // Build update query
+            $set_clause = implode(', ', array_map(fn($key) => "$key = ?", array_keys($data)));
+            $values = array_values($data);
+            $values[] = $book_id;
             
             $db->query(
-                "UPDATE books SET " . implode(', ', $set_clauses) . " WHERE book_id = ?",
-                $params
+                "UPDATE books SET $set_clause WHERE book_id = ?",
+                $values
             );
             
             echo json_encode(['success' => true, 'message' => 'Book updated successfully']);

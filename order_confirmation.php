@@ -1,10 +1,28 @@
 <?php
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
+
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
+require_once ROOT_PATH . '/inc/SessionManager.php';
+require_once ROOT_PATH . '/database/DatabaseManager.php';
+
+// Ensure session is started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Update last activity time
+$_SESSION['last_activity'] = time();
+
+// Get session manager instance
+$sessionManager = SessionManager::getInstance();
 
 // Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+if (!$sessionManager->isLoggedIn()) {
+    header('Location: login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
     exit();
 }
 

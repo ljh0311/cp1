@@ -1,7 +1,17 @@
 <?php
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
+require_once 'inc/SessionManager.php';
+require_once 'database/DatabaseManager.php';
 require_once 'vendor/autoload.php';
+
+// Ensure session is started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Update last activity time
+$_SESSION['last_activity'] = time();
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -140,6 +150,12 @@ try {
     
     // Commit transaction
     $db->commit();
+    
+    // Set a success flash message
+    $_SESSION['flash']['success'] = 'Order placed successfully!';
+    
+    // Ensure session data is written
+    session_write_close();
     
     echo json_encode([
         'success' => true,

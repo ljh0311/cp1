@@ -8,15 +8,15 @@ if (!defined('ROOT_PATH')) {
 define('DEBUG_MODE', true);
 
 // Database settings
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'bookstore');
-define('DB_USER', 'bookadmin');
-define('DB_PASS', 'BookAdmin395');
+define('DB_HOST', 'cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com');
+define('DB_NAME', 'MyBookDB');
+define('DB_USER', 'admin');
+define('DB_PASS', 'Admin123');
 define('DB_CHARSET', 'utf8mb4');
 
 // Application settings
 define('SITE_NAME', 'Academic Book Haven');
-define('SITE_URL', 'http://localhost'); // Change this to your domain
+define('SITE_URL', 'http://18.208.109.129'); // Change this to your domain
 define('ADMIN_EMAIL', 'admin@example.com');
 
 // File upload settings

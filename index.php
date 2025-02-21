@@ -368,14 +368,17 @@ try {
                 const speed = 200;
 
                 const animateCounter = (counter) => {
-                    const target = parseInt(counter.innerText.replace(/,/g, '')) || 0;
+                    const target = parseFloat(counter.innerText.replace(/[,%]/g, '')) || 0;
+                    const isPercentage = counter.innerText.includes('%');
                     let current = 0;
-                    const increment = Math.ceil(target / speed);
+                    const increment = target / speed;
 
                     const updateCount = () => {
                         if (current < target) {
                             current = Math.min(current + increment, target);
-                            counter.innerText = current.toLocaleString();
+                            counter.innerText = isPercentage 
+                                ? Math.round(current).toLocaleString() + '%'
+                                : Math.round(current).toLocaleString();
                             requestAnimationFrame(updateCount);
                         }
                     };

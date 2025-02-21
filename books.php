@@ -12,12 +12,13 @@ if (!defined('ROOT_PATH')) {
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
 
-// Debug session if needed
-if (DEBUG_MODE) {
-    error_log("Session status: " . session_status());
-    error_log("Session ID: " . session_id());
-    error_log("Session data: " . print_r($_SESSION, true));
-}
+// Debug session information
+error_log("=== Session Debug Info ===");
+error_log("Session ID: " . session_id());
+error_log("Session Status: " . session_status());
+error_log("Session Data: " . print_r($_SESSION, true));
+error_log("Cookie Data: " . print_r($_COOKIE, true));
+error_log("=== End Session Debug ===");
 
 // Load other required files
 require_once 'inc/ErrorHandler.php';
@@ -157,16 +158,22 @@ if (DEBUG_MODE) {
                         body: JSON.stringify({
                             book_id: this.dataset.bookId
                         }),
-                        credentials: 'include' // Important: send cookies with request
+                        credentials: 'same-origin'  // Changed from 'include' to 'same-origin'
                     });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
                     
                     // Get the response text first for debugging
                     const responseText = await response.text();
                     console.log('Server response:', responseText);
+                    
+                    // Check if the response indicates we need to login
+                    if (response.status === 401) {
+                        window.location.href = '/login.php?redirect=' + encodeURIComponent(window.location.pathname);
+                        return;
+                    }
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
                     
                     // Try to parse the response as JSON
                     let data;

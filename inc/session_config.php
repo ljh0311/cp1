@@ -11,36 +11,43 @@ if (!file_exists($sessionPath)) {
 $domain = $_SERVER['HTTP_HOST'] ?? '';
 $domain = preg_replace('/:\d+$/', '', $domain); // Remove port number if present
 
-// Set cookie parameters BEFORE starting the session
+// Set session cookie parameters
 session_set_cookie_params([
-    'lifetime' => 7200,
+    'lifetime' => 7200, // 2 hours
     'path' => '/',
-    'domain' => $domain, // Use the current domain
-    'secure' => isset($_SERVER['HTTPS']),
+    'domain' => $domain,
+    'secure' => false, // Set to true if using HTTPS
     'httponly' => true,
     'samesite' => 'Lax'
 ]);
 
 // Set session name
-session_name(SESSION_NAME);
+session_name('BOOKSTORE_SESSID');
 
-// Set session parameters before starting the session
+// Set session parameters
 ini_set('session.save_handler', 'files');
 ini_set('session.save_path', $sessionPath);
-ini_set('session.gc_maxlifetime', 7200); // 2 hours
-ini_set('session.cookie_lifetime', 7200); // 2 hours
+ini_set('session.gc_maxlifetime', 7200);
+ini_set('session.cookie_lifetime', 7200);
 ini_set('session.use_strict_mode', 1);
 ini_set('session.cookie_httponly', 1);
-ini_set('session.cookie_secure', isset($_SERVER['HTTPS']));
 ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_path', '/');
 ini_set('session.cookie_samesite', 'Lax');
-ini_set('session.gc_probability', 1);
-ini_set('session.gc_divisor', 100);
 
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+
+// Debug session if needed
+if (defined('DEBUG_MODE') && DEBUG_MODE) {
+    error_log("=== Session Config Debug ===");
+    error_log("Session Name: " . session_name());
+    error_log("Session ID: " . session_id());
+    error_log("Session Cookie Params: " . print_r(session_get_cookie_params(), true));
+    error_log("Session Status: " . session_status());
+    error_log("Session Data: " . print_r($_SESSION, true));
+    error_log("=== End Session Config Debug ===");
 }
 
 // Update last activity time
@@ -49,27 +56,16 @@ if (isset($_SESSION['user_id'])) {
 }
 
 // Check session expiration
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > SESSION_LIFETIME)) {
-    // Session has expired, destroy it
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 7200)) {
     session_unset();
     session_destroy();
-    // Redirect to login page
     header('Location: /login.php');
     exit;
 }
 
 // Regenerate session ID periodically for security
 if (!isset($_SESSION['last_regeneration']) || 
-    time() - $_SESSION['last_regeneration'] > 300) { // 5 minutes
+    time() - $_SESSION['last_regeneration'] > 300) {
     session_regenerate_id(true);
     $_SESSION['last_regeneration'] = time();
-}
-
-// Debug session if needed
-if (defined('DEBUG_MODE') && DEBUG_MODE) {
-    error_log("Session status: " . session_status());
-    error_log("Session ID: " . session_id());
-    error_log("Session save path: " . session_save_path());
-    error_log("Session domain: " . $domain);
-    error_log("Session data: " . print_r($_SESSION, true));
 } 

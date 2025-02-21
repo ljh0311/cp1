@@ -3,18 +3,25 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Define the root path
-define('ROOT_PATH', __DIR__);
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
 
-// Load configuration first
-require_once ROOT_PATH . '/inc/config.php';
+// Load configuration and start session BEFORE any output
+require_once 'inc/config.php';
+require_once 'inc/session_config.php';
 
-// Initialize session
-require_once ROOT_PATH . '/inc/session_start.php';
+// Debug session if needed
+if (DEBUG_MODE) {
+    error_log("Session status: " . session_status());
+    error_log("Session ID: " . session_id());
+    error_log("Session data: " . print_r($_SESSION, true));
+}
 
 // Load other required files
-require_once ROOT_PATH . '/inc/ErrorHandler.php';
-require_once ROOT_PATH . '/database/DatabaseManager.php';
+require_once 'inc/ErrorHandler.php';
+require_once 'database/DatabaseManager.php';
 
 // Initialize empty variables
 $featured_books = [];
@@ -76,8 +83,17 @@ try {
     $result = $db->query($books_query);
     $featured_books = $db->fetchAll($result);
 
+    // Get latest books
+    $latest_books = $db->query("SELECT b.*, c.name as category 
+                               FROM books b 
+                               LEFT JOIN categories c ON b.category_id = c.category_id 
+                               ORDER BY b.created_at DESC 
+                               LIMIT 6");
+
 } catch (Exception $e) {
     ErrorHandler::logError("Database error: " . $e->getMessage(), __FILE__, __LINE__);
+    $featured_books = [];
+    $latest_books = [];
 }
 ?>
 
@@ -86,7 +102,7 @@ try {
 
 <head>
     <title><?php echo SITE_NAME; ?> - Your Academic Book Haven</title>
-    <?php require_once ROOT_PATH . '/inc/head.inc.php'; ?>
+    <?php require_once 'inc/head.inc.php'; ?>
 </head>
 
 <body>
@@ -106,7 +122,7 @@ try {
         </div>
     <?php endif; ?>
 
-    <?php require_once ROOT_PATH . '/inc/nav.inc.php'; ?>
+    <?php require_once 'inc/nav.inc.php'; ?>
     <?php ErrorHandler::displayErrors(); ?>
 
     <!-- Hero Section -->
@@ -226,23 +242,7 @@ try {
                 </div>
                 <a href="books.php?sort=newest" class="btn btn-outline-primary rounded-pill">View All</a>
             </div>
-            <?php 
-            // Get latest books from database
-            $latest_books = [];
-            if ($db_connected) {
-                try {
-                    $latest_query = "SELECT b.*, c.name as category 
-                                   FROM books b 
-                                   LEFT JOIN categories c ON b.category_id = c.category_id 
-                                   ORDER BY b.created_at DESC LIMIT 3";
-                    $result = $db->query($latest_query);
-                    $latest_books = $db->fetchAll($result);
-                } catch (Exception $e) {
-                    ErrorHandler::logError("Failed to fetch latest books: " . $e->getMessage());
-                }
-            }
-            
-            if (empty($latest_books)): ?>
+            <?php if (empty($latest_books)): ?>
                 <div class="alert alert-info text-center">
                     <i class="fas fa-info-circle me-2"></i>
                     No books available at the moment.

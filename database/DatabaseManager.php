@@ -23,7 +23,48 @@ class DatabaseManager
             error_log("Successfully connected to database");
         } catch (PDOException $e) {
             error_log("Database connection failed: " . $e->getMessage());
+            
+            // Try to create database if it doesn't exist
+            if ($e->getCode() == 1049) { // Unknown database
+                try {
+                    $dsn = "mysql:host=" . DB_HOST . ";charset=" . DB_CHARSET;
+                    $tempPdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+                    
+                    // Create database
+                    $tempPdo->exec("CREATE DATABASE IF NOT EXISTS " . DB_NAME);
+                    
+                    // Connect to the newly created database
+                    $tempPdo->exec("USE " . DB_NAME);
+                    $this->pdo = $tempPdo;
+                    
+                    // Initialize database schema
+                    $this->initializeDatabase();
+                    
+                    error_log("Created and initialized new database");
+                    return;
+                } catch (PDOException $e2) {
+                    error_log("Failed to create database: " . $e2->getMessage());
+                }
+            }
             throw new Exception("Database connection failed. Please try again later.");
+        }
+    }
+
+    private function initializeDatabase()
+    {
+        // Create tables
+        $schema = file_get_contents(__DIR__ . '/schema.mysql.sql');
+        $statements = array_filter(array_map('trim', explode(';', $schema)));
+        
+        foreach ($statements as $statement) {
+            if (!empty($statement)) {
+                try {
+                    $this->pdo->exec($statement);
+                } catch (PDOException $e) {
+                    error_log("Error executing schema statement: " . $e->getMessage());
+                    // Continue with other statements even if one fails
+                }
+            }
         }
     }
 

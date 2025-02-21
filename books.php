@@ -3,25 +3,25 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Define the root path
-define('ROOT_PATH', __DIR__);
+// Define the root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
 
-// Load configuration first
-require_once ROOT_PATH . '/inc/config.php';
-require_once ROOT_PATH . '/inc/session_config.php';
+// Load configuration and start session
+require_once 'inc/config.php';
+require_once 'inc/session_config.php';
 
+// Debug session if needed
 if (DEBUG_MODE) {
     error_log("Session status: " . session_status());
     error_log("Session ID: " . session_id());
     error_log("Session data: " . print_r($_SESSION, true));
 }
 
-// Initialize session
-require_once ROOT_PATH . '/inc/session_start.php';
-
 // Load other required files
-require_once ROOT_PATH . '/inc/ErrorHandler.php';
-require_once ROOT_PATH . '/database/DatabaseManager.php';
+require_once 'inc/ErrorHandler.php';
+require_once 'database/DatabaseManager.php';
 
 try {
     $db = DatabaseManager::getInstance();
@@ -49,6 +49,12 @@ try {
 } catch (Exception $e) {
     ErrorHandler::logError($e->getMessage());
     $books = [];
+}
+
+// Debug session after database operations
+if (DEBUG_MODE) {
+    error_log("Session after DB operations - ID: " . session_id());
+    error_log("Session data: " . print_r($_SESSION, true));
 }
 ?>
 
@@ -138,6 +144,7 @@ try {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Accept': 'application/json'
                         },
                         body: JSON.stringify({
                             book_id: this.dataset.bookId

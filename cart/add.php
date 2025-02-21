@@ -66,12 +66,6 @@ try {
         throw new Exception('Invalid request method');
     }
 
-    // Check if it's an AJAX request
-    if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || 
-        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-        throw new Exception('Invalid request type');
-    }
-
     // Get JSON data
     $json = file_get_contents('php://input');
     if (!$json) {

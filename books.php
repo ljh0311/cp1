@@ -144,7 +144,8 @@ if (DEBUG_MODE) {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Accept': 'application/json'
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
                         },
                         body: JSON.stringify({
                             book_id: this.dataset.bookId
@@ -155,11 +156,11 @@ if (DEBUG_MODE) {
                     if (data.success) {
                         alert('Book added to cart!');
                     } else {
-                        throw new Error(data.message);
+                        throw new Error(data.message || 'Failed to add book to cart');
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Failed to add book to cart. Please try again.');
+                    alert(error.message || 'Failed to add book to cart. Please try again.');
                 }
             });
         });

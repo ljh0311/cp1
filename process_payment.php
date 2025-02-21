@@ -1,8 +1,14 @@
 <?php
+// Prevent any HTML error output
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', __DIR__);
 }
+
+header('Content-Type: application/json');
 
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
@@ -20,8 +26,10 @@ $sessionManager = SessionManager::getInstance();
 
 // Check if user is logged in using SessionManager
 if (!$sessionManager->isLoggedIn()) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'Please log in to continue.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Please log in to continue.'
+    ]);
     exit();
 }
 
@@ -30,8 +38,10 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 // Check if request method is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Invalid request method.'
+    ]);
     exit();
 }
 
@@ -40,8 +50,10 @@ $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
 if (!$data || !isset($data['payment_method_id']) || !isset($data['shipping_details'])) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Invalid request data.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Invalid request data.'
+    ]);
     exit();
 }
 
@@ -75,6 +87,10 @@ try {
     
     // Validate credit card number
     $card_number = $data['payment_method_id'];
+    if (!preg_match('/^\d{16}$/', $card_number)) {
+        throw new Exception('Invalid card number format.');
+    }
+    
     $first_digit = substr($card_number, 0, 1);
     
     // Check card type based on first digit
@@ -102,9 +118,7 @@ try {
     }
     
     // Mock payment intent ID for order tracking
-    $payment_intent = (object) [
-        'id' => 'MOCK_' . time() . '_' . rand(1000,9999)
-    ];
+    $payment_intent = 'MOCK_' . time() . '_' . rand(1000,9999);
     
     // Start transaction
     $db->beginTransaction();
@@ -153,7 +167,7 @@ try {
     // Update order status
     $db->query(
         "UPDATE orders SET status = ?, payment_intent_id = ? WHERE order_id = ?",
-        ['paid', $payment_intent->id, $order_id]
+        ['paid', $payment_intent, $order_id]
     );
     
     // Commit transaction
@@ -166,30 +180,21 @@ try {
     // Make sure session data is written
     session_write_close();
     
-    // Return success response
     echo json_encode([
         'success' => true,
         'order_id' => $order_id,
         'message' => 'Payment successful!'
     ]);
     
-} catch (\Stripe\Exception\CardException $e) {
-    if (isset($db) && $db->inTransaction()) {
-        $db->rollBack();
-    }
-    http_response_code(400);
-    echo json_encode([
-        'success' => false,
-        'message' => $e->getMessage()
-    ]);
 } catch (Exception $e) {
     if (isset($db) && $db->inTransaction()) {
         $db->rollBack();
     }
-    ErrorHandler::logError($e->getMessage());
-    http_response_code(400);
+    
+    error_log('Payment Error: ' . $e->getMessage());
+    
     echo json_encode([
         'success' => false,
-        'message' => 'An error occurred while processing your payment.'
+        'message' => $e->getMessage()
     ]);
 } 

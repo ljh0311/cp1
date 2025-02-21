@@ -1,8 +1,9 @@
 <?php
-require_once '../inc/dbConfig.php';
+require_once '../inc/config.php';
+require_once '../database/DatabaseManager.php';
 
 try {
-    $db = Database::getInstance();
+    $db = DatabaseManager::getInstance();
     
     // Create tables
     $queries = [
@@ -35,7 +36,7 @@ try {
     ];
     
     foreach ($queries as $query) {
-        $db->safeQuery($query);
+        $db->query($query);
     }
     
     echo "Database initialized successfully!";

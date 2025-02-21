@@ -9,8 +9,8 @@ define('SESSION_LIFETIME', 3600); // 1 hour
 define('DEBUG_MODE', true);
 
 // Database settings
-define('DB_HOST', 'database1.czsa24cac7y5.us-east-1.rds.amazonaws.com');
-define('DB_NAME', 'tutoring_system');
+define('DB_HOST', '3.88.232.167');  // Your provided IP address
+define('DB_NAME', 'book-db');
 define('DB_USER', 'bookadmin');
 define('DB_PASS', 'BookAdmin395');
 

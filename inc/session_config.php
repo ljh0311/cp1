@@ -1,6 +1,6 @@
 <?php
 // Define session save path relative to the project root
-$sessionPath = dirname(__DIR__) . '/sessions';
+$sessionPath = '/tmp/sessions';
 
 // Create sessions directory if it doesn't exist
 if (!file_exists($sessionPath)) {
@@ -11,7 +11,7 @@ if (!file_exists($sessionPath)) {
 session_set_cookie_params([
     'lifetime' => 7200,
     'path' => '/',
-    'domain' => '',
+    'domain' => '', // Leave empty to use current domain
     'secure' => isset($_SERVER['HTTPS']),
     'httponly' => true,
     'samesite' => 'Lax'
@@ -24,7 +24,7 @@ ini_set('session.gc_maxlifetime', 7200); // 2 hours
 ini_set('session.cookie_lifetime', 7200); // 2 hours
 ini_set('session.use_strict_mode', 1);
 ini_set('session.cookie_httponly', 1);
-ini_set('session.cookie_secure', isset($_SERVER['HTTPS'])); // Secure if HTTPS
+ini_set('session.cookie_secure', isset($_SERVER['HTTPS']));
 ini_set('session.use_only_cookies', 1);
 ini_set('session.cookie_path', '/');
 ini_set('session.cookie_samesite', 'Lax');
@@ -34,6 +34,11 @@ ini_set('session.gc_divisor', 100);
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+
+// Update last activity time
+if (isset($_SESSION['user_id'])) {
+    $_SESSION['last_activity'] = time();
 }
 
 // Regenerate session ID periodically for security

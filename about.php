@@ -1,3 +1,7 @@
+<?php
+require_once 'inc/config.php';
+require_once 'inc/session_config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +87,7 @@
             <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                 <h3>At The Tuition Centre, we care about where you want to go and how we can get you there.</h3>
                 <p class="fst-italic">
-                Our targeted approach to tuition empowers you to see and move beyond the challenges that so often get in the way of real academic growth. Encouraging you to learn, master, and finally feel confident—that’s when you know you’ve had a breakthrough, and after your first, it’s only a matter of time until you do it again.</p>
+                Our targeted approach to tuition empowers you to see and move beyond the challenges that so often get in the way of real academic growth. Encouraging you to learn, master, and finally feel confident—that's when you know you've had a breakthrough, and after your first, it's only a matter of time until you do it again.</p>
                 <ul>
                 <li><i class="bi bi-check-circle"></i> The way we teach inspires every lesson.</li>
                 <li><i class="bi bi-check-circle"></i> Our study materials accelerate subject mastery.</li>

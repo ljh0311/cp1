@@ -79,6 +79,12 @@ try {
 
     try {
         $db = DatabaseManager::getInstance();
+        
+        // Test the connection with a simple query
+        $test = $db->query("SELECT 1");
+        if (!$test) {
+            throw new Exception('Database connection test failed');
+        }
     } catch (Exception $e) {
         error_log('Payment Error: Database connection failed - ' . $e->getMessage());
         sendJsonResponse(false, 'Database connection failed. Please try again later.');
@@ -96,7 +102,7 @@ try {
         
         if (!$cart_items) {
             error_log('Payment Error: Cart query failed for user ' . $user_id);
-            sendJsonResponse(false, 'Failed to retrieve cart items.');
+            throw new Exception('Failed to retrieve cart items');
         }
         
         $items = $db->fetchAll($cart_items);
@@ -136,7 +142,7 @@ try {
         }
         
         // Process order
-        $db->beginTransaction();
+        $db->query("START TRANSACTION");
         
         // Create order
         $result = $db->query(
@@ -151,12 +157,12 @@ try {
         );
         
         if (!$result) {
-            throw new Exception('Failed to create order.');
+            throw new Exception('Failed to create order');
         }
         
         $order_id = $db->lastInsertId();
         if (!$order_id) {
-            throw new Exception('Failed to get order ID.');
+            throw new Exception('Failed to get order ID');
         }
         
         // Create order items and update stock
@@ -168,7 +174,7 @@ try {
             );
             
             if (!$result) {
-                throw new Exception('Failed to create order item.');
+                throw new Exception('Failed to create order item');
             }
             
             $result = $db->query(
@@ -177,7 +183,7 @@ try {
             );
             
             if (!$result) {
-                throw new Exception('Failed to update book stock.');
+                throw new Exception('Failed to update book stock');
             }
         }
         
@@ -188,7 +194,7 @@ try {
         );
         
         if (!$result) {
-            throw new Exception('Failed to clear cart.');
+            throw new Exception('Failed to clear cart');
         }
         
         // Update order status
@@ -199,10 +205,11 @@ try {
         );
         
         if (!$result) {
-            throw new Exception('Failed to update order status.');
+            throw new Exception('Failed to update order status');
         }
         
-        $db->commit();
+        // Commit the transaction
+        $db->query("COMMIT");
         
         // Store success message
         $sessionManager->setFlash('success', 'Order placed successfully!');
@@ -215,9 +222,8 @@ try {
         
     } catch (Exception $e) {
         error_log('Payment Error: Transaction failed - ' . $e->getMessage());
-        if ($db && $db->inTransaction()) {
-            $db->rollBack();
-        }
+        // Rollback the transaction
+        $db->query("ROLLBACK");
         sendJsonResponse(false, 'Database error: ' . $e->getMessage());
     }
     

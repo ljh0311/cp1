@@ -59,6 +59,7 @@ ini_set('error_log', ROOT_PATH . '/logs/php_errors.log');
 
 // Session configuration
 define('SESSION_NAME', 'bookstore_session');
+define('SESSION_LIFETIME', 7200); // 2 hours
 define('SESSION_PATH', '/');
 define('SESSION_SECURE', false); // Set to true if using HTTPS
 define('SESSION_HTTPONLY', true);

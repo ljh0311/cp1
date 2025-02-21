@@ -265,37 +265,50 @@ $success_message = $sessionManager->getFlash('success');
                 return;
             }
             
+            const formData = {
+                payment_method_id: cardNumber,
+                shipping_details: {
+                    first_name: document.getElementById('firstName').value,
+                    last_name: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    zip: document.getElementById('zip').value
+                }
+            };
+
             try {
                 const response = await fetch('process_payment.php', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     credentials: 'same-origin',
-                    body: JSON.stringify({
-                        payment_method_id: cardNumber,
-                        shipping_details: {
-                            first_name: document.getElementById('firstName').value,
-                            last_name: document.getElementById('lastName').value,
-                            email: document.getElementById('email').value,
-                            address: document.getElementById('address').value,
-                            city: document.getElementById('city').value,
-                            state: document.getElementById('state').value,
-                            zip: document.getElementById('zip').value
-                        }
-                    })
+                    body: JSON.stringify(formData)
                 });
-                
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('Received non-JSON response from server');
+                }
+
                 const result = await response.json();
                 
                 if (result.success) {
                     window.location.href = 'order_confirmation.php?order_id=' + result.order_id;
                 } else {
-                    throw new Error(result.message);
+                    throw new Error(result.message || 'Payment failed');
                 }
                 
             } catch (error) {
-                cardErrors.textContent = error.message;
+                console.error('Payment Error:', error);
+                cardErrors.textContent = error.message || 'An error occurred while processing your payment.';
                 cardErrors.classList.remove('d-none');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Pay $<?php echo number_format($total, 2); ?>';

@@ -1,63 +1,54 @@
 <?php
-// Prevent any HTML error output
+ob_clean(); // Clear any previous output
+// Prevent any output
 error_reporting(0);
 ini_set('display_errors', 0);
+ini_set('html_errors', 0);
+
+// Set JSON header first
+header('Content-Type: application/json');
 
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', __DIR__);
 }
 
-header('Content-Type: application/json');
-
-require_once 'inc/config.php';
-require_once 'inc/session_config.php';
-require_once ROOT_PATH . '/inc/SessionManager.php';
-require_once ROOT_PATH . '/database/DatabaseManager.php';
-require_once 'vendor/autoload.php';
-
-// Start session if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Get session manager instance
-$sessionManager = SessionManager::getInstance();
-
-// Check if user is logged in using SessionManager
-if (!$sessionManager->isLoggedIn()) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Please log in to continue.'
-    ]);
-    exit();
-}
-
-// Update last activity time
-$_SESSION['LAST_ACTIVITY'] = time();
-
-// Check if request method is POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Invalid request method.'
-    ]);
-    exit();
-}
-
-// Get JSON data
-$json = file_get_contents('php://input');
-$data = json_decode($json, true);
-
-if (!$data || !isset($data['payment_method_id']) || !isset($data['shipping_details'])) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Invalid request data.'
-    ]);
-    exit();
-}
-
 try {
+    require_once 'inc/config.php';
+    require_once 'inc/session_config.php';
+    require_once ROOT_PATH . '/inc/SessionManager.php';
+    require_once ROOT_PATH . '/database/DatabaseManager.php';
+    require_once 'vendor/autoload.php';
+
+    // Start session if not already started
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Get session manager instance
+    $sessionManager = SessionManager::getInstance();
+
+    // Check if user is logged in using SessionManager
+    if (!$sessionManager->isLoggedIn()) {
+        throw new Exception('Please log in to continue.');
+    }
+
+    // Update last activity time
+    $_SESSION['LAST_ACTIVITY'] = time();
+
+    // Check if request method is POST
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception('Invalid request method.');
+    }
+
+    // Get JSON data
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (!$data || !isset($data['payment_method_id']) || !isset($data['shipping_details'])) {
+        throw new Exception('Invalid request data.');
+    }
+
     $db = DatabaseManager::getInstance();
     
     // Get cart items
@@ -193,8 +184,8 @@ try {
     
     error_log('Payment Error: ' . $e->getMessage());
     
-    echo json_encode([
+    die(json_encode([
         'success' => false,
         'message' => $e->getMessage()
-    ]);
+    ]));
 } 

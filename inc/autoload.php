@@ -1,12 +1,17 @@
 <?php
-spl_autoload_register(function ($class) {
-    // Define the base directories to search for classes
-    $directories = [
-        __DIR__ . '/',              // inc directory
-        __DIR__ . '/../database/',  // database directory
-        __DIR__ . '/../models/',    // models directory if you have one
-    ];
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
+}
 
+spl_autoload_register(function ($class) {
+    // Define the directories to search for classes
+    $directories = [
+        ROOT_PATH . '/inc/',
+        ROOT_PATH . '/database/',
+        ROOT_PATH . '/models/',
+        ROOT_PATH . '/controllers/'
+    ];
+    
     // Loop through directories
     foreach ($directories as $directory) {
         $file = $directory . $class . '.php';

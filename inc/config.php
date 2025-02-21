@@ -42,15 +42,14 @@ if (DEBUG_MODE) {
 date_default_timezone_set('Asia/Singapore');
 
 // Create required directories
-$directories = [
-    'sessions',
+$required_dirs = [
     'uploads',
     'uploads/books',
     'uploads/avatars',
     'logs'
 ];
 
-foreach ($directories as $dir) {
+foreach ($required_dirs as $dir) {
     $path = ROOT_PATH . '/' . $dir;
     if (!file_exists($path)) {
         mkdir($path, 0777, true);

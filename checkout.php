@@ -1,8 +1,23 @@
 <?php
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
+
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Load configuration and start session BEFORE any output
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
 require_once ROOT_PATH . '/inc/SessionManager.php';
+
+// Ensure session is started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Get session manager instance
 $sessionManager = SessionManager::getInstance();

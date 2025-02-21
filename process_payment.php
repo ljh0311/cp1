@@ -94,12 +94,29 @@ try {
     try {
         error_log('Payment Debug: Starting payment process for user ' . $user_id);
         
+        // First check if user has items in cart
+        $cart_check = $db->query(
+            "SELECT COUNT(*) as count FROM cart_items WHERE user_id = ?",
+            [$user_id]
+        );
+        
+        if (!$cart_check) {
+            error_log('Payment Error: Failed to check cart items');
+            throw new Exception('Failed to check cart items');
+        }
+        
+        $count = $db->fetch($cart_check);
+        if ($count['count'] == 0) {
+            error_log('Payment Error: Cart is empty for user ' . $user_id);
+            sendJsonResponse(false, 'Your cart is empty.');
+        }
+        
         // Get cart items
         error_log('Payment Debug: Fetching cart items');
         $cart_items = $db->query(
             "SELECT ci.*, b.title, b.price, b.stock 
              FROM cart_items ci 
-             JOIN books b ON ci.book_id = b.book_id 
+             INNER JOIN books b ON ci.book_id = b.book_id 
              WHERE ci.user_id = ?",
             [$user_id]
         );

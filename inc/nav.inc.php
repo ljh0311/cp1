@@ -2,6 +2,22 @@
 // Initialize error message variable
 require_once __DIR__ . '/config.php';
 $error_message = null;
+
+// Get cart count if user is logged in
+$cart_count = 0;
+if (isset($_SESSION['user_id'])) {
+    try {
+        $db = DatabaseManager::getInstance();
+        $cart_query = $db->query(
+            "SELECT SUM(quantity) as total FROM cart_items WHERE user_id = ?",
+            [$_SESSION['user_id']]
+        );
+        $count_data = $db->fetch($cart_query);
+        $cart_count = $count_data['total'] ?? 0;
+    } catch (Exception $e) {
+        error_log('Error fetching cart count: ' . $e->getMessage());
+    }
+}
 ?>
 
 <nav class="navbar navbar-expand-lg fixed-top bg-white">
@@ -35,7 +51,7 @@ $error_message = null;
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="/cart.php" class="btn btn-outline-primary me-2">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="badge bg-primary rounded-pill" id="cartCount">0</span>
+                        <span class="badge bg-primary rounded-pill" id="cartCount"><?php echo $cart_count; ?></span>
                     </a>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">

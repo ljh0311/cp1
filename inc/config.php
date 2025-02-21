@@ -4,8 +4,20 @@ if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', dirname(__DIR__));
 }
 
+// Session configuration - MUST BE DEFINED BEFORE ANY OUTPUT OR SESSION START
+if (!defined('SESSION_NAME')) define('SESSION_NAME', 'bookstore_session');
+if (!defined('SESSION_LIFETIME')) define('SESSION_LIFETIME', 7200); // 2 hours
+if (!defined('SESSION_PATH')) define('SESSION_PATH', '/');
+if (!defined('SESSION_SECURE')) define('SESSION_SECURE', false);
+if (!defined('SESSION_HTTPONLY')) define('SESSION_HTTPONLY', true);
+
 // Constants
 define('DEBUG_MODE', true);
+
+// Application settings
+define('SITE_NAME', 'Academic Book Haven');
+define('SITE_URL', $_SERVER['HTTP_HOST'] ?? 'localhost'); // Use current host
+define('ADMIN_EMAIL', 'admin@example.com');
 
 // Database settings
 define('DB_HOST', 'cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com');
@@ -13,11 +25,6 @@ define('DB_NAME', 'MyBookDB');
 define('DB_USER', 'admin');
 define('DB_PASS', 'admin123');  // Correct password
 define('DB_CHARSET', 'utf8mb4');
-
-// Application settings
-define('SITE_NAME', 'Academic Book Haven');
-define('SITE_URL', 'http://18.208.109.129'); // Change this to your domain
-define('ADMIN_EMAIL', 'admin@example.com');
 
 // File upload settings
 define('UPLOAD_DIR', ROOT_PATH . '/uploads');
@@ -56,13 +63,6 @@ foreach ($required_dirs as $dir) {
 // Initialize error logging
 ini_set('log_errors', 1);
 ini_set('error_log', ROOT_PATH . '/logs/php_errors.log');
-
-// Session configuration - check before defining
-if (!defined('SESSION_NAME')) define('SESSION_NAME', 'bookstore_session');
-if (!defined('SESSION_LIFETIME')) define('SESSION_LIFETIME', 7200); // 2 hours
-if (!defined('SESSION_PATH')) define('SESSION_PATH', '/');
-if (!defined('SESSION_SECURE')) define('SESSION_SECURE', false);
-if (!defined('SESSION_HTTPONLY')) define('SESSION_HTTPONLY', true);
 
 // Cart configuration
 define('CART_TIMEOUT', 7200); // 2 hours

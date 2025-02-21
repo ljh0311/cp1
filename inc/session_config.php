@@ -7,15 +7,22 @@ if (!file_exists($sessionPath)) {
     mkdir($sessionPath, 0777, true);
 }
 
+// Get the current domain
+$domain = $_SERVER['HTTP_HOST'] ?? '';
+$domain = preg_replace('/:\d+$/', '', $domain); // Remove port number if present
+
 // Set cookie parameters BEFORE starting the session
 session_set_cookie_params([
     'lifetime' => 7200,
     'path' => '/',
-    'domain' => '', // Leave empty to use current domain
+    'domain' => $domain, // Use the current domain
     'secure' => isset($_SERVER['HTTPS']),
     'httponly' => true,
     'samesite' => 'Lax'
 ]);
+
+// Set session name
+session_name(SESSION_NAME);
 
 // Set session parameters before starting the session
 ini_set('session.save_handler', 'files');
@@ -41,6 +48,16 @@ if (isset($_SESSION['user_id'])) {
     $_SESSION['last_activity'] = time();
 }
 
+// Check session expiration
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > SESSION_LIFETIME)) {
+    // Session has expired, destroy it
+    session_unset();
+    session_destroy();
+    // Redirect to login page
+    header('Location: /login.php');
+    exit;
+}
+
 // Regenerate session ID periodically for security
 if (!isset($_SESSION['last_regeneration']) || 
     time() - $_SESSION['last_regeneration'] > 300) { // 5 minutes
@@ -53,5 +70,6 @@ if (defined('DEBUG_MODE') && DEBUG_MODE) {
     error_log("Session status: " . session_status());
     error_log("Session ID: " . session_id());
     error_log("Session save path: " . session_save_path());
+    error_log("Session domain: " . $domain);
     error_log("Session data: " . print_r($_SESSION, true));
 } 

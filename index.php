@@ -6,11 +6,13 @@ ini_set('display_errors', 1);
 // Define the root path
 define('ROOT_PATH', __DIR__);
 
+// Load configuration first
+require_once ROOT_PATH . '/inc/config.php';
+
 // Initialize session
 require_once ROOT_PATH . '/inc/session_start.php';
 
-// Load configuration and required files
-require_once ROOT_PATH . '/inc/config.php';
+// Load other required files
 require_once ROOT_PATH . '/inc/ErrorHandler.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
 

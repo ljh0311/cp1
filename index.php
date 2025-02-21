@@ -109,16 +109,15 @@ try {
     <?php ErrorHandler::displayErrors(); ?>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero bg-primary text-white py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="display-4 fw-bold mb-4">Discover Your Next Favorite Book</h1>
-                    <p class="lead mb-4">Access a vast collection of academic books, study materials, and resources to
-                        enhance your learning journey.</p>
+                    <p class="lead mb-4">Access a vast collection of academic books, study materials, and resources.</p>
                     <div class="d-flex gap-3">
-                        <a href="books.php" class="btn btn-primary btn-lg rounded-pill">Browse Books</a>
-                        <a href="#categories" class="btn btn-outline-light btn-lg rounded-pill">View Categories</a>
+                        <a href="books.php" class="btn btn-light btn-lg rounded-pill">Browse Books</a>
+                        <a href="#featured" class="btn btn-outline-light btn-lg rounded-pill">Featured Books</a>
                     </div>
                 </div>
             </div>
@@ -143,35 +142,29 @@ try {
     </section>
 
     <!-- Featured Books Section -->
-    <section class="py-5 bg-white">
+    <section id="featured" class="py-5">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-5">
-                <div>
-                    <h2 class="fw-bold mb-0">Featured Books</h2>
-                    <p class="text-muted">Hand-picked books for you</p>
-                </div>
-                <a href="books.php" class="btn btn-outline-primary rounded-pill">View All</a>
-            </div>
-
+            <h2 class="text-center mb-4">Featured Books</h2>
             <?php if (empty($featured_books)): ?>
                 <div class="alert alert-info">
                     <i class="fas fa-info-circle me-2"></i>
-                    Featured books are currently unavailable. Please check back later.
+                    No featured books available at the moment.
                 </div>
             <?php else: ?>
                 <div class="row g-4">
                     <?php foreach ($featured_books as $book): ?>
                         <div class="col-md-3">
                             <div class="card book-card h-100">
-                                <img src="<?php echo htmlspecialchars($book['image_url']); ?>" class="card-img-top"
-                                    alt="<?php echo htmlspecialchars($book['title']); ?>">
+                                <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
+                                     class="card-img-top" 
+                                     alt="<?php echo htmlspecialchars($book['title']); ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo htmlspecialchars($book['title']); ?></h5>
                                     <p class="card-text text-muted"><?php echo htmlspecialchars($book['author']); ?></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="book-price">$<?php echo number_format($book['price'], 2); ?></span>
-                                        <button class="btn btn-primary rounded-pill add-to-cart"
-                                            data-book-id="<?php echo $book['book_id'] ?? ''; ?>">
+                                        <button class="btn btn-primary rounded-pill add-to-cart" 
+                                                data-book-id="<?php echo $book['book_id']; ?>">
                                             Add to Cart
                                         </button>
                                     </div>
@@ -378,6 +371,33 @@ try {
             } catch (error) {
                 console.error('Error in counter animation:', error);
             }
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', async function() {
+                try {
+                    const response = await fetch('/cart/add.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            book_id: this.dataset.bookId
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        alert('Book added to cart!');
+                    } else {
+                        throw new Error(data.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to add book to cart. Please try again.');
+                }
+            });
         });
     </script>
 </body>

@@ -26,6 +26,25 @@ php_errors.log
 !uploads/.gitkeep
 !uploads/books/.gitkeep
 
+# Old system files
+/assets/
+/auth/
+/bookings/
+/classes/
+/contactus/
+/dashboard/
+/ourtutors/
+/payment/
+/tests/
+/timetable/
+/user/
+Tutors.php
+contactUs.php
+payment.php
+timeTable.php
+tutors_functions.php
+registerTutor.php
+
 # Environment files
 .env
 .env.local 

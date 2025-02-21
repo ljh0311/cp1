@@ -1,248 +1,195 @@
 <?php
-session_start();
 require_once '../inc/config.php';
-require_once '../database/DatabaseManager.php';
+require_once '../inc/session_config.php';
+session_start();
 
-// Check if user is logged in and is admin
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-    header('Location: ../login.php');
-    exit;
+// Check if user is logged in and is an admin
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header('Location: ../index.php');
+    exit();
 }
 
 try {
-    $db = DatabaseManager::getInstance();
-    $books_query = "SELECT * FROM books ORDER BY created_at DESC";
-    $result = $db->query($books_query);
-    $books = $db->fetchAll($result);
+    $db = new DatabaseManager();
+    $books = $db->query("SELECT * FROM books ORDER BY created_at DESC");
 } catch (Exception $e) {
-    $error = "Database error: " . $e->getMessage();
+    error_log("Error fetching books: " . $e->getMessage());
+    $books = [];
 }
+
+include_once '../inc/head.inc.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - <?php echo SITE_NAME; ?></title>
-    <?php require_once '../inc/head.inc.php'; ?>
-    <style>
-        .admin-sidebar { min-height: 100vh; background: #f8f9fa; }
-        .admin-content { padding: 2rem; }
-    </style>
-</head>
-<body>
-    <?php require_once '../inc/nav.inc.php'; ?>
+<div class="admin-container">
+    <aside class="admin-sidebar">
+        <h2>Dashboard</h2>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Books</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block admin-sidebar sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="admin_dashboard.php">
-                                <i class="fas fa-home me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="books.php">
-                                <i class="fas fa-book me-2"></i>Books
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="users.php">
-                                <i class="fas fa-users me-2"></i>Users
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="orders.php">
-                                <i class="fas fa-shopping-cart me-2"></i>Orders
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <main class="admin-content">
+        <header class="admin-header">
+            <h1>Book Management</h1>
+            <button class="btn btn-primary" onclick="showAddBookModal()">Add New Book</button>
+        </header>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 admin-content">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1>Book Management</h1>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBookModal">
-                        <i class="fas fa-plus me-2"></i>Add New Book
-                    </button>
-                </div>
-
-                <?php if (isset($error)): ?>
-                    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-                <?php endif; ?>
-
-                <!-- Books Table -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Featured</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($books as $book): ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($book['book_id']); ?></td>
-                                <td>
-                                    <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
-                                         alt="Book cover" style="width: 50px; height: 50px; object-fit: cover;">
-                                </td>
-                                <td><?php echo htmlspecialchars($book['title']); ?></td>
-                                <td><?php echo htmlspecialchars($book['author']); ?></td>
-                                <td>$<?php echo number_format($book['price'], 2); ?></td>
-                                <td><?php echo htmlspecialchars($book['category']); ?></td>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input featured-toggle" type="checkbox" 
-                                               data-book-id="<?php echo $book['book_id']; ?>"
-                                               <?php echo $book['featured'] ? 'checked' : ''; ?>>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary edit-book" 
-                                            data-book-id="<?php echo $book['book_id']; ?>">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-danger delete-book" 
-                                            data-book-id="<?php echo $book['book_id']; ?>">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
+        <div class="books-table-container">
+            <table class="books-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($books as $book): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($book['id']) ?></td>
+                        <td><?= htmlspecialchars($book['title']) ?></td>
+                        <td><?= htmlspecialchars($book['author']) ?></td>
+                        <td>$<?= number_format($book['price'], 2) ?></td>
+                        <td><?= htmlspecialchars($book['stock']) ?></td>
+                        <td>
+                            <button class="btn btn-small" onclick="editBook(<?= $book['id'] ?>)">Edit</button>
+                            <button class="btn btn-small btn-danger" onclick="deleteBook(<?= $book['id'] ?>)">Delete</button>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-    </div>
+    </main>
+</div>
 
-    <!-- Add Book Modal -->
-    <div class="modal fade" id="addBookModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add New Book</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="addBookForm" action="process_book.php" method="POST" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label class="form-label">Title</label>
-                            <input type="text" class="form-control" name="title" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Author</label>
-                            <input type="text" class="form-control" name="author" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" class="form-control" name="price" step="0.01" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <select class="form-select" name="category" required>
-                                <option value="Programming">Programming</option>
-                                <option value="Web Development">Web Development</option>
-                                <option value="Database">Database</option>
-                                <option value="Cloud Computing">Cloud Computing</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" name="description" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Image</label>
-                            <input type="file" class="form-control" name="image" accept="image/*" required>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" name="featured" value="1">
-                            <label class="form-check-label">Featured</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" form="addBookForm" class="btn btn-primary">Add Book</button>
-                </div>
+<!-- Add/Edit Book Modal -->
+<div id="bookModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Add New Book</h2>
+        <form id="bookForm" action="process_book.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="book_id" id="bookId">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cover">Book Cover</label>
+                <input type="file" id="cover" name="cover" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Book</button>
+        </form>
     </div>
+</div>
 
-    <script>
-        // Book management JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Featured toggle
-            document.querySelectorAll('.featured-toggle').forEach(toggle => {
-                toggle.addEventListener('change', function() {
-                    const bookId = this.dataset.bookId;
-                    const featured = this.checked ? 1 : 0;
-                    
-                    fetch('process_book.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: `action=toggle_featured&book_id=${bookId}&featured=${featured}`
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.success) {
-                            alert('Failed to update featured status');
-                            this.checked = !this.checked;
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('An error occurred');
-                        this.checked = !this.checked;
-                    });
-                });
-            });
+<script>
+const modal = document.getElementById('bookModal');
+const closeBtn = document.getElementsByClassName('close')[0];
+const bookForm = document.getElementById('bookForm');
 
-            // Delete book
-            document.querySelectorAll('.delete-book').forEach(button => {
-                button.addEventListener('click', function() {
-                    if (confirm('Are you sure you want to delete this book?')) {
-                        const bookId = this.dataset.bookId;
-                        
-                        fetch('process_book.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=delete&book_id=${bookId}`
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                this.closest('tr').remove();
-                            } else {
-                                alert('Failed to delete book');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('An error occurred');
-                        });
-                    }
-                });
+function showAddBookModal() {
+    document.getElementById('modalTitle').textContent = 'Add New Book';
+    bookForm.reset();
+    document.getElementById('bookId').value = '';
+    modal.style.display = 'block';
+}
+
+async function editBook(bookId) {
+    try {
+        const response = await fetch(`process_book.php?action=get&id=${bookId}`);
+        const book = await response.json();
+        
+        document.getElementById('modalTitle').textContent = 'Edit Book';
+        document.getElementById('bookId').value = book.id;
+        document.getElementById('title').value = book.title;
+        document.getElementById('author').value = book.author;
+        document.getElementById('price').value = book.price;
+        document.getElementById('stock').value = book.stock;
+        document.getElementById('description').value = book.description;
+        
+        modal.style.display = 'block';
+    } catch (error) {
+        console.error('Error fetching book details:', error);
+        alert('Failed to load book details');
+    }
+}
+
+async function deleteBook(bookId) {
+    if (confirm('Are you sure you want to delete this book?')) {
+        try {
+            const response = await fetch('process_book.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `action=delete&book_id=${bookId}`
             });
+            
+            if (response.ok) {
+                location.reload();
+            } else {
+                throw new Error('Failed to delete book');
+            }
+        } catch (error) {
+            console.error('Error deleting book:', error);
+            alert('Failed to delete book');
+        }
+    }
+}
+
+closeBtn.onclick = () => modal.style.display = 'none';
+
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+bookForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(bookForm);
+    
+    try {
+        const response = await fetch('process_book.php', {
+            method: 'POST',
+            body: formData
         });
-    </script>
-</body>
-</html>
+        
+        if (response.ok) {
+            location.reload();
+        } else {
+            throw new Error('Failed to save book');
+        }
+    } catch (error) {
+        console.error('Error saving book:', error);
+        alert('Failed to save book');
+    }
+};
+</script>
+
+<?php include_once '../inc/footer.inc.php'; ?>

@@ -1,146 +1,131 @@
 <?php
-session_start();
 require_once '../inc/config.php';
-require_once '../database/DatabaseManager.php';
+require_once '../inc/session_config.php';
+session_start();
 
-// Check if user is logged in and is admin
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-    header('Content-Type: application/json');
-    echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
-    exit;
+// Check if user is logged in and is an admin
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    http_response_code(403);
+    echo json_encode(['error' => 'Unauthorized access']);
+    exit();
 }
 
 try {
-    $db = DatabaseManager::getInstance();
-    $action = $_POST['action'] ?? '';
+    $db = new DatabaseManager();
 
-    switch ($action) {
-        case 'add':
-            // Handle file upload
-            $target_dir = "../uploads/books/";
-            if (!file_exists($target_dir)) {
-                mkdir($target_dir, 0777, true);
-            }
+    // Get book details
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get') {
+        $bookId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        if (!$bookId) {
+            throw new Exception('Invalid book ID');
+        }
 
-            $file = $_FILES['image'];
-            $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-            $target_file = $target_dir . uniqid() . '.' . $imageFileType;
+        $book = $db->query("SELECT * FROM books WHERE id = ?", [$bookId]);
+        if (!$book) {
+            throw new Exception('Book not found');
+        }
 
-            // Check file type
-            if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
-                throw new Exception('Invalid file type. Only JPG, JPEG, PNG & GIF files are allowed.');
-            }
+        echo json_encode($book[0]);
+        exit();
+    }
 
-            if (move_uploaded_file($file['tmp_name'], $target_file)) {
-                $image_url = str_replace('../', '', $target_file);
-                
-                $stmt = $db->query(
-                    "INSERT INTO books (title, author, price, image_url, description, category, featured) 
-                     VALUES (:title, :author, :price, :image_url, :description, :category, :featured)",
-                    [
-                        ':title' => $_POST['title'],
-                        ':author' => $_POST['author'],
-                        ':price' => $_POST['price'],
-                        ':image_url' => $image_url,
-                        ':description' => $_POST['description'],
-                        ':category' => $_POST['category'],
-                        ':featured' => isset($_POST['featured']) ? 1 : 0
-                    ]
-                );
+    // Handle POST requests
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $action = $_POST['action'] ?? 'create';
 
-                header('Location: admin_dashboard.php?success=1');
-                exit;
-            } else {
-                throw new Exception('Failed to upload file.');
-            }
-            break;
+        switch ($action) {
+            case 'create':
+            case 'update':
+                // Validate input
+                $bookId = filter_input(INPUT_POST, 'book_id', FILTER_VALIDATE_INT);
+                $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+                $author = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_STRING);
+                $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
+                $stock = filter_input(INPUT_POST, 'stock', FILTER_VALIDATE_INT);
+                $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 
-        case 'edit':
-            $data = [
-                ':book_id' => $_POST['book_id'],
-                ':title' => $_POST['title'],
-                ':author' => $_POST['author'],
-                ':price' => $_POST['price'],
-                ':description' => $_POST['description'],
-                ':category' => $_POST['category'],
-                ':featured' => isset($_POST['featured']) ? 1 : 0
-            ];
-
-            // Handle image update if new image is uploaded
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = "../uploads/books/";
-                $file = $_FILES['image'];
-                $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-                $target_file = $target_dir . uniqid() . '.' . $imageFileType;
-
-                if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
-                    throw new Exception('Invalid file type. Only JPG, JPEG, PNG & GIF files are allowed.');
+                if (!$title || !$author || !$price || !$stock || !$description) {
+                    throw new Exception('All fields are required');
                 }
 
-                if (move_uploaded_file($file['tmp_name'], $target_file)) {
-                    $data[':image_url'] = str_replace('../', '', $target_file);
+                // Handle file upload
+                $imagePath = null;
+                if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
+                    $uploadDir = '../uploads/books/';
+                    if (!file_exists($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+
+                    $fileInfo = pathinfo($_FILES['cover']['name']);
+                    $extension = strtolower($fileInfo['extension']);
                     
-                    // Delete old image
-                    $old_image = $db->query("SELECT image_url FROM books WHERE book_id = :id", [':id' => $_POST['book_id']]);
-                    $old_image_path = $old_image->fetch()['image_url'];
-                    if ($old_image_path && file_exists('../' . $old_image_path)) {
-                        unlink('../' . $old_image_path);
+                    // Validate file type
+                    $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+                    if (!in_array($extension, $allowedTypes)) {
+                        throw new Exception('Invalid file type. Only JPG, PNG, and GIF are allowed.');
+                    }
+
+                    // Generate unique filename
+                    $filename = uniqid() . '.' . $extension;
+                    $imagePath = 'uploads/books/' . $filename;
+
+                    if (!move_uploaded_file($_FILES['cover']['tmp_name'], "../$imagePath")) {
+                        throw new Exception('Failed to upload file');
                     }
                 }
-            }
 
-            $sql = "UPDATE books SET 
-                    title = :title, 
-                    author = :author, 
-                    price = :price, 
-                    description = :description, 
-                    category = :category, 
-                    featured = :featured";
-            
-            if (isset($data[':image_url'])) {
-                $sql .= ", image_url = :image_url";
-            }
-            
-            $sql .= " WHERE book_id = :book_id";
+                if ($action === 'create') {
+                    // Insert new book
+                    $sql = "INSERT INTO books (title, author, price, stock, description, image_url, created_at) 
+                            VALUES (?, ?, ?, ?, ?, ?, NOW())";
+                    $params = [$title, $author, $price, $stock, $description, $imagePath];
+                } else {
+                    // Update existing book
+                    if (!$bookId) {
+                        throw new Exception('Book ID is required for updates');
+                    }
 
-            $db->query($sql, $data);
-            
-            header('Content-Type: application/json');
-            echo json_encode(['success' => true]);
-            break;
+                    if ($imagePath) {
+                        $sql = "UPDATE books SET title = ?, author = ?, price = ?, stock = ?, 
+                                description = ?, image_url = ? WHERE id = ?";
+                        $params = [$title, $author, $price, $stock, $description, $imagePath, $bookId];
+                    } else {
+                        $sql = "UPDATE books SET title = ?, author = ?, price = ?, stock = ?, 
+                                description = ? WHERE id = ?";
+                        $params = [$title, $author, $price, $stock, $description, $bookId];
+                    }
+                }
 
-        case 'delete':
-            // Get image path before deleting
-            $result = $db->query("SELECT image_url FROM books WHERE book_id = :id", [':id' => $_POST['book_id']]);
-            $image_path = $result->fetch()['image_url'];
+                $db->query($sql, $params);
+                echo json_encode(['success' => true]);
+                break;
 
-            // Delete the book
-            $db->query("DELETE FROM books WHERE book_id = :id", [':id' => $_POST['book_id']]);
+            case 'delete':
+                $bookId = filter_input(INPUT_POST, 'book_id', FILTER_VALIDATE_INT);
+                if (!$bookId) {
+                    throw new Exception('Invalid book ID');
+                }
 
-            // Delete the image file
-            if ($image_path && file_exists('../' . $image_path)) {
-                unlink('../' . $image_path);
-            }
+                // Get the image path before deleting
+                $book = $db->query("SELECT image_url FROM books WHERE id = ?", [$bookId]);
+                if ($book && $book[0]['image_url']) {
+                    $imagePath = "../" . $book[0]['image_url'];
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                }
 
-            header('Content-Type: application/json');
-            echo json_encode(['success' => true]);
-            break;
+                $db->query("DELETE FROM books WHERE id = ?", [$bookId]);
+                echo json_encode(['success' => true]);
+                break;
 
-        case 'toggle_featured':
-            $db->query(
-                "UPDATE books SET featured = :featured WHERE book_id = :id",
-                [':featured' => $_POST['featured'], ':id' => $_POST['book_id']]
-            );
-
-            header('Content-Type: application/json');
-            echo json_encode(['success' => true]);
-            break;
-
-        default:
-            throw new Exception('Invalid action');
+            default:
+                throw new Exception('Invalid action');
+        }
     }
 } catch (Exception $e) {
-    header('Content-Type: application/json');
-    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    error_log("Error in process_book.php: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
 }
 ?> 

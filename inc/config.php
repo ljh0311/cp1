@@ -1,7 +1,4 @@
 <?php
-// Load session configuration first
-require_once __DIR__ . '/session_start.php';
-
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', dirname(__DIR__));

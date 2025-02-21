@@ -1,9 +1,3 @@
-<?php
-// Only start session if it hasn't been started already
-if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
-    session_start();
-}
-?>
 <!-- Meta Tags -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -513,62 +513,72 @@ try {
             }
         });
 
-        // Add to cart functionality
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', async function(e) {
-                e.preventDefault();
-                try {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add to cart functionality
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', async function() {
                     const bookId = this.dataset.bookId;
-                    if (!bookId) {
-                        throw new Error('Book ID is missing');
-                    }
-
-                    const response = await fetch('/cart/add.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        body: JSON.stringify({
-                            book_id: bookId
-                        })
-                    });
                     
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
+                    try {
+                        // Disable button and show loading state
+                        this.disabled = true;
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                        
+                        const response = await fetch('cart/add.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                book_id: bookId,
+                                quantity: 1
+                            })
+                        });
 
-                    const data = await response.json();
-                    if (data.success) {
-                        // Show success message
-                        const alert = document.createElement('div');
-                        alert.className = 'alert alert-success alert-dismissible fade show';
-                        alert.innerHTML = `
-                            <div class="container">
-                                <i class="fas fa-check-circle me-2"></i>
-                                Book added to cart successfully!
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        `;
-                        document.body.insertBefore(alert, document.body.firstChild);
-                    } else {
-                        throw new Error(data.message || 'Failed to add book to cart');
+                        const data = await response.json();
+                        if (data.success) {
+                            // Update cart count in nav
+                            const cartCount = document.getElementById('cartCount');
+                            if (cartCount) {
+                                cartCount.textContent = data.cart_count;
+                                cartCount.classList.add('cart-count-animation');
+                                setTimeout(() => cartCount.classList.remove('cart-count-animation'), 300);
+                            }
+                            
+                            // Show success message
+                            showAlert('success', 'Item added to cart successfully');
+                        } else {
+                            throw new Error(data.message || 'Failed to add item to cart');
+                        }
+                    } catch (error) {
+                        showAlert('danger', error.message || 'Failed to add item to cart. Please try again.');
+                    } finally {
+                        // Re-enable button and restore original text
+                        this.disabled = false;
+                        this.innerHTML = originalText;
                     }
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Show error message
-                    const alert = document.createElement('div');
-                    alert.className = 'alert alert-danger alert-dismissible fade show';
-                    alert.innerHTML = `
-                        <div class="container">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            ${error.message || 'Failed to add book to cart. Please try again.'}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    `;
-                    document.body.insertBefore(alert, document.body.firstChild);
-                }
+                });
             });
+
+            // Function to show alert messages
+            function showAlert(type, message) {
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+                alert.style.zIndex = '1050';
+                alert.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                document.body.appendChild(alert);
+                
+                // Remove alert after 3 seconds
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                    setTimeout(() => alert.remove(), 150);
+                }, 3000);
+            }
         });
     </script>
 </body>

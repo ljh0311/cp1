@@ -1,5 +1,7 @@
 <?php
-if (!class_exists('DefaultData')) {
+namespace BookStore\Data;
+
+if (!class_exists('BookStore\Data\DefaultData')) {
     class DefaultData {
         public static function getFeaturedBooks() {
             return [

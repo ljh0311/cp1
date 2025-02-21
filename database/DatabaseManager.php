@@ -1,4 +1,6 @@
 <?php
+use BookStore\Data\DefaultData;
+
 class DatabaseManager
 {
     private static $instance = null;

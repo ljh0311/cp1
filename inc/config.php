@@ -1,19 +1,25 @@
 <?php
-// Session settings - must be set before session starts
-if (session_status() === PHP_SESSION_NONE) {
-    ini_set('session.gc_maxlifetime', 3600); // 1 hour
-    ini_set('session.cookie_lifetime', 3600);
-    ini_set('session.save_path', ROOT_PATH . '/sessions');
-}
-
-define('SESSION_LIFETIME', 3600); // 1 hour
-
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', dirname(__DIR__));
 }
 
-// Debug mode
+// Session settings - must be set before any session starts
+if (session_status() == PHP_SESSION_NONE) {
+    // Create sessions directory if it doesn't exist
+    $sessionPath = ROOT_PATH . '/sessions';
+    if (!file_exists($sessionPath)) {
+        mkdir($sessionPath, 0777, true);
+    }
+    
+    // Set session configurations
+    ini_set('session.save_path', $sessionPath);
+    ini_set('session.gc_maxlifetime', 3600);
+    ini_set('session.cookie_lifetime', 3600);
+}
+
+// Constants
+define('SESSION_LIFETIME', 3600); // 1 hour
 define('DEBUG_MODE', true);
 
 // Database settings

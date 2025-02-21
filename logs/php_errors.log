@@ -430,3 +430,934 @@ Stack trace:
 #2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
 #3 {main}
   thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:58:01 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:58:01 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:58:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:58:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(108): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 10:58:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "DefaultData" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php:22
+Stack trace:
+#0 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 22
+[21-Feb-2025 10:58:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "DefaultData" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php:22
+Stack trace:
+#0 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 22
+[21-Feb-2025 10:58:35 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "DefaultData" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php:22
+Stack trace:
+#0 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 22
+[21-Feb-2025 10:58:50 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "DefaultData" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php:22
+Stack trace:
+#0 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 22
+[21-Feb-2025 10:58:50 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "DefaultData" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php:22
+Stack trace:
+#0 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 22
+[21-Feb-2025 10:59:09 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:09 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:09 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:09 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:09 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:10 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:10 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:10 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:10 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:11 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:11 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:11 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:11 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:11 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:11 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:12 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:12 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:12 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:12 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:12 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:12 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:12 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:12 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:12 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:13 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:13 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:13 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:13 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:13 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:15 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:16 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:17 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:17 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:17 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:18 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:19 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:20 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:21 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:22 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:22 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:22 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:22 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:22 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:22 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:24 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:24 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:24 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:24 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:25 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:26 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:26 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:26 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:26 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:26 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:27 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:27 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:27 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:27 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:27 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:28 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:28 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:28 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:28 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:28 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:29 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:29 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:29 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:29 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:29 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19
+[21-Feb-2025 10:59:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'tutoring_system'
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:33
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(21): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(110): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 10:59:30 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 19

@@ -57,7 +57,7 @@ foreach ($required_dirs as $dir) {
 ini_set('log_errors', 1);
 ini_set('error_log', ROOT_PATH . '/logs/php_errors.log');
 
-// Session configuration
+// Session configuration - check before defining
 if (!defined('SESSION_NAME')) define('SESSION_NAME', 'bookstore_session');
 if (!defined('SESSION_LIFETIME')) define('SESSION_LIFETIME', 7200); // 2 hours
 if (!defined('SESSION_PATH')) define('SESSION_PATH', '/');

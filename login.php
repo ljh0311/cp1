@@ -37,13 +37,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $db = DatabaseManager::getInstance();
             
-            // Get user by username or email
+            // Get user by username or email - using the same parameter twice
             $query = "SELECT user_id, username, email, password_hash, full_name, is_admin, status 
                      FROM users 
-                     WHERE (username = :username OR email = :username) 
+                     WHERE (username = :username OR email = :email) 
                      AND status = 'active'";
             
-            $stmt = $db->query($query, [':username' => $username]);
+            $params = [
+                ':username' => $username,
+                ':email' => $username // Same value, different parameter name
+            ];
+            
+            error_log("Executing query with parameters: " . print_r($params, true));
+            
+            $stmt = $db->query($query, $params);
             $user = $db->fetch($stmt);
 
             // Debug information

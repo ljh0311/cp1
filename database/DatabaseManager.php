@@ -7,13 +7,20 @@ class DatabaseManager
     private function __construct()
     {
         try {
+            // Ensure we're using the correct host from config
             $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
+            
+            // Log connection attempt for debugging
+            error_log("Attempting to connect to database at " . DB_HOST);
+            
             $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+            
+            error_log("Successfully connected to database");
         } catch (PDOException $e) {
             error_log("Database connection failed: " . $e->getMessage());
             throw new Exception("Database connection failed. Please try again later.");

@@ -41,9 +41,6 @@
                     <li class="mb-2">
                         <a href="/cart.php" class="text-light text-decoration-none opacity-75 hover-opacity-100">Shopping Cart</a>
                     </li>
-                    <li class="mb-2">
-                        <a href="/contact.php" class="text-light text-decoration-none opacity-75 hover-opacity-100">Contact Us</a>
-                    </li>
                 </ul>
             </div>
             <div class="col-md-3 mb-4">

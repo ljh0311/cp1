@@ -66,7 +66,11 @@ try {
     }
 
     // Get featured books
-    $books_query = "SELECT * FROM books WHERE featured = 1 ORDER BY created_at DESC LIMIT 4";
+    $books_query = "SELECT b.*, c.name as category 
+                    FROM books b 
+                    LEFT JOIN categories c ON b.category_id = c.category_id 
+                    WHERE b.featured = 1 
+                    ORDER BY b.created_at DESC LIMIT 4";
     $result = $db->query($books_query);
     $featured_books = $db->fetchAll($result);
 
@@ -225,7 +229,10 @@ try {
             $latest_books = [];
             if ($db_connected) {
                 try {
-                    $latest_query = "SELECT * FROM books ORDER BY created_at DESC LIMIT 3";
+                    $latest_query = "SELECT b.*, c.name as category 
+                                   FROM books b 
+                                   LEFT JOIN categories c ON b.category_id = c.category_id 
+                                   ORDER BY b.created_at DESC LIMIT 3";
                     $result = $db->query($latest_query);
                     $latest_books = $db->fetchAll($result);
                 } catch (Exception $e) {

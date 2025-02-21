@@ -1,12 +1,13 @@
 <?php
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
+require_once 'inc/SessionManager.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php?redirect=checkout.php');
-    exit();
-}
+// Get session manager instance
+$sessionManager = SessionManager::getInstance();
+
+// Require user to be logged in
+$sessionManager->requireLogin('login.php?redirect=checkout.php');
 
 try {
     $db = DatabaseManager::getInstance();
@@ -17,7 +18,7 @@ try {
          FROM cart_items ci 
          JOIN books b ON ci.book_id = b.book_id 
          WHERE ci.user_id = ?",
-        [$_SESSION['user_id']]
+        [$sessionManager->getUserId()]
     );
     
     $items = $db->fetchAll($cart_items);
@@ -35,9 +36,14 @@ try {
     
 } catch (Exception $e) {
     ErrorHandler::logError($e->getMessage());
+    $sessionManager->setFlash('error', 'An error occurred while loading your cart. Please try again.');
     header('Location: cart.php');
     exit();
 }
+
+// Get any flash messages
+$error_message = $sessionManager->getFlash('error');
+$success_message = $sessionManager->getFlash('success');
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +56,20 @@ try {
 </head>
 <body>
     <?php require_once 'inc/nav.inc.php'; ?>
+    
+    <?php if ($error_message): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo htmlspecialchars($error_message); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+    
+    <?php if ($success_message): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo htmlspecialchars($success_message); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     
     <div class="container py-5">
         <h1 class="mb-4">Checkout</h1>
@@ -151,7 +171,7 @@ try {
 
     <script>
         // Initialize Stripe
-        const stripe = Stripe('your_publishable_key'); // Replace with your Stripe publishable key
+        const stripe = Stripe('<?php echo STRIPE_PUBLISHABLE_KEY; ?>');
         const elements = stripe.elements();
         
         // Create card Element
@@ -165,12 +185,10 @@ try {
         form.addEventListener('submit', async function(event) {
             event.preventDefault();
             
-            // Disable submit button
             submitButton.disabled = true;
             submitButton.textContent = 'Processing...';
             
             try {
-                // Create payment method
                 const {paymentMethod, error} = await stripe.createPaymentMethod({
                     type: 'card',
                     card: card,
@@ -191,7 +209,6 @@ try {
                     throw error;
                 }
                 
-                // Send payment info to server
                 const response = await fetch('/process_payment.php', {
                     method: 'POST',
                     headers: {

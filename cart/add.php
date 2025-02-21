@@ -2,6 +2,9 @@
 require_once '../inc/config.php';
 require_once '../inc/session_config.php';
 
+// Set JSON response header early
+header('Content-Type: application/json');
+
 // Ensure all errors are caught and returned as JSON
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
@@ -12,7 +15,14 @@ function handleError($errno, $errstr, $errfile, $errline) {
     echo json_encode([
         'success' => false,
         'message' => 'Server error: ' . $errstr,
-        'debug' => DEBUG_MODE ? "$errfile:$errline" : null
+        'debug' => defined('DEBUG_MODE') && DEBUG_MODE ? [
+            'error' => $errstr,
+            'file' => $errfile,
+            'line' => $errline,
+            'session_id' => session_id(),
+            'session_status' => session_status(),
+            'session_data' => $_SESSION
+        ] : null
     ]);
     exit();
 }
@@ -21,15 +31,11 @@ function handleError($errno, $errstr, $errfile, $errline) {
 set_error_handler('handleError');
 
 try {
-    // Check session status
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-
     // Debug session information
-    if (DEBUG_MODE) {
+    if (defined('DEBUG_MODE') && DEBUG_MODE) {
         error_log("Session ID: " . session_id());
-        error_log("Session Data: " . print_r($_SESSION, true));
+        error_log("Session status: " . session_status());
+        error_log("Session data: " . print_r($_SESSION, true));
     }
 
     // Check if user is logged in
@@ -38,13 +44,14 @@ try {
         echo json_encode([
             'success' => false, 
             'message' => 'Please login to add items to cart',
-            'debug' => DEBUG_MODE ? 'No user_id in session' : null
+            'debug' => defined('DEBUG_MODE') && DEBUG_MODE ? [
+                'session_id' => session_id(),
+                'session_status' => session_status(),
+                'session_data' => $_SESSION
+            ] : null
         ]);
         exit();
     }
-
-    // Set JSON response header early
-    header('Content-Type: application/json');
 
     // Check if request is POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -71,7 +78,7 @@ try {
     $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
 
     // Initialize database connection
-    $db = new DatabaseManager();
+    $db = DatabaseManager::getInstance();
     
     // Check if book exists and has stock
     $book = $db->query(
@@ -107,7 +114,8 @@ try {
     } else {
         // Add new item to cart
         $db->query(
-            "INSERT INTO cart_items (user_id, book_id, quantity) VALUES (?, ?, ?)",
+            "INSERT INTO cart_items (user_id, book_id, quantity, created_at, updated_at) 
+             VALUES (?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
             [$user_id, $book_id, $quantity]
         );
     }
@@ -129,7 +137,7 @@ try {
     echo json_encode([
         'success' => false,
         'message' => $e->getMessage(),
-        'debug' => DEBUG_MODE ? [
+        'debug' => defined('DEBUG_MODE') && DEBUG_MODE ? [
             'error' => $e->getMessage(),
             'trace' => $e->getTraceAsString(),
             'session_id' => session_id(),

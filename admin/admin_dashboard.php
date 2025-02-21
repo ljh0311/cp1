@@ -17,7 +17,9 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || !$_SESSION[
 try {
     $db = DatabaseManager::getInstance();
     $books = $db->query(
-        "SELECT * FROM books ORDER BY created_at DESC"
+        "SELECT book_id, title, author, price, stock_quantity, image_url, description 
+         FROM books 
+         ORDER BY created_at DESC"
     );
     $books = $db->fetchAll($books);
 } catch (Exception $e) {
@@ -62,14 +64,14 @@ include_once '../inc/head.inc.php';
                 <tbody>
                     <?php foreach ($books as $book): ?>
                     <tr>
-                        <td><?= htmlspecialchars($book['id']) ?></td>
-                        <td><?= htmlspecialchars($book['title']) ?></td>
-                        <td><?= htmlspecialchars($book['author']) ?></td>
-                        <td>$<?= number_format($book['price'], 2) ?></td>
-                        <td><?= htmlspecialchars($book['stock']) ?></td>
+                        <td><?php echo htmlspecialchars((string)$book['book_id']); ?></td>
+                        <td><?php echo htmlspecialchars($book['title']); ?></td>
+                        <td><?php echo htmlspecialchars($book['author']); ?></td>
+                        <td>$<?php echo number_format((float)$book['price'], 2); ?></td>
+                        <td><?php echo htmlspecialchars((string)$book['stock_quantity']); ?></td>
                         <td>
-                            <button class="btn btn-small" onclick="editBook(<?= $book['id'] ?>)">Edit</button>
-                            <button class="btn btn-small btn-danger" onclick="deleteBook(<?= $book['id'] ?>)">Delete</button>
+                            <button class="btn btn-sm btn-primary" onclick="editBook(<?php echo $book['book_id']; ?>)">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteBook(<?php echo $book['book_id']; ?>)">Delete</button>
                         </td>
                     </tr>
                     <?php endforeach; ?>

@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
 <meta name="keywords" content="books, ebooks, bookstore, reading, literature">
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="/images/favicon.png">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,9 +21,9 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
 <!-- CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-<script src="js/main.js" defer></script>
+<script src="/js/main.js" defer></script>

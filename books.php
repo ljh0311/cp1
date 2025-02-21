@@ -26,29 +26,30 @@ require_once 'database/DatabaseManager.php';
 
 try {
     $db = DatabaseManager::getInstance();
-    $category = isset($_GET['category']) ? $_GET['category'] : null;
-    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'title';
-    $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
     
-    // Build query
-    $query = "SELECT b.*, c.name as category 
-              FROM books b 
-              LEFT JOIN categories c ON b.category_id = c.category_id";
-    if ($category) {
-        $query .= " WHERE c.name = :category";
-    }
-    $query .= " ORDER BY b.$sort $order";
+    // Get sorting parameters
+    $sort = $_GET['sort'] ?? 'title';
+    $order = $_GET['order'] ?? 'asc';
     
-    // Execute query
-    if ($category) {
-        $result = $db->query($query, [':category' => $category]);
-    } else {
-        $result = $db->query($query);
-    }
+    // Validate sort and order
+    $allowed_sorts = ['title', 'price', 'author'];
+    $allowed_orders = ['asc', 'desc'];
     
-    $books = $db->fetchAll($result);
+    if (!in_array($sort, $allowed_sorts)) $sort = 'title';
+    if (!in_array($order, $allowed_orders)) $order = 'asc';
+    
+    // Get books with sorting
+    $books_query = $db->query(
+        "SELECT b.*, c.name as category 
+         FROM books b 
+         LEFT JOIN categories c ON b.category_id = c.category_id 
+         ORDER BY b.$sort $order"
+    );
+    
+    $books = $db->fetchAll($books_query);
+    
 } catch (Exception $e) {
-    ErrorHandler::logError($e->getMessage());
+    error_log('Error in books.php: ' . $e->getMessage());
     $books = [];
 }
 
@@ -70,23 +71,33 @@ if (DEBUG_MODE) {
     <?php ErrorHandler::displayErrors(); ?>
 
     <div class="container py-5">
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <h1 class="fw-bold mb-0">Our Books</h1>
-                <p class="text-muted">Browse our collection of quality books</p>
-            </div>
-            <div class="col-md-4">
-                <div class="d-flex justify-content-end align-items-center h-100">
-                    <select class="form-select w-auto" id="sortBooks">
-                        <option value="title-ASC" <?php echo $sort == 'title' && $order == 'ASC' ? 'selected' : ''; ?>>Title (A-Z)</option>
-                        <option value="title-DESC" <?php echo $sort == 'title' && $order == 'DESC' ? 'selected' : ''; ?>>Title (Z-A)</option>
-                        <option value="price-ASC" <?php echo $sort == 'price' && $order == 'ASC' ? 'selected' : ''; ?>>Price (Low to High)</option>
-                        <option value="price-DESC" <?php echo $sort == 'price' && $order == 'DESC' ? 'selected' : ''; ?>>Price (High to Low)</option>
-                    </select>
-                </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Our Books</h1>
+            <div class="d-flex align-items-center">
+                <label for="sortBooks" class="me-2">Sort by:</label>
+                <select id="sortBooks" class="form-select">
+                    <option value="title-asc" <?php echo $sort === 'title' && $order === 'asc' ? 'selected' : ''; ?>>
+                        Title (A-Z)
+                    </option>
+                    <option value="title-desc" <?php echo $sort === 'title' && $order === 'desc' ? 'selected' : ''; ?>>
+                        Title (Z-A)
+                    </option>
+                    <option value="price-asc" <?php echo $sort === 'price' && $order === 'asc' ? 'selected' : ''; ?>>
+                        Price (Low to High)
+                    </option>
+                    <option value="price-desc" <?php echo $sort === 'price' && $order === 'desc' ? 'selected' : ''; ?>>
+                        Price (High to Low)
+                    </option>
+                    <option value="author-asc" <?php echo $sort === 'author' && $order === 'asc' ? 'selected' : ''; ?>>
+                        Author (A-Z)
+                    </option>
+                    <option value="author-desc" <?php echo $sort === 'author' && $order === 'desc' ? 'selected' : ''; ?>>
+                        Author (Z-A)
+                    </option>
+                </select>
             </div>
         </div>
-
+        
         <?php if (empty($books)): ?>
             <div class="alert alert-info">
                 <i class="fas fa-info-circle me-2"></i>
@@ -148,17 +159,17 @@ if (DEBUG_MODE) {
                     this.disabled = true;
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
 
-                    const response = await fetch('http://18.208.109.129/cart/add.php', {
+                    const response = await fetch('./cart/add.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest'
+                            'Accept': 'application/json'
                         },
                         body: JSON.stringify({
-                            book_id: this.dataset.bookId
+                            book_id: this.dataset.bookId,
+                            quantity: 1
                         }),
-                        credentials: 'include'
+                        credentials: 'same-origin'
                     });
                     
                     // Get the response text first for debugging
@@ -167,12 +178,8 @@ if (DEBUG_MODE) {
                     
                     // Check if the response indicates we need to login
                     if (response.status === 401) {
-                        window.location.href = '/login.php?redirect=' + encodeURIComponent(window.location.pathname);
+                        window.location.href = 'login.php?redirect=' + encodeURIComponent(window.location.pathname);
                         return;
-                    }
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     
                     // Try to parse the response as JSON
@@ -187,21 +194,28 @@ if (DEBUG_MODE) {
                     if (data.success) {
                         // Show success message
                         const alert = document.createElement('div');
-                        alert.className = 'alert alert-success alert-dismissible fade show';
+                        alert.className = 'alert alert-success alert-dismissible fade show position-fixed';
+                        alert.style.top = '20px';
+                        alert.style.right = '20px';
+                        alert.style.zIndex = '1050';
                         alert.innerHTML = `
-                            <div class="container">
+                            <div class="d-flex align-items-center">
                                 <i class="fas fa-check-circle me-2"></i>
                                 ${data.message || 'Book added to cart successfully!'}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         `;
-                        document.body.insertBefore(alert, document.body.firstChild);
+                        document.body.appendChild(alert);
 
                         // Update cart count if available
                         if (data.cart_count !== undefined) {
                             const cartCountElement = document.getElementById('cartCount');
                             if (cartCountElement) {
                                 cartCountElement.textContent = data.cart_count;
+                                cartCountElement.classList.add('cart-count-animation');
+                                setTimeout(() => {
+                                    cartCountElement.classList.remove('cart-count-animation');
+                                }, 300);
                             }
                         }
                     } else {
@@ -211,15 +225,18 @@ if (DEBUG_MODE) {
                     console.error('Error:', error);
                     // Show error message
                     const alert = document.createElement('div');
-                    alert.className = 'alert alert-danger alert-dismissible fade show';
+                    alert.className = 'alert alert-danger alert-dismissible fade show position-fixed';
+                    alert.style.top = '20px';
+                    alert.style.right = '20px';
+                    alert.style.zIndex = '1050';
                     alert.innerHTML = `
-                        <div class="container">
+                        <div class="d-flex align-items-center">
                             <i class="fas fa-exclamation-circle me-2"></i>
                             ${error.message || 'Failed to add book to cart. Please try again.'}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     `;
-                    document.body.insertBefore(alert, document.body.firstChild);
+                    document.body.appendChild(alert);
                 } finally {
                     // Re-enable button and restore original text
                     this.disabled = false;

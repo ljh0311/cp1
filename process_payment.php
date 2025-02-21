@@ -83,6 +83,7 @@ try {
         // Test the connection with a simple query
         $test = $db->query("SELECT 1");
         if (!$test) {
+            error_log('Payment Error: Database connection test failed');
             throw new Exception('Database connection test failed');
         }
     } catch (Exception $e) {
@@ -91,7 +92,10 @@ try {
     }
     
     try {
+        error_log('Payment Debug: Starting payment process for user ' . $user_id);
+        
         // Get cart items
+        error_log('Payment Debug: Fetching cart items');
         $cart_items = $db->query(
             "SELECT ci.*, b.title, b.price, b.stock 
              FROM cart_items ci 
@@ -106,6 +110,7 @@ try {
         }
         
         $items = $db->fetchAll($cart_items);
+        error_log('Payment Debug: Found ' . count($items) . ' items in cart');
         
         if (empty($items)) {
             sendJsonResponse(false, 'Cart is empty.');
@@ -115,14 +120,17 @@ try {
         $total = 0;
         foreach ($items as $item) {
             if ($item['stock'] < $item['quantity']) {
+                error_log('Payment Error: Insufficient stock for book ID ' . $item['book_id']);
                 sendJsonResponse(false, "Insufficient stock for {$item['title']}.");
             }
             $total += $item['price'] * $item['quantity'];
         }
+        error_log('Payment Debug: Total calculated: ' . $total);
         
         // Validate credit card
         $card_number = $data['payment_method_id'];
         if (!preg_match('/^\d{16}$/', $card_number)) {
+            error_log('Payment Error: Invalid card number format');
             sendJsonResponse(false, 'Card number must be 16 digits.');
         }
         
@@ -138,92 +146,123 @@ try {
                 $card_type = 'AMEX';
                 break;
             default:
+                error_log('Payment Error: Invalid card type: ' . $first_digit);
                 sendJsonResponse(false, 'Invalid card type. Must start with 4 (Visa), 5 (Mastercard), or 6 (AMEX).');
         }
         
+        error_log('Payment Debug: Starting transaction');
         // Process order
-        $db->query("START TRANSACTION");
-        
-        // Create order
-        $result = $db->query(
-            "INSERT INTO orders (user_id, total_amount, status, shipping_address, created_at) 
-             VALUES (?, ?, ?, ?, NOW())",
-            [
-                $user_id,
-                $total,
-                'pending',
-                json_encode($data['shipping_details'])
-            ]
-        );
-        
+        $result = $db->query("START TRANSACTION");
         if (!$result) {
-            throw new Exception('Failed to create order');
+            error_log('Payment Error: Failed to start transaction');
+            throw new Exception('Failed to start transaction');
         }
         
-        $order_id = $db->lastInsertId();
-        if (!$order_id) {
-            throw new Exception('Failed to get order ID');
-        }
-        
-        // Create order items and update stock
-        foreach ($items as $item) {
+        try {
+            // Create order
+            error_log('Payment Debug: Creating order');
+            $shipping_json = json_encode($data['shipping_details']);
+            error_log('Payment Debug: Shipping details: ' . $shipping_json);
+            
             $result = $db->query(
-                "INSERT INTO order_items (order_id, book_id, quantity, price) 
-                 VALUES (?, ?, ?, ?)",
-                [$order_id, $item['book_id'], $item['quantity'], $item['price']]
+                "INSERT INTO orders (user_id, total_amount, status, shipping_address, created_at) 
+                 VALUES (?, ?, ?, ?, NOW())",
+                [
+                    $user_id,
+                    $total,
+                    'pending',
+                    $shipping_json
+                ]
             );
             
             if (!$result) {
-                throw new Exception('Failed to create order item');
+                error_log('Payment Error: Failed to create order - Query failed');
+                throw new Exception('Failed to create order');
             }
             
+            $order_id = $db->lastInsertId();
+            if (!$order_id) {
+                error_log('Payment Error: Failed to get last insert ID');
+                throw new Exception('Failed to get order ID');
+            }
+            error_log('Payment Debug: Order created with ID: ' . $order_id);
+            
+            // Create order items and update stock
+            foreach ($items as $item) {
+                error_log('Payment Debug: Processing item ' . $item['book_id']);
+                $result = $db->query(
+                    "INSERT INTO order_items (order_id, book_id, quantity, price) 
+                     VALUES (?, ?, ?, ?)",
+                    [$order_id, $item['book_id'], $item['quantity'], $item['price']]
+                );
+                
+                if (!$result) {
+                    error_log('Payment Error: Failed to create order item for book ID ' . $item['book_id']);
+                    throw new Exception('Failed to create order item');
+                }
+                
+                $result = $db->query(
+                    "UPDATE books SET stock = stock - ? WHERE book_id = ?",
+                    [$item['quantity'], $item['book_id']]
+                );
+                
+                if (!$result) {
+                    error_log('Payment Error: Failed to update stock for book ID ' . $item['book_id']);
+                    throw new Exception('Failed to update book stock');
+                }
+            }
+            
+            // Clear cart
+            error_log('Payment Debug: Clearing cart');
             $result = $db->query(
-                "UPDATE books SET stock = stock - ? WHERE book_id = ?",
-                [$item['quantity'], $item['book_id']]
+                "DELETE FROM cart_items WHERE user_id = ?",
+                [$user_id]
             );
             
             if (!$result) {
-                throw new Exception('Failed to update book stock');
+                error_log('Payment Error: Failed to clear cart');
+                throw new Exception('Failed to clear cart');
             }
+            
+            // Update order status
+            error_log('Payment Debug: Updating order status');
+            $payment_intent = 'MOCK_' . time() . '_' . rand(1000,9999);
+            $result = $db->query(
+                "UPDATE orders SET status = ?, payment_intent_id = ? WHERE order_id = ?",
+                ['paid', $payment_intent, $order_id]
+            );
+            
+            if (!$result) {
+                error_log('Payment Error: Failed to update order status');
+                throw new Exception('Failed to update order status');
+            }
+            
+            // Commit the transaction
+            error_log('Payment Debug: Committing transaction');
+            $result = $db->query("COMMIT");
+            if (!$result) {
+                error_log('Payment Error: Failed to commit transaction');
+                throw new Exception('Failed to commit transaction');
+            }
+            
+            // Store success message
+            $sessionManager->setFlash('success', 'Order placed successfully!');
+            $_SESSION['last_order_id'] = $order_id;
+            
+            // Make sure session is saved
+            session_write_close();
+            
+            error_log('Payment Debug: Payment successful for order ID: ' . $order_id);
+            sendJsonResponse(true, 'Payment successful!', ['order_id' => $order_id]);
+            
+        } catch (Exception $e) {
+            error_log('Payment Error: Transaction operation failed - ' . $e->getMessage());
+            $db->query("ROLLBACK");
+            throw $e;
         }
-        
-        // Clear cart
-        $result = $db->query(
-            "DELETE FROM cart_items WHERE user_id = ?",
-            [$user_id]
-        );
-        
-        if (!$result) {
-            throw new Exception('Failed to clear cart');
-        }
-        
-        // Update order status
-        $payment_intent = 'MOCK_' . time() . '_' . rand(1000,9999);
-        $result = $db->query(
-            "UPDATE orders SET status = ?, payment_intent_id = ? WHERE order_id = ?",
-            ['paid', $payment_intent, $order_id]
-        );
-        
-        if (!$result) {
-            throw new Exception('Failed to update order status');
-        }
-        
-        // Commit the transaction
-        $db->query("COMMIT");
-        
-        // Store success message
-        $sessionManager->setFlash('success', 'Order placed successfully!');
-        $_SESSION['last_order_id'] = $order_id;
-        
-        // Make sure session is saved
-        session_write_close();
-        
-        sendJsonResponse(true, 'Payment successful!', ['order_id' => $order_id]);
         
     } catch (Exception $e) {
         error_log('Payment Error: Transaction failed - ' . $e->getMessage());
-        // Rollback the transaction
-        $db->query("ROLLBACK");
         sendJsonResponse(false, 'Database error: ' . $e->getMessage());
     }
     

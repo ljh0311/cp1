@@ -9,25 +9,28 @@ require_once 'inc/session_config.php';
 require_once ROOT_PATH . '/inc/SessionManager.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
 
-// Ensure session is started
+// Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Update last activity time
-$_SESSION['last_activity'] = time();
 
 // Get session manager instance
 $sessionManager = SessionManager::getInstance();
 
 // Check if user is logged in
 if (!$sessionManager->isLoggedIn()) {
+    $sessionManager->setFlash('error', 'Please log in to view your order.');
     header('Location: login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
     exit();
 }
 
 // Check if order_id is provided
 if (!isset($_GET['order_id'])) {
+    // Check if we have a last_order_id in session
+    if (isset($_SESSION['last_order_id'])) {
+        header('Location: ' . $_SERVER['PHP_SELF'] . '?order_id=' . $_SESSION['last_order_id']);
+        exit();
+    }
     header('Location: index.php');
     exit();
 }
@@ -41,7 +44,7 @@ try {
          FROM orders o 
          JOIN users u ON o.user_id = u.user_id 
          WHERE o.order_id = ? AND o.user_id = ?",
-        [$_GET['order_id'], $_SESSION['user_id']]
+        [$_GET['order_id'], $sessionManager->getUserId()]
     );
     
     $order = $db->fetch($order_query);

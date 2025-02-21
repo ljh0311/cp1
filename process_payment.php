@@ -1,24 +1,32 @@
 <?php
+// Define root path if not already defined
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
+
 require_once 'inc/config.php';
 require_once 'inc/session_config.php';
-require_once 'inc/SessionManager.php';
-require_once 'database/DatabaseManager.php';
+require_once ROOT_PATH . '/inc/SessionManager.php';
+require_once ROOT_PATH . '/database/DatabaseManager.php';
 require_once 'vendor/autoload.php';
 
-// Ensure session is started
+// Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Update last activity time
-$_SESSION['last_activity'] = time();
+// Get session manager instance
+$sessionManager = SessionManager::getInstance();
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
+// Check if user is logged in using SessionManager
+if (!$sessionManager->isLoggedIn()) {
     http_response_code(401);
     echo json_encode(['success' => false, 'message' => 'Please log in to continue.']);
     exit();
 }
+
+// Update last activity time
+$_SESSION['LAST_ACTIVITY'] = time();
 
 // Check if request method is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -151,12 +159,14 @@ try {
     // Commit transaction
     $db->commit();
     
-    // Set a success flash message
-    $_SESSION['flash']['success'] = 'Order placed successfully!';
+    // Store success message and order ID in session
+    $sessionManager->setFlash('success', 'Order placed successfully!');
+    $_SESSION['last_order_id'] = $order_id;
     
-    // Ensure session data is written
+    // Make sure session data is written
     session_write_close();
     
+    // Return success response
     echo json_encode([
         'success' => true,
         'order_id' => $order_id,

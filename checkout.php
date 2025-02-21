@@ -230,6 +230,7 @@ $success_message = $sessionManager->getFlash('success');
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    credentials: 'same-origin',
                     body: JSON.stringify({
                         payment_method_id: paymentMethod.id,
                         shipping_details: {

@@ -452,7 +452,7 @@ $page_title = "Admin Dashboard";
                                 <option value="inactive">Inactive</option>
                                 <option value="suspended">Suspended</option>
                             </select>
-                        </div>
+            </div>
                     </form>
             </div>
                 <div class="modal-footer">
@@ -471,12 +471,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const userModal = new bootstrap.Modal(document.getElementById('userModal'));
     
     // Book Management
-    const bookForm = document.getElementById('bookForm');
-    
+const bookForm = document.getElementById('bookForm');
+
     // Show Add Book Modal
     function showAddModal(type) {
         if (type === 'book') {
-            bookForm.reset();
+    bookForm.reset();
             document.getElementById('book_id').value = '';
             document.querySelector('#bookModal .modal-title').textContent = 'Add New Book';
             bookModal.show();
@@ -489,14 +489,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(book => {
                 document.getElementById('book_id').value = book.book_id;
-                document.getElementById('title').value = book.title;
-                document.getElementById('author').value = book.author;
+        document.getElementById('title').value = book.title;
+        document.getElementById('author').value = book.author;
                 document.getElementById('category_id').value = book.category_id || '';
                 document.getElementById('isbn').value = book.isbn || '';
-                document.getElementById('price').value = book.price;
+        document.getElementById('price').value = book.price;
                 document.getElementById('stock_quantity').value = book.stock_quantity;
-                document.getElementById('description').value = book.description;
-                
+        document.getElementById('description').value = book.description;
+        
                 document.querySelector('#bookModal .modal-title').textContent = 'Edit Book';
                 bookModal.show();
             })
@@ -549,10 +549,10 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         fetch(endpoints[type], {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
             body: `action=delete&id=${id}`
         })
         .then(response => response.json())
@@ -676,8 +676,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(result => {
             if (result.success) {
                 userModal.hide();
-                location.reload();
-            } else {
+            location.reload();
+        } else {
                 throw new Error(result.message || 'Failed to update user');
             }
         })

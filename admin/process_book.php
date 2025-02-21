@@ -13,14 +13,14 @@ header('Content-Type: application/json');
 
 try {
     $db = DatabaseManager::getInstance();
-    
+
     // Get book details
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get') {
         $book_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if (!$book_id) {
             throw new Exception('Invalid book ID');
         }
-        
+
         $book = $db->query(
             "SELECT * FROM books WHERE book_id = ?",
             [$book_id]
@@ -29,11 +29,11 @@ try {
         if (!$book) {
             throw new Exception('Book not found');
         }
-        
+
         echo json_encode($book);
         exit;
     }
-    
+
     // Handle POST requests
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'] ?? 'add';
@@ -112,9 +112,9 @@ try {
         if (isset($_POST['book_id']) && !empty($_POST['book_id'])) {
             $book_id = filter_var($_POST['book_id'], FILTER_VALIDATE_INT);
             if (!$book_id) {
-                throw new Exception('Invalid book ID');
-            }
-            
+                    throw new Exception('Invalid book ID');
+                }
+
             // Get current image if updating
             if (!isset($data['image_url'])) {
                 $current_image = $db->query(

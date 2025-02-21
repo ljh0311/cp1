@@ -21,16 +21,32 @@ function handleError($errno, $errstr, $errfile, $errline) {
 set_error_handler('handleError');
 
 try {
-    session_start();
+    // Check session status
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+
+    // Debug session information
+    if (DEBUG_MODE) {
+        error_log("Session ID: " . session_id());
+        error_log("Session Data: " . print_r($_SESSION, true));
+    }
 
     // Check if user is logged in
     if (!isset($_SESSION['user_id'])) {
         http_response_code(401);
-        echo json_encode(['success' => false, 'message' => 'Please login to add items to cart']);
+        echo json_encode([
+            'success' => false, 
+            'message' => 'Please login to add items to cart',
+            'debug' => DEBUG_MODE ? 'No user_id in session' : null
+        ]);
         exit();
     }
 
-    // Check if request is POST and has JSON content
+    // Set JSON response header early
+    header('Content-Type: application/json');
+
+    // Check if request is POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('Invalid request method');
     }
@@ -51,7 +67,7 @@ try {
     }
 
     $book_id = (int)$data['book_id'];
-    $user_id = $_SESSION['user_id'];
+    $user_id = (int)$_SESSION['user_id'];
     $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
 
     // Initialize database connection
@@ -102,9 +118,6 @@ try {
         [$user_id]
     );
     
-    // Set proper JSON header
-    header('Content-Type: application/json');
-    
     echo json_encode([
         'success' => true,
         'message' => 'Item added to cart successfully',
@@ -116,6 +129,12 @@ try {
     echo json_encode([
         'success' => false,
         'message' => $e->getMessage(),
-        'debug' => DEBUG_MODE ? $e->getTraceAsString() : null
+        'debug' => DEBUG_MODE ? [
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+            'session_id' => session_id(),
+            'session_status' => session_status(),
+            'session_data' => $_SESSION
+        ] : null
     ]);
 } 

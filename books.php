@@ -8,6 +8,13 @@ define('ROOT_PATH', __DIR__);
 
 // Load configuration first
 require_once ROOT_PATH . '/inc/config.php';
+require_once ROOT_PATH . '/inc/session_config.php';
+
+if (DEBUG_MODE) {
+    error_log("Session status: " . session_status());
+    error_log("Session ID: " . session_id());
+    error_log("Session data: " . print_r($_SESSION, true));
+}
 
 // Initialize session
 require_once ROOT_PATH . '/inc/session_start.php';

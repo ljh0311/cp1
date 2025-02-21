@@ -223,7 +223,19 @@ try {
                 <a href="books.php?sort=newest" class="btn btn-outline-primary rounded-pill">View All</a>
             </div>
             <div class="row g-4">
-                <?php foreach (DefaultData::getLatestBooks() as $book): ?>
+                <?php 
+                // Get latest books from database
+                $latest_books = [];
+                if ($db_connected) {
+                    try {
+                        $latest_query = "SELECT * FROM books ORDER BY created_at DESC LIMIT 3";
+                        $result = $db->query($latest_query);
+                        $latest_books = $db->fetchAll($result);
+                    } catch (Exception $e) {
+                        ErrorHandler::logError("Failed to fetch latest books: " . $e->getMessage());
+                    }
+                }
+                foreach ($latest_books as $book): ?>
                     <div class="col-md-4">
                         <div class="card book-card h-100">
                             <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 

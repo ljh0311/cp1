@@ -1,21 +1,16 @@
 <?php
+// Session settings must be set before anything else
+$sessionPath = dirname(__DIR__) . '/sessions';
+if (!file_exists($sessionPath)) {
+    mkdir($sessionPath, 0777, true);
+}
+ini_set('session.save_path', $sessionPath);
+ini_set('session.gc_maxlifetime', 3600);
+ini_set('session.cookie_lifetime', 3600);
+
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', dirname(__DIR__));
-}
-
-// Session settings - must be set before any session starts
-if (session_status() == PHP_SESSION_NONE) {
-    // Create sessions directory if it doesn't exist
-    $sessionPath = ROOT_PATH . '/sessions';
-    if (!file_exists($sessionPath)) {
-        mkdir($sessionPath, 0777, true);
-    }
-    
-    // Set session configurations
-    ini_set('session.save_path', $sessionPath);
-    ini_set('session.gc_maxlifetime', 3600);
-    ini_set('session.cookie_lifetime', 3600);
 }
 
 // Constants

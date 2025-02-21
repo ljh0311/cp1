@@ -1,19 +1,29 @@
 <?php
 function getDbConnection() {
-    // AWS RDS MySQL connection settings
-    $servername = "database1.czsa24cac7y5.us-east-1.rds.amazonaws.com";
-    $username = "admin";
-    $password = "KappyAdmin";
-    $dbname = "tutoring_system"; // Assuming this is your database name, adjust if different
+    try {
+        // Database configuration
+        $host = "database1.czsa24cac7y5.us-east-1.rds.amazonaws.com";
+        $dbname = "tutoring_system";
+        $username = "admin";
+        $password = "KappyAdmin";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+        // Create PDO connection
+        $conn = new PDO(
+            "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+            $username,
+            $password,
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::MYSQL_ATTR_FOUND_ROWS => true
+            ]
+        );
 
-    // Check connection
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
+        return $conn;
+    } catch (PDOException $e) {
+        error_log("Database connection failed: " . $e->getMessage());
+        throw new Exception("Failed to connect to database");
     }
-
-    return $conn;
 }
 ?>

@@ -2,6 +2,7 @@
 class ErrorHandler {
     private static $errors = [];
     private static $hasDbConnection = false;
+    private static $logFile = 'error.log';
     
     public static function setDbStatus($status) {
         self::$hasDbConnection = $status;
@@ -11,8 +12,9 @@ class ErrorHandler {
         return self::$hasDbConnection;
     }
     
-    public static function addError($error) {
-        self::$errors[] = $error;
+    public static function setError($message) {
+        self::$errors[] = $message;
+        error_log($message . "\n", 3, self::$logFile);
     }
     
     public static function getErrors() {
@@ -23,14 +25,19 @@ class ErrorHandler {
         return !empty(self::$errors);
     }
     
+    public static function clearErrors() {
+        self::$errors = [];
+    }
+    
     public static function displayErrors() {
         if (self::hasErrors()) {
             foreach (self::$errors as $error) {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        ' . htmlspecialchars($error) . '
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>';
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                echo htmlspecialchars($error);
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo '</div>';
             }
+            self::clearErrors();
         }
     }
     
@@ -38,9 +45,9 @@ class ErrorHandler {
         error_log($e->getMessage());
         
         if (DEBUG_MODE) {
-            self::addError($e->getMessage());
+            self::setError($e->getMessage());
         } else {
-            self::addError('An unexpected error occurred. Please try again later.');
+            self::setError('An unexpected error occurred. Please try again later.');
         }
     }
     
@@ -73,5 +80,13 @@ class ErrorHandler {
             default:
                 return [];
         }
+    }
+    
+    public static function logError($message, $file = null, $line = null) {
+        $logMessage = date('[Y-m-d H:i:s] ') . $message;
+        if ($file && $line) {
+            $logMessage .= " in $file on line $line";
+        }
+        error_log($logMessage . "\n", 3, self::$logFile);
     }
 } 

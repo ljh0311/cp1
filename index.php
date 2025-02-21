@@ -1,11 +1,16 @@
 <?php
-session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// Define the root path
+define('ROOT_PATH', __DIR__);
 
-require_once 'inc/default_data.php';
-require_once 'database/DatabaseManager.php';
+// Start session before any output
+session_start();
+
+// Load autoloader and configuration
+require_once ROOT_PATH . '/inc/autoload.php';
+require_once ROOT_PATH . '/inc/config.php';
+require_once ROOT_PATH . '/inc/ErrorHandler.php';
+require_once ROOT_PATH . '/inc/default_data.php';
+require_once ROOT_PATH . '/database/DatabaseManager.php';
 
 // Initialize variables with default data
 $featured_books = DefaultData::getFeaturedBooks();
@@ -36,8 +41,7 @@ try {
     $featured_books = $db->fetchAll($result);
 
 } catch (Exception $e) {
-    // Log the error but continue with default data
-    error_log("Database error: " . $e->getMessage());
+    ErrorHandler::logError("Database error: " . $e->getMessage(), __FILE__, __LINE__);
     $using_fallback = true;
 }
 ?>
@@ -46,8 +50,8 @@ try {
 <html lang="en">
 
 <head>
-    <title>Welcome to BookStore - Your Academic Book Haven</title>
-    <?php include "inc/head.inc.php"; ?>
+    <title><?php echo SITE_NAME; ?> - Your Academic Book Haven</title>
+    <?php require_once ROOT_PATH . '/inc/head.inc.php'; ?>
 </head>
 
 <body>
@@ -75,7 +79,7 @@ try {
         </div>
     <?php endif; ?>
 
-    <?php include "inc/nav.inc.php"; ?>
+    <?php require_once ROOT_PATH . '/inc/nav.inc.php'; ?>
     <?php ErrorHandler::displayErrors(); ?>
 
     <!-- Hero Section -->

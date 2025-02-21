@@ -1,4 +1,13 @@
 <?php
+// Session settings - must be set before session starts
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.gc_maxlifetime', 3600); // 1 hour
+    ini_set('session.cookie_lifetime', 3600);
+    ini_set('session.save_path', ROOT_PATH . '/sessions');
+}
+
+define('SESSION_LIFETIME', 3600); // 1 hour
+
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', dirname(__DIR__));
@@ -25,12 +34,6 @@ define('ADMIN_EMAIL', 'admin@example.com');
 define('UPLOAD_DIR', ROOT_PATH . '/uploads');
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
 define('ALLOWED_EXTENSIONS', ['jpg', 'jpeg', 'png', 'gif']);
-
-// Session settings
-define('SESSION_LIFETIME', 3600); // 1 hour
-ini_set('session.gc_maxlifetime', SESSION_LIFETIME);
-ini_set('session.cookie_lifetime', SESSION_LIFETIME);
-ini_set('session.save_path', ROOT_PATH . '/sessions');
 
 // Error reporting
 if (DEBUG_MODE) {

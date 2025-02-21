@@ -79,8 +79,8 @@ class DatabaseManager
         $row = $result->fetchArray(SQLITE3_ASSOC);
 
         if ($row['count'] == 0) {
-            // Insert demo books
-            $demoBooks = require __DIR__ . '/../inc/default_data.php';
+            // Get demo books from DefaultData class
+            require_once __DIR__ . '/../inc/default_data.php';
             $books = DefaultData::getFeaturedBooks();
 
             foreach ($books as $book) {

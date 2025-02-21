@@ -1,6 +1,9 @@
 <?php
-require_once '../inc/config.php';
-require_once 'DatabaseManager.php';
+// Define root path
+define('ROOT_PATH', dirname(__DIR__));
+
+require_once ROOT_PATH . '/inc/config.php';
+require_once ROOT_PATH . '/database/DatabaseManager.php';
 
 try {
     $db = DatabaseManager::getInstance();

@@ -1,18 +1,34 @@
 <?php
-// Define session save path relative to the project root
-$sessionPath = dirname(__DIR__) . '/sessions';
+// Define session save path - try system directory first, then fallback to local
+$systemSessionPath = '/var/lib/php/sessions';
+$localSessionPath = dirname(__DIR__) . '/sessions';
 
-// Create sessions directory if it doesn't exist with proper permissions
-if (!file_exists($sessionPath)) {
-    mkdir($sessionPath, 0733, true);
-    chmod($sessionPath, 0733); // Ensure proper permissions
+// Determine which session path to use
+if (is_writable($systemSessionPath)) {
+    $sessionPath = $systemSessionPath;
+} else {
+    $sessionPath = $localSessionPath;
+    
+    // Create local sessions directory if it doesn't exist
+    if (!file_exists($sessionPath)) {
+        @mkdir($sessionPath, 0733, true);
+        @chmod($sessionPath, 0733);
+    }
 }
 
-// Ensure session directory is writable
+// Verify session directory is writable
 if (!is_writable($sessionPath)) {
-    error_log("Session directory is not writable: $sessionPath");
-    // Try to fix permissions
-    chmod($sessionPath, 0733);
+    error_log("ERROR: Session directory is not writable: $sessionPath");
+    // Try to create a temporary session directory as last resort
+    $tempPath = sys_get_temp_dir() . '/php_sessions';
+    if (!file_exists($tempPath)) {
+        @mkdir($tempPath, 0733, true);
+    }
+    if (is_writable($tempPath)) {
+        $sessionPath = $tempPath;
+    } else {
+        error_log("CRITICAL: No writable session directory available!");
+    }
 }
 
 // Set session handler and path
@@ -33,8 +49,8 @@ ini_set('session.cookie_lifetime', 7200); // 2 hours
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
 
-// Set session name
-session_name('bookstore_session');
+// Set session name with unique prefix for your application
+session_name('bookstore_' . substr(md5($_SERVER['HTTP_HOST']), 0, 6));
 
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
@@ -64,10 +80,23 @@ if (isset($_SESSION['user_agent'])) {
     $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 }
 
+// Set session cookie parameters
+session_set_cookie_params([
+    'lifetime' => 7200,
+    'path' => '/',
+    'domain' => $_SERVER['HTTP_HOST'],
+    'secure' => isset($_SERVER['HTTPS']),
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+
 // Debug session if needed
 if (defined('DEBUG_MODE') && DEBUG_MODE) {
-    error_log("Session status: " . session_status());
+    error_log("Session Configuration:");
+    error_log("Session Path: " . $sessionPath);
+    error_log("Session Writable: " . (is_writable($sessionPath) ? 'Yes' : 'No'));
+    error_log("Session Status: " . session_status());
     error_log("Session ID: " . session_id());
-    error_log("Session save path: " . session_save_path());
-    error_log("Session data: " . print_r($_SESSION, true));
+    error_log("Session Name: " . session_name());
+    error_log("Session Data: " . print_r($_SESSION, true));
 } 

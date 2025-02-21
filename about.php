@@ -123,7 +123,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="about-card h-100">
-                        <img src="images/vision.jpg" alt="Our Vision" class="w-100">
+                        <img src="images/placeholders/vision-placeholder.jpg" alt="Our Vision" class="w-100">
                         <div class="card-body p-4">
                             <h2 class="h4 mb-3">Our Vision</h2>
                             <p class="mb-0">To be the leading online platform for IT educational resources, making quality technical literature accessible to students and professionals worldwide.</p>
@@ -132,7 +132,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
                 <div class="col-md-6">
                     <div class="about-card h-100">
-                        <img src="images/mission.jpg" alt="Our Mission" class="w-100">
+                        <img src="images/placeholders/mission-placeholder.jpg" alt="Our Mission" class="w-100">
                         <div class="card-body p-4">
                             <h2 class="h4 mb-3">Our Mission</h2>
                             <p class="mb-0">To streamline access to high-quality IT educational materials, fostering learning and professional growth in the technology sector through carefully curated resources.</p>
@@ -237,7 +237,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="testimonial-card text-center">
-                        <img src="images/testimonial1.jpg" alt="John Doe" class="mx-auto">
+                        <img src="images/student1.jpg" alt="John Doe" class="mx-auto">
                         <h4 class="h5 mb-3">John Doe</h4>
                         <p class="text-muted mb-3">Software Developer</p>
                         <p class="mb-0">"Found exactly what I needed to advance my programming skills. The collection is impressive!"</p>
@@ -245,7 +245,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card text-center">
-                        <img src="images/testimonial2.jpg" alt="Jane Smith" class="mx-auto">
+                        <img src="images/student2.jpg" alt="Jane Smith" class="mx-auto">
                         <h4 class="h5 mb-3">Jane Smith</h4>
                         <p class="text-muted mb-3">IT Student</p>
                         <p class="mb-0">"Great resource for my studies. The prices are student-friendly and delivery is always on time."</p>
@@ -253,7 +253,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card text-center">
-                        <img src="images/testimonial3.jpg" alt="Mike Johnson" class="mx-auto">
+                        <img src="images/student5.jpg" alt="Mike Johnson" class="mx-auto">
                         <h4 class="h5 mb-3">Mike Johnson</h4>
                         <p class="text-muted mb-3">System Administrator</p>
                         <p class="mb-0">"The technical books here have helped me stay updated with the latest in IT infrastructure."</p>

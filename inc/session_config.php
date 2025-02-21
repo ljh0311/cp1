@@ -7,6 +7,16 @@ if (!file_exists($sessionPath)) {
     mkdir($sessionPath, 0777, true);
 }
 
+// Set cookie parameters BEFORE starting the session
+session_set_cookie_params([
+    'lifetime' => 7200,
+    'path' => '/',
+    'domain' => '',
+    'secure' => isset($_SERVER['HTTPS']),
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+
 // Set session parameters before starting the session
 ini_set('session.save_handler', 'files');
 ini_set('session.save_path', $sessionPath);
@@ -32,16 +42,6 @@ if (!isset($_SESSION['last_regeneration']) ||
     session_regenerate_id(true);
     $_SESSION['last_regeneration'] = time();
 }
-
-// Set session cookie parameters
-session_set_cookie_params([
-    'lifetime' => 7200,
-    'path' => '/',
-    'domain' => '',
-    'secure' => isset($_SERVER['HTTPS']),
-    'httponly' => true,
-    'samesite' => 'Lax'
-]);
 
 // Debug session if needed
 if (defined('DEBUG_MODE') && DEBUG_MODE) {

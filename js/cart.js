@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Book ID is missing');
                 }
 
+                console.log('Adding book to cart:', bookId); // Debug log
+
                 // Disable button while processing
                 this.disabled = true;
                 this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({
                         book_id: bookId,
@@ -27,7 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                 });
 
-                const data = await response.json();
+                // Log the raw response for debugging
+                const responseText = await response.text();
+                console.log('Raw server response:', responseText);
+
+                // Try to parse the response as JSON
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (parseError) {
+                    console.error('Failed to parse server response:', parseError);
+                    throw new Error('Invalid server response');
+                }
                 
                 // Create alert element
                 const alert = document.createElement('div');
@@ -67,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 3000);
 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error details:', error);
+                
                 // Show error message
                 const alert = document.createElement('div');
                 alert.className = 'alert alert-danger alert-dismissible fade show position-fixed';
@@ -78,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert.innerHTML = `
                     <div class="d-flex align-items-center">
                         <i class="fas fa-exclamation-circle me-2"></i>
-                        Failed to add item to cart. Please try again.
+                        ${error.message || 'Failed to add item to cart. Please try again.'}
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 `;

@@ -1,36 +1,60 @@
 <?php
 require_once '../inc/config.php';
 require_once '../inc/session_config.php';
-session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'Please login to add items to cart']);
+// Ensure all errors are caught and returned as JSON
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+
+// Function to handle errors
+function handleError($errno, $errstr, $errfile, $errline) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Server error: ' . $errstr,
+        'debug' => DEBUG_MODE ? "$errfile:$errline" : null
+    ]);
     exit();
 }
 
-// Check if request is POST and has JSON content
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SERVER["CONTENT_TYPE"]) || strpos($_SERVER["CONTENT_TYPE"], "application/json") === false) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Invalid request']);
-    exit();
-}
-
-// Get JSON data
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (!isset($data['book_id']) || !is_numeric($data['book_id'])) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Invalid book ID']);
-    exit();
-}
-
-$book_id = (int)$data['book_id'];
-$user_id = $_SESSION['user_id'];
-$quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
+// Set error handler
+set_error_handler('handleError');
 
 try {
+    session_start();
+
+    // Check if user is logged in
+    if (!isset($_SESSION['user_id'])) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'Please login to add items to cart']);
+        exit();
+    }
+
+    // Check if request is POST and has JSON content
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception('Invalid request method');
+    }
+
+    // Get JSON data
+    $json = file_get_contents('php://input');
+    if (!$json) {
+        throw new Exception('No data received');
+    }
+
+    $data = json_decode($json, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception('Invalid JSON data: ' . json_last_error_msg());
+    }
+
+    if (!isset($data['book_id']) || !is_numeric($data['book_id'])) {
+        throw new Exception('Invalid book ID');
+    }
+
+    $book_id = (int)$data['book_id'];
+    $user_id = $_SESSION['user_id'];
+    $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
+
+    // Initialize database connection
     $db = new DatabaseManager();
     
     // Check if book exists and has stock
@@ -78,6 +102,9 @@ try {
         [$user_id]
     );
     
+    // Set proper JSON header
+    header('Content-Type: application/json');
+    
     echo json_encode([
         'success' => true,
         'message' => 'Item added to cart successfully',
@@ -88,6 +115,7 @@ try {
     http_response_code(400);
     echo json_encode([
         'success' => false,
-        'message' => $e->getMessage()
+        'message' => $e->getMessage(),
+        'debug' => DEBUG_MODE ? $e->getTraceAsString() : null
     ]);
 } 

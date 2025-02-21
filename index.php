@@ -14,30 +14,14 @@ require_once ROOT_PATH . '/inc/config.php';
 require_once ROOT_PATH . '/inc/ErrorHandler.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
 
-// Initialize variables with empty data
+// Initialize empty variables
 $featured_books = [];
-$categories = [
-    'Programming' => [
-        'image' => 'images/categories/programming.jpg',
-        'description' => 'Explore programming languages and software development',
-        'count' => 25
-    ],
-    'Web Development' => [
-        'image' => 'images/categories/web.jpg',
-        'description' => 'Learn modern web technologies and frameworks',
-        'count' => 30
-    ],
-    'Database' => [
-        'image' => 'images/categories/database.jpg',
-        'description' => 'Master database management and design',
-        'count' => 15
-    ]
-];
+$categories = [];
 $stats = [
     'total_students' => 0,
     'total_books' => 0,
     'total_orders' => 0,
-    'satisfaction_rate' => 95
+    'satisfaction_rate' => 0
 ];
 $db_connected = false;
 $using_fallback = false;
@@ -56,6 +40,29 @@ try {
     $result = $db->query($stats_query);
     if ($row = $db->fetch($result)) {
         $stats = array_merge($stats, $row);
+    }
+
+    // Get categories with book counts
+    $categories_query = "SELECT 
+        c.name,
+        c.image_url as image,
+        c.description,
+        COUNT(b.book_id) as count
+        FROM categories c
+        LEFT JOIN books b ON b.category_id = c.category_id
+        GROUP BY c.category_id, c.name, c.image_url, c.description
+        ORDER BY c.name";
+    
+    $result = $db->query($categories_query);
+    $categories_data = $db->fetchAll($result);
+    
+    // Format categories data
+    foreach ($categories_data as $category) {
+        $categories[$category['name']] = [
+            'image' => $category['image'],
+            'description' => $category['description'],
+            'count' => (int)$category['count']
+        ];
     }
 
     // Get featured books
@@ -181,6 +188,12 @@ try {
                 <h2 class="fw-bold">Browse by Category</h2>
                 <p class="text-muted">Find the perfect book for your needs</p>
             </div>
+            <?php if (empty($categories)): ?>
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No categories available at the moment.
+                </div>
+            <?php else: ?>
             <div class="row g-4">
                 <?php foreach ($categories as $name => $data): ?>
                     <div class="col-md-3">
@@ -202,6 +215,7 @@ try {
                     </div>
                 <?php endforeach; ?>
             </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -215,20 +229,27 @@ try {
                 </div>
                 <a href="books.php?sort=newest" class="btn btn-outline-primary rounded-pill">View All</a>
             </div>
-            <div class="row g-4">
-                <?php 
-                // Get latest books from database
-                $latest_books = [];
-                if ($db_connected) {
-                    try {
-                        $latest_query = "SELECT * FROM books ORDER BY created_at DESC LIMIT 3";
-                        $result = $db->query($latest_query);
-                        $latest_books = $db->fetchAll($result);
-                    } catch (Exception $e) {
-                        ErrorHandler::logError("Failed to fetch latest books: " . $e->getMessage());
-                    }
+            <?php 
+            // Get latest books from database
+            $latest_books = [];
+            if ($db_connected) {
+                try {
+                    $latest_query = "SELECT * FROM books ORDER BY created_at DESC LIMIT 3";
+                    $result = $db->query($latest_query);
+                    $latest_books = $db->fetchAll($result);
+                } catch (Exception $e) {
+                    ErrorHandler::logError("Failed to fetch latest books: " . $e->getMessage());
                 }
-                foreach ($latest_books as $book): ?>
+            }
+            
+            if (empty($latest_books)): ?>
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No books available at the moment.
+                </div>
+            <?php else: ?>
+            <div class="row g-4">
+                <?php foreach ($latest_books as $book): ?>
                     <div class="col-md-4">
                         <div class="card book-card h-100">
                             <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
@@ -249,6 +270,7 @@ try {
                     </div>
                 <?php endforeach; ?>
             </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -259,6 +281,13 @@ try {
                 <h2 class="fw-bold">Our Impact</h2>
                 <p class="text-muted">Growing together with our community</p>
             </div>
+            <?php if ($stats['total_students'] == 0 && $stats['total_books'] == 0 && 
+                      $stats['total_orders'] == 0 && $stats['satisfaction_rate'] == 0): ?>
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No statistics available at the moment.
+                </div>
+            <?php else: ?>
             <div class="row g-4">
                 <div class="col-md-3 col-6">
                     <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
@@ -305,6 +334,7 @@ try {
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -338,17 +368,15 @@ try {
                 const speed = 200;
 
                 const animateCounter = (counter) => {
-                    const target = parseInt(counter.innerText.replace(/,/g, ''));
-                    const count = 0;
-                    const increment = target / speed;
+                    const target = parseInt(counter.innerText.replace(/,/g, '')) || 0;
+                    let current = 0;
+                    const increment = Math.ceil(target / speed);
 
                     const updateCount = () => {
-                        const current = parseInt(counter.innerText.replace(/,/g, ''));
                         if (current < target) {
-                            counter.innerText = Math.ceil(current + increment).toLocaleString();
-                            setTimeout(updateCount, 1);
-                        } else {
-                            counter.innerText = target.toLocaleString();
+                            current = Math.min(current + increment, target);
+                            counter.innerText = current.toLocaleString();
+                            requestAnimationFrame(updateCount);
                         }
                     };
 
@@ -357,14 +385,18 @@ try {
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) {
+                        if (entry.isIntersecting && entry.target.classList.contains('counter')) {
                             animateCounter(entry.target);
                             observer.unobserve(entry.target);
                         }
                     });
                 }, { threshold: 0.5 });
 
-                counters.forEach(counter => observer.observe(counter));
+                counters.forEach(counter => {
+                    if (counter) {
+                        observer.observe(counter);
+                    }
+                });
             } catch (error) {
                 console.error('Error in counter animation:', error);
             }
@@ -372,27 +404,58 @@ try {
 
         // Add to cart functionality
         document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', async function() {
+            button.addEventListener('click', async function(e) {
+                e.preventDefault();
                 try {
+                    const bookId = this.dataset.bookId;
+                    if (!bookId) {
+                        throw new Error('Book ID is missing');
+                    }
+
                     const response = await fetch('/cart/add.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
                         },
                         body: JSON.stringify({
-                            book_id: this.dataset.bookId
+                            book_id: bookId
                         })
                     });
                     
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
                     const data = await response.json();
                     if (data.success) {
-                        alert('Book added to cart!');
+                        // Show success message
+                        const alert = document.createElement('div');
+                        alert.className = 'alert alert-success alert-dismissible fade show';
+                        alert.innerHTML = `
+                            <div class="container">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Book added to cart successfully!
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        `;
+                        document.body.insertBefore(alert, document.body.firstChild);
                     } else {
-                        throw new Error(data.message);
+                        throw new Error(data.message || 'Failed to add book to cart');
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Failed to add book to cart. Please try again.');
+                    // Show error message
+                    const alert = document.createElement('div');
+                    alert.className = 'alert alert-danger alert-dismissible fade show';
+                    alert.innerHTML = `
+                        <div class="container">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            ${error.message || 'Failed to add book to cart. Please try again.'}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    `;
+                    document.body.insertBefore(alert, document.body.firstChild);
                 }
             });
         });

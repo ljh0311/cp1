@@ -467,7 +467,7 @@ try {
                             <h2 class="fw-bold mb-4">Start Your Learning Journey Today</h2>
                             <p class="lead mb-4">Join thousands of students who trust us for their educational needs</p>
                             <div class="d-flex justify-content-center gap-3">
-                                <a href="register.php" class="btn btn-light btn-lg rounded-pill px-5">Get Started</a>
+                                <a href="signup.php" class="btn btn-light btn-lg rounded-pill px-5">Get Started</a>
                             </div>
                         </div>
                     </div>

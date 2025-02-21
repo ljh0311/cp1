@@ -1,6 +1,4 @@
 <?php
-use BookStore\Data\DefaultData;
-
 class DatabaseManager
 {
     private static $instance = null;
@@ -81,9 +79,36 @@ class DatabaseManager
         $row = $result->fetchArray(SQLITE3_ASSOC);
 
         if ($row['count'] == 0) {
-            // Get demo books from DefaultData class
-            require_once __DIR__ . '/../inc/default_data.php';
-            $books = DefaultData::getFeaturedBooks();
+            // Demo books data
+            $books = [
+                [
+                    'title' => 'Introduction to Programming',
+                    'author' => 'John Smith',
+                    'price' => 29.99,
+                    'image_url' => 'images/placeholders/book1.jpg',
+                    'description' => 'A comprehensive guide to programming fundamentals.',
+                    'featured' => 1,
+                    'category' => 'Programming'
+                ],
+                [
+                    'title' => 'Web Development Essentials',
+                    'author' => 'Jane Doe',
+                    'price' => 34.99,
+                    'image_url' => 'images/placeholders/book2.jpg',
+                    'description' => 'Master the core concepts of modern web development.',
+                    'featured' => 1,
+                    'category' => 'Web Development'
+                ],
+                [
+                    'title' => 'Database Design Patterns',
+                    'author' => 'Mike Johnson',
+                    'price' => 39.99,
+                    'image_url' => 'images/placeholders/book3.jpg',
+                    'description' => 'Learn effective database design strategies.',
+                    'featured' => 1,
+                    'category' => 'Database'
+                ]
+            ];
 
             foreach ($books as $book) {
                 $stmt = $this->conn->prepare("

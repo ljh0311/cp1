@@ -9,19 +9,36 @@ define('ROOT_PATH', __DIR__);
 // Load configuration and required files
 require_once ROOT_PATH . '/inc/config.php';
 require_once ROOT_PATH . '/inc/ErrorHandler.php';
-require_once ROOT_PATH . '/inc/default_data.php';
 require_once ROOT_PATH . '/database/DatabaseManager.php';
-
-// Use the namespaced DefaultData class
-use BookStore\Data\DefaultData;
 
 // Start session after config is loaded
 session_start();
 
-// Initialize variables with default data
-$featured_books = DefaultData::getFeaturedBooks();
-$categories = DefaultData::getCategories();
-$stats = DefaultData::getStats();
+// Initialize variables with empty data
+$featured_books = [];
+$categories = [
+    'Programming' => [
+        'image' => 'images/categories/programming.jpg',
+        'description' => 'Explore programming languages and software development',
+        'count' => 25
+    ],
+    'Web Development' => [
+        'image' => 'images/categories/web.jpg',
+        'description' => 'Learn modern web technologies and frameworks',
+        'count' => 30
+    ],
+    'Database' => [
+        'image' => 'images/categories/database.jpg',
+        'description' => 'Master database management and design',
+        'count' => 15
+    ]
+];
+$stats = [
+    'total_students' => 0,
+    'total_books' => 0,
+    'total_orders' => 0,
+    'satisfaction_rate' => 95
+];
 $db_connected = false;
 $using_fallback = false;
 

@@ -11475,3 +11475,7 @@ Stack trace:
 #2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(46): DatabaseManager::getInstance()
 #3 {main}
   thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:26:57 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "DatabaseManager" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php:46
+Stack trace:
+#0 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php on line 46

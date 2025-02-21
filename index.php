@@ -12,7 +12,7 @@ require_once ROOT_PATH . '/inc/session_start.php';
 // Load configuration and required files
 require_once ROOT_PATH . '/inc/config.php';
 require_once ROOT_PATH . '/inc/ErrorHandler.php';
-require_once ROOT_PATH . '/database/DatabaseManager.php';
+// require_once ROOT_PATH . '/database/DatabaseManager.php';
 
 // Initialize variables with empty data
 $featured_books = [];

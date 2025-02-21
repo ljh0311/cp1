@@ -98,24 +98,13 @@ class DatabaseManager
                     'description' => 'Master the core concepts of modern web development.',
                     'featured' => 1,
                     'category' => 'Web Development'
-                ],
-                [
-                    'title' => 'Database Design Patterns',
-                    'author' => 'Mike Johnson',
-                    'price' => 39.99,
-                    'image_url' => 'images/placeholders/book3.jpg',
-                    'description' => 'Learn effective database design strategies.',
-                    'featured' => 1,
-                    'category' => 'Database'
                 ]
             ];
 
+            // Insert demo books
             foreach ($books as $book) {
-                $stmt = $this->conn->prepare("
-                    INSERT INTO books (title, author, price, image_url, description, featured, category)
-                    VALUES (:title, :author, :price, :image_url, :description, :featured, :category)
-                ");
-
+                $stmt = $this->conn->prepare("INSERT INTO books (title, author, price, image_url, description, featured, category) 
+                                            VALUES (:title, :author, :price, :image_url, :description, :featured, :category)");
                 $stmt->bindValue(':title', $book['title'], SQLITE3_TEXT);
                 $stmt->bindValue(':author', $book['author'], SQLITE3_TEXT);
                 $stmt->bindValue(':price', $book['price'], SQLITE3_FLOAT);
@@ -123,7 +112,6 @@ class DatabaseManager
                 $stmt->bindValue(':description', $book['description'], SQLITE3_TEXT);
                 $stmt->bindValue(':featured', $book['featured'], SQLITE3_INTEGER);
                 $stmt->bindValue(':category', $book['category'], SQLITE3_TEXT);
-
                 $stmt->execute();
             }
         }

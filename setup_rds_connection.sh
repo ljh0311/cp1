@@ -9,20 +9,14 @@ fi
 # Get EC2 instance security group ID
 EC2_SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=launch-wizard-1 --query 'SecurityGroups[0].GroupId' --output text)
 
-# Get RDS security group ID
-RDS_SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=bookstore-db-sg --query 'SecurityGroups[0].GroupId' --output text)
-
-# Add inbound rule to RDS security group to allow traffic from EC2
-aws ec2 authorize-security-group-ingress \
-    --group-id $RDS_SG_ID \
-    --protocol tcp \
-    --port 3306 \
-    --source-group $EC2_SG_ID
-
-echo "Security group rules updated!"
+echo "EC2 Security Group ID: $EC2_SG_ID"
 
 # Test MySQL connection
 echo "Testing connection to RDS..."
-mysql -h book-db.czsa24cac7y5.us-east-1.rds.amazonaws.com -u bookadmin -p -e "SELECT NOW();"
+mysql -h cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com -u admin -p'Admin123' -e "SELECT NOW(); SHOW DATABASES;"
 
-echo "If you see a timestamp above, the connection is successful!" 
+echo "If you see a timestamp above, the connection is successful!"
+
+# Additional connection test using netcat
+echo "Testing port connectivity..."
+nc -zv cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com 3306 

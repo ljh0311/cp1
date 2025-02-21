@@ -149,8 +149,14 @@ try {
                 button.addEventListener('click', async function() {
                     if (confirm('Are you sure you want to remove this item?')) {
                         const itemId = this.dataset.itemId;
+                        const cartItem = this.closest('.cart-item');
+                        
                         try {
-                            const response = await fetch('/cart/remove.php', {
+                            // Disable the button and show loading state
+                            this.disabled = true;
+                            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                            
+                            const response = await fetch('cart/remove.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -162,16 +168,87 @@ try {
 
                             const data = await response.json();
                             if (data.success) {
-                                location.reload();
+                                // Animate item removal
+                                cartItem.style.transition = 'all 0.3s ease';
+                                cartItem.style.opacity = '0';
+                                cartItem.style.height = '0';
+                                cartItem.style.overflow = 'hidden';
+                                
+                                // Update cart count in nav
+                                const cartCount = document.getElementById('cartCount');
+                                if (cartCount) {
+                                    cartCount.textContent = data.cart_count;
+                                    cartCount.classList.add('cart-count-animation');
+                                    setTimeout(() => cartCount.classList.remove('cart-count-animation'), 300);
+                                }
+                                
+                                // Remove item after animation
+                                setTimeout(() => {
+                                    cartItem.remove();
+                                    
+                                    // If no items left, reload to show empty cart message
+                                    if (!document.querySelector('.cart-item')) {
+                                        location.reload();
+                                    } else {
+                                        // Update total
+                                        updateCartTotal();
+                                    }
+                                }, 300);
+                                
+                                // Show success message
+                                showAlert('success', 'Item removed successfully');
                             } else {
-                                alert(data.message || 'Failed to remove item');
+                                throw new Error(data.message || 'Failed to remove item');
                             }
                         } catch (error) {
-                            alert('Failed to remove item. Please try again.');
+                            // Re-enable button and show error
+                            this.disabled = false;
+                            this.innerHTML = '<i class="fas fa-trash"></i>';
+                            showAlert('danger', error.message || 'Failed to remove item. Please try again.');
                         }
                     }
                 });
             });
+
+            // Function to update cart total
+            function updateCartTotal() {
+                const items = document.querySelectorAll('.cart-item');
+                let total = 0;
+                
+                items.forEach(item => {
+                    const priceText = item.querySelector('.fw-bold').textContent;
+                    const price = parseFloat(priceText.replace('$', ''));
+                    if (!isNaN(price)) {
+                        total += price;
+                    }
+                });
+                
+                // Update subtotal and total
+                document.querySelectorAll('.card-body span:last-child').forEach(span => {
+                    if (span.previousElementSibling.textContent.toLowerCase().includes('total')) {
+                        span.textContent = '$' + total.toFixed(2);
+                    }
+                });
+            }
+
+            // Function to show alert messages
+            function showAlert(type, message) {
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+                alert.style.zIndex = '1050';
+                alert.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                document.body.appendChild(alert);
+                
+                // Remove alert after 3 seconds
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                    setTimeout(() => alert.remove(), 150);
+                }, 3000);
+            }
 
             // Proceed to checkout
             document.querySelector('.proceed-to-checkout')?.addEventListener('click', function() {

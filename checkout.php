@@ -27,7 +27,7 @@ $sessionManager->requireLogin('login.php?redirect=checkout.php');
 
 try {
     $db = DatabaseManager::getInstance();
-    
+
     // Get cart items with book details
     $cart_items = $db->query(
         "SELECT ci.*, b.title, b.price, b.image_url 
@@ -36,20 +36,20 @@ try {
          WHERE ci.user_id = ?",
         [$sessionManager->getUserId()]
     );
-    
+
     $items = $db->fetchAll($cart_items);
-    
+
     // Calculate total
     $total = 0;
     foreach ($items as $item) {
         $total += $item['price'] * $item['quantity'];
     }
-    
+
     if (empty($items)) {
         header('Location: cart.php');
         exit();
     }
-    
+
 } catch (Exception $e) {
     ErrorHandler::logError($e->getMessage());
     $sessionManager->setFlash('error', 'An error occurred while loading your cart. Please try again.');
@@ -64,30 +64,32 @@ $success_message = $sessionManager->getFlash('success');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Checkout - <?php echo SITE_NAME; ?></title>
     <?php require_once 'inc/head.inc.php'; ?>
 </head>
+
 <body>
     <?php require_once 'inc/nav.inc.php'; ?>
-    
+
     <?php if ($error_message): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?php echo htmlspecialchars($error_message); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    
+
     <?php if ($success_message): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo htmlspecialchars($success_message); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    
+
     <div class="container py-5">
         <h1 class="mb-4">Checkout</h1>
-        
+
         <div class="row">
             <div class="col-md-8">
                 <div class="card mb-4">
@@ -104,17 +106,17 @@ $success_message = $sessionManager->getFlash('success');
                                     <input type="text" class="form-control" id="lastName" required>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" required>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address" required>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="city" class="form-label">City</label>
@@ -129,28 +131,27 @@ $success_message = $sessionManager->getFlash('success');
                                     <input type="text" class="form-control" id="zip" required>
                                 </div>
                             </div>
-                            
+
                             <hr class="my-4">
-                            
+
                             <h5 class="mb-4">Payment Information</h5>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
                                         <label for="card_number" class="form-label">Card Number</label>
-                                        <input type="text" class="form-control" id="card_number" maxlength="16" required 
-                               placeholder="Enter your 16-digit card number">
-                                        <div class="form-text">Visa (starts with 4), Mastercard (starts with 5), or AMEX (starts with 6)</div>
+                                        <input type="text" class="form-control" id="card_number" maxlength="16" required
+                                            placeholder="Enter your 16-digit card number">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="expiry_date" class="form-label">Expiry Date</label>
-                                            <input type="text" class="form-control" id="expiry_date" 
-                                   placeholder="MM/YY" maxlength="5" required>
+                                            <input type="text" class="form-control" id="expiry_date" placeholder="MM/YY"
+                                                maxlength="5" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="cvv" class="form-label">CVV</label>
-                                            <input type="text" class="form-control" id="cvv" 
-                                   placeholder="123" maxlength="3" required>
+                                            <input type="text" class="form-control" id="cvv" placeholder="123"
+                                                maxlength="3" required>
                                         </div>
                                     </div>
                                     <div id="card-errors" class="alert alert-danger d-none" role="alert"></div>
@@ -164,7 +165,7 @@ $success_message = $sessionManager->getFlash('success');
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -178,9 +179,9 @@ $success_message = $sessionManager->getFlash('success');
                                 <span>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></span>
                             </div>
                         <?php endforeach; ?>
-                        
+
                         <hr>
-                        
+
                         <div class="d-flex justify-content-between mb-3">
                             <span>Subtotal</span>
                             <span>$<?php echo number_format($total, 2); ?></span>
@@ -212,7 +213,7 @@ $success_message = $sessionManager->getFlash('success');
         const cvvInput = document.getElementById('cvv');
 
         // Format expiry date as MM/YY
-        expiryDateInput.addEventListener('input', function(e) {
+        expiryDateInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, '');
             if (value.length >= 2) {
                 value = value.slice(0, 2) + '/' + value.slice(2);
@@ -221,18 +222,18 @@ $success_message = $sessionManager->getFlash('success');
         });
 
         // Only allow numbers in card number input
-        cardNumberInput.addEventListener('input', function(e) {
+        cardNumberInput.addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/\D/g, '');
         });
 
         // Only allow numbers in CVV
-        cvvInput.addEventListener('input', function(e) {
+        cvvInput.addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/\D/g, '');
         });
-        
-        form.addEventListener('submit', async function(event) {
+
+        form.addEventListener('submit', async function (event) {
             event.preventDefault();
-            
+
             submitButton.disabled = true;
             submitButton.textContent = 'Processing...';
             cardErrors.classList.add('d-none');
@@ -262,7 +263,7 @@ $success_message = $sessionManager->getFlash('success');
                 submitButton.textContent = 'Pay $<?php echo number_format($total, 2); ?>';
                 return;
             }
-            
+
             const formData = {
                 payment_method_id: cardNumber,
                 shipping_details: {
@@ -289,7 +290,7 @@ $success_message = $sessionManager->getFlash('success');
 
                 let result;
                 const responseText = await response.text();
-                
+
                 try {
                     result = JSON.parse(responseText);
                 } catch (e) {
@@ -302,7 +303,7 @@ $success_message = $sessionManager->getFlash('success');
                 } else {
                     throw new Error(result.message || 'Payment failed');
                 }
-                
+
             } catch (error) {
                 console.error('Payment Error:', error);
                 cardErrors.textContent = error.message || 'An error occurred while processing your payment.';
@@ -313,4 +314,5 @@ $success_message = $sessionManager->getFlash('success');
         });
     </script>
 </body>
-</html> 
+
+</html>

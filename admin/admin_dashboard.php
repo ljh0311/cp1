@@ -71,7 +71,10 @@ $page_title = "Admin Dashboard";
 <html lang="en">
 <head>
     <title><?php echo $page_title; ?> - <?php echo SITE_NAME; ?></title>
-    <?php require_once '../inc/head.inc.php'; ?>
+    <?php 
+    require_once '../inc/head.inc.php';
+    require_once '../inc/nav.inc.php';
+    ?>
     <style>
         .admin-container {
             display: flex;

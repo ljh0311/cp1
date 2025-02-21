@@ -33,7 +33,6 @@ try {
     require_once 'inc/session_config.php';
     require_once ROOT_PATH . '/inc/SessionManager.php';
     require_once ROOT_PATH . '/database/DatabaseManager.php';
-    require_once 'vendor/autoload.php';
 
     // Start session if not already started
     if (session_status() === PHP_SESSION_NONE) {

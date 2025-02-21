@@ -67,8 +67,6 @@ $success_message = $sessionManager->getFlash('success');
 <head>
     <title>Checkout - <?php echo SITE_NAME; ?></title>
     <?php require_once 'inc/head.inc.php'; ?>
-    <!-- Add Stripe.js -->
-    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <?php require_once 'inc/nav.inc.php'; ?>

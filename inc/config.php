@@ -5,14 +5,13 @@ if (!defined('ROOT_PATH')) {
 }
 
 // Constants
-define('SESSION_LIFETIME', 3600); // 1 hour
 define('DEBUG_MODE', true);
 
 // Database settings
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'bookstore');
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
+define('DB_USER', 'bookadmin');
+define('DB_PASS', 'BookAdmin395');
 define('DB_CHARSET', 'utf8mb4');
 
 // Application settings
@@ -60,7 +59,6 @@ ini_set('error_log', ROOT_PATH . '/logs/php_errors.log');
 
 // Session configuration
 define('SESSION_NAME', 'bookstore_session');
-define('SESSION_LIFETIME', 7200); // 2 hours
 define('SESSION_PATH', '/');
 define('SESSION_SECURE', false); // Set to true if using HTTPS
 define('SESSION_HTTPONLY', true);

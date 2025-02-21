@@ -1,6 +1,6 @@
 <?php
-require_once '../inc/config.php';
-require_once '../database/DatabaseManager.php';
+require_once '/var/www/html/inc/config.php';
+require_once '/var/www/html/database/DatabaseManager.php';
 
 try {
     $db = DatabaseManager::getInstance();

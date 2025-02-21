@@ -80,11 +80,18 @@ class DatabaseManager
     {
         try {
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute($params);
+            $success = $stmt->execute($params);
+            
+            if (!$success) {
+                $error = $stmt->errorInfo();
+                error_log("Query failed: " . print_r($error, true));
+                throw new Exception("Database error: " . $error[2]);
+            }
+            
             return $stmt;
         } catch (PDOException $e) {
-            error_log("Query failed: " . $e->getMessage());
-            throw new Exception("Database query failed. Please try again later.");
+            error_log("Query failed: " . $e->getMessage() . "\nSQL: " . $sql . "\nParams: " . print_r($params, true));
+            throw new Exception("Database error: " . $e->getMessage());
         }
     }
 

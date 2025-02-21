@@ -242,10 +242,9 @@ try {
             
             // Update order status
             error_log('Payment Debug: Updating order status');
-            $payment_intent = 'MOCK_' . time() . '_' . rand(1000,9999);
             $result = $db->query(
-                "UPDATE orders SET status = ?, payment_intent_id = ? WHERE order_id = ?",
-                ['paid', $payment_intent, $order_id]
+                "UPDATE orders SET status = ? WHERE order_id = ?",
+                ['completed', $order_id]
             );
             
             if (!$result) {

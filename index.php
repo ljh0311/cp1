@@ -26,12 +26,10 @@ $stats = [
     'satisfaction_rate' => 0
 ];
 $db_connected = false;
-$using_fallback = false;
 
 try {
     $db = DatabaseManager::getInstance();
     $db_connected = true;
-    $using_fallback = $db->isUsingFallback();
 
     // Get statistics
     $stats_query = "SELECT 
@@ -74,7 +72,6 @@ try {
 
 } catch (Exception $e) {
     ErrorHandler::logError("Database error: " . $e->getMessage(), __FILE__, __LINE__);
-    $using_fallback = true;
 }
 ?>
 
@@ -92,14 +89,6 @@ try {
         <div class="container">
             <i class="fas fa-exclamation-triangle me-2"></i>
             Database connection failed. Showing demo content only.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </div>
-    <?php elseif ($using_fallback): ?>
-    <div class="alert alert-info alert-dismissible fade show m-0" role="alert">
-        <div class="container">
-            <i class="fas fa-info-circle me-2"></i>
-            Using local database. Some features may be limited.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>

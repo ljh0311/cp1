@@ -297,20 +297,39 @@ try {
                 </div>
             <?php else: ?>
             <div class="row g-4">
+                <?php 
+                // Define icons for each category (add more as needed)
+                $category_icons = [
+                    'Programming' => 'fa-code',
+                    'Database' => 'fa-database',
+                    'Web Development' => 'fa-globe',
+                    'Networking' => 'fa-network-wired',
+                    'Security' => 'fa-shield-alt',
+                    'Operating Systems' => 'fa-laptop',
+                    'Mobile Development' => 'fa-mobile-alt',
+                    'Data Science' => 'fa-chart-bar',
+                    'Artificial Intelligence' => 'fa-robot',
+                    'Cloud Computing' => 'fa-cloud',
+                    'Default' => 'fa-book' // Default icon
+                ];
+                ?>
                 <?php foreach ($categories as $name => $data): ?>
                     <div class="col-md-3">
                         <a href="books.php?category=<?php echo urlencode(strtolower($name)); ?>" 
                            class="text-decoration-none">
-                            <div class="card category-card h-100">
-                                <img src="<?php echo htmlspecialchars($data['image']); ?>"
-                                     class="card-img-top" alt="<?php echo htmlspecialchars($name); ?>">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($name); ?></h5>
-                                    <p class="card-text text-muted"><?php echo htmlspecialchars($data['description']); ?></p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="badge bg-primary rounded-pill"><?php echo $data['count']; ?> Books</span>
-                                        <i class="fas fa-arrow-right text-primary"></i>
+                            <div class="card category-card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center">
+                                    <div class="category-icon mb-3">
+                                        <i class="fas <?php echo $category_icons[htmlspecialchars($name)] ?? $category_icons['Default']; ?> fa-3x text-primary"></i>
                                     </div>
+                                    <h5 class="card-title"><?php echo htmlspecialchars($name); ?></h5>
+                                    <p class="card-text text-muted small"><?php echo htmlspecialchars($data['description']); ?></p>
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary rounded-pill"><?php echo $data['count']; ?> Books</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-transparent border-0 text-center">
+                                    <span class="text-primary">Browse Category <i class="fas fa-arrow-right ms-1"></i></span>
                                 </div>
                             </div>
                         </a>

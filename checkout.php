@@ -289,17 +289,16 @@ $success_message = $sessionManager->getFlash('success');
                     body: JSON.stringify(formData)
                 });
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const contentType = response.headers.get('content-type');
-                if (!contentType || !contentType.includes('application/json')) {
-                    throw new Error('Received non-JSON response from server');
-                }
-
-                const result = await response.json();
+                let result;
+                const responseText = await response.text();
                 
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Server response:', responseText);
+                    throw new Error('Invalid server response');
+                }
+
                 if (result.success) {
                     window.location.href = 'order_confirmation.php?order_id=' + result.order_id;
                 } else {

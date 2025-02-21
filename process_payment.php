@@ -1,16 +1,31 @@
 <?php
-ob_clean(); // Clear any previous output
-// Prevent any output
+// Suppress all errors and warnings
 error_reporting(0);
 ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 ini_set('html_errors', 0);
 
-// Set JSON header first
-header('Content-Type: application/json');
+// Buffer control
+ob_start();
+if (ob_get_level()) {
+    ob_end_clean();
+}
+
+// Set JSON header
+header('Content-Type: application/json; charset=utf-8');
 
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', __DIR__);
+}
+
+function sendJsonResponse($success, $message, $data = []) {
+    $response = array_merge([
+        'success' => $success,
+        'message' => $message
+    ], $data);
+    
+    die(json_encode($response));
 }
 
 try {
@@ -28,25 +43,32 @@ try {
     // Get session manager instance
     $sessionManager = SessionManager::getInstance();
 
-    // Check if user is logged in using SessionManager
+    // Check if user is logged in
     if (!$sessionManager->isLoggedIn()) {
-        throw new Exception('Please log in to continue.');
+        sendJsonResponse(false, 'Please log in to continue.');
     }
 
     // Update last activity time
     $_SESSION['LAST_ACTIVITY'] = time();
 
-    // Check if request method is POST
+    // Check request method
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        throw new Exception('Invalid request method.');
+        sendJsonResponse(false, 'Invalid request method.');
     }
 
-    // Get JSON data
-    $json = file_get_contents('php://input');
-    $data = json_decode($json, true);
+    // Get and validate JSON data
+    $jsonInput = file_get_contents('php://input');
+    if (empty($jsonInput)) {
+        sendJsonResponse(false, 'No data received.');
+    }
 
-    if (!$data || !isset($data['payment_method_id']) || !isset($data['shipping_details'])) {
-        throw new Exception('Invalid request data.');
+    $data = json_decode($jsonInput, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        sendJsonResponse(false, 'Invalid JSON data: ' . json_last_error_msg());
+    }
+
+    if (!isset($data['payment_method_id']) || !isset($data['shipping_details'])) {
+        sendJsonResponse(false, 'Missing required fields.');
     }
 
     $db = DatabaseManager::getInstance();
@@ -63,129 +85,103 @@ try {
     $items = $db->fetchAll($cart_items);
     
     if (empty($items)) {
-        throw new Exception('Cart is empty.');
+        sendJsonResponse(false, 'Cart is empty.');
     }
     
-    // Calculate total
+    // Calculate total and validate stock
     $total = 0;
     foreach ($items as $item) {
-        // Check stock
         if ($item['stock'] < $item['quantity']) {
-            throw new Exception("Insufficient stock for {$item['title']}.");
+            sendJsonResponse(false, "Insufficient stock for {$item['title']}.");
         }
         $total += $item['price'] * $item['quantity'];
     }
     
-    // Validate credit card number
+    // Validate credit card
     $card_number = $data['payment_method_id'];
     if (!preg_match('/^\d{16}$/', $card_number)) {
-        throw new Exception('Invalid card number format.');
+        sendJsonResponse(false, 'Card number must be 16 digits.');
     }
     
     $first_digit = substr($card_number, 0, 1);
-    
-    // Check card type based on first digit
-    $valid_card = false;
-    $card_type = '';
     switch($first_digit) {
         case '4':
-            $valid_card = true;
             $card_type = 'Visa';
             break;
         case '5':
-            $valid_card = true; 
             $card_type = 'Mastercard';
             break;
         case '6':
-            $valid_card = true;
             $card_type = 'AMEX';
             break;
         default:
-            throw new Exception('Invalid card type. Must be Visa, Mastercard or AMEX.');
+            sendJsonResponse(false, 'Invalid card type. Must start with 4 (Visa), 5 (Mastercard), or 6 (AMEX).');
     }
     
-    if (!$valid_card) {
-        throw new Exception('Invalid credit card number.');
-    }
-    
-    // Mock payment intent ID for order tracking
-    $payment_intent = 'MOCK_' . time() . '_' . rand(1000,9999);
-    
-    // Start transaction
-    $db->beginTransaction();
-    
-    // Create order
-    $db->query(
-        "INSERT INTO orders (user_id, total_amount, status, shipping_address, created_at) 
-         VALUES (?, ?, ?, ?, NOW())",
-        [
-            $_SESSION['user_id'],
-            $total,
-            'pending',
-            json_encode($data['shipping_details'])
-        ]
-    );
-    
-    $order_id = $db->lastInsertId();
-    
-    // Create order items and update stock
-    foreach ($items as $item) {
-        // Add order item
+    // Process order
+    try {
+        $db->beginTransaction();
+        
+        // Create order
         $db->query(
-            "INSERT INTO order_items (order_id, book_id, quantity, price) 
-             VALUES (?, ?, ?, ?)",
+            "INSERT INTO orders (user_id, total_amount, status, shipping_address, created_at) 
+             VALUES (?, ?, ?, ?, NOW())",
             [
-                $order_id,
-                $item['book_id'],
-                $item['quantity'],
-                $item['price']
+                $_SESSION['user_id'],
+                $total,
+                'pending',
+                json_encode($data['shipping_details'])
             ]
         );
         
-        // Update stock
+        $order_id = $db->lastInsertId();
+        
+        // Create order items and update stock
+        foreach ($items as $item) {
+            $db->query(
+                "INSERT INTO order_items (order_id, book_id, quantity, price) 
+                 VALUES (?, ?, ?, ?)",
+                [$order_id, $item['book_id'], $item['quantity'], $item['price']]
+            );
+            
+            $db->query(
+                "UPDATE books SET stock = stock - ? WHERE book_id = ?",
+                [$item['quantity'], $item['book_id']]
+            );
+        }
+        
+        // Clear cart
         $db->query(
-            "UPDATE books SET stock = stock - ? WHERE book_id = ?",
-            [$item['quantity'], $item['book_id']]
+            "DELETE FROM cart_items WHERE user_id = ?",
+            [$_SESSION['user_id']]
         );
+        
+        // Update order status
+        $payment_intent = 'MOCK_' . time() . '_' . rand(1000,9999);
+        $db->query(
+            "UPDATE orders SET status = ?, payment_intent_id = ? WHERE order_id = ?",
+            ['paid', $payment_intent, $order_id]
+        );
+        
+        $db->commit();
+        
+        // Store success message
+        $sessionManager->setFlash('success', 'Order placed successfully!');
+        $_SESSION['last_order_id'] = $order_id;
+        
+        // Make sure session is saved
+        session_write_close();
+        
+        sendJsonResponse(true, 'Payment successful!', ['order_id' => $order_id]);
+        
+    } catch (Exception $e) {
+        if ($db->inTransaction()) {
+            $db->rollBack();
+        }
+        throw $e;
     }
-    
-    // Clear cart
-    $db->query(
-        "DELETE FROM cart_items WHERE user_id = ?",
-        [$_SESSION['user_id']]
-    );
-    
-    // Update order status
-    $db->query(
-        "UPDATE orders SET status = ?, payment_intent_id = ? WHERE order_id = ?",
-        ['paid', $payment_intent, $order_id]
-    );
-    
-    // Commit transaction
-    $db->commit();
-    
-    // Store success message and order ID in session
-    $sessionManager->setFlash('success', 'Order placed successfully!');
-    $_SESSION['last_order_id'] = $order_id;
-    
-    // Make sure session data is written
-    session_write_close();
-    
-    echo json_encode([
-        'success' => true,
-        'order_id' => $order_id,
-        'message' => 'Payment successful!'
-    ]);
     
 } catch (Exception $e) {
-    if (isset($db) && $db->inTransaction()) {
-        $db->rollBack();
-    }
-    
     error_log('Payment Error: ' . $e->getMessage());
-    
-    die(json_encode([
-        'success' => false,
-        'message' => $e->getMessage()
-    ]));
+    sendJsonResponse(false, $e->getMessage());
 } 

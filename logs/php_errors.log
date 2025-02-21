@@ -5299,3 +5299,683 @@ Stack trace:
 #2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(29): DatabaseManager::getInstance()
 #3 {main}
   thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 33
+[21-Feb-2025 13:08:15 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:15 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:29 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:29 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:32 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:32 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:33 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:33 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:33 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:33 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:35 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:35 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:36 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:36 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:37 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:37 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:39 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:39 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:40 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:40 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:41 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:41 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:43 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:43 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:44 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:44 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:45 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:45 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:47 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:47 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:48 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:48 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:49 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:49 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:51 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:51 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:52 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:52 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:53 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:53 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:56 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:56 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:56 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:56 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:57 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:57 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:59 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:59 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:08:59 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:08:59 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:01 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:01 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:01 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:01 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:03 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:03 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:03 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:03 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:05 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:05 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:05 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:05 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:07 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:07 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:08 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:08 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:09 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:09 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:10 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:10 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:11 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:11 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:12 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:12 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:12 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:12 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:14 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:14 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:16 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:16 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:18 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:18 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:19 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:19 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:20 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:20 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:21 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:21 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:22 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:22 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:23 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:23 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:25 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:25 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:26 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:26 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:27 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:27 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:28 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:28 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:29 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:29 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:30 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:31 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:31 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:32 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:32 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:33 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:33 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:34 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:34 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:34 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:34 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:36 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:36 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:37 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:37 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:38 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:38 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:38 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:38 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:40 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:40 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:41 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:41 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:42 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:42 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:43 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:43 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:44 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:44 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:45 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:45 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:46 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:46 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:47 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:47 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:47 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:47 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:49 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:49 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:50 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:50 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:51 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:51 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:52 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:52 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:53 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:53 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:54 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:54 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[21-Feb-2025 13:09:55 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[21-Feb-2025 13:09:55 Asia/Singapore] PHP Fatal error:  Uncaught Error: Class "SQLite3" not found in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php:31
+Stack trace:
+#0 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(19): DatabaseManager->initializeSQLite()
+#1 C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php(135): DatabaseManager->__construct()
+#2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(49): DatabaseManager::getInstance()
+#3 {main}
+  thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31

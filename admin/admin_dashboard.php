@@ -20,48 +20,72 @@ try {
     // Get current page from URL
     $current_page = isset($_GET['page']) ? $_GET['page'] : 'books';
     
-    // Get statistics
-    $total_books = $db->query("SELECT COUNT(*) as count FROM books")->fetch()['count'];
-    $total_orders = $db->query("SELECT COUNT(*) as count FROM orders")->fetch()['count'];
-    $total_users = $db->query("SELECT COUNT(*) as count FROM users WHERE is_admin = 0")->fetch()['count'];
-    $total_revenue = $db->query("SELECT COALESCE(SUM(total_amount), 0) as total FROM orders WHERE status = 'completed'")->fetch()['total'];
+    // Improved statistics queries with error handling
+    $statistics = [
+        'total_books' => $db->query("SELECT COUNT(*) as count FROM books")->fetch()['count'] ?? 0,
+        'total_orders' => $db->query("SELECT COUNT(*) as count FROM orders")->fetch()['count'] ?? 0,
+        'total_users' => $db->query("SELECT COUNT(*) as count FROM users WHERE is_admin = 0")->fetch()['count'] ?? 0,
+        'total_revenue' => $db->query("SELECT COALESCE(SUM(total_amount), 0) as total FROM orders WHERE status = 'completed'")->fetch()['total'] ?? 0
+    ];
     
-    // Get data based on current page
+    // Improved data queries with pagination
+    $page = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+    $items_per_page = 10;
+    $offset = ($page - 1) * $items_per_page;
+    
     switch($current_page) {
+        case 'books':
+            $data = $db->query("
+                SELECT b.*, c.name as category_name 
+                FROM books b 
+                LEFT JOIN categories c ON b.category_id = c.category_id 
+                ORDER BY b.created_at DESC
+                LIMIT ? OFFSET ?
+            ", [$items_per_page, $offset])->fetchAll();
+            
+            $total_items = $db->query("SELECT COUNT(*) as count FROM books")->fetch()['count'];
+            break;
+            
         case 'orders':
-            $data = $db->query(
-                "SELECT o.*, u.email, COUNT(oi.order_item_id) as item_count 
-                 FROM orders o 
-                 JOIN users u ON o.user_id = u.user_id 
-                 LEFT JOIN order_items oi ON o.order_id = oi.order_id 
-                 GROUP BY o.order_id 
-                 ORDER BY o.created_at DESC"
-            )->fetchAll();
+            $data = $db->query("
+                SELECT o.*, u.email, 
+                       COUNT(oi.order_item_id) as item_count,
+                       GROUP_CONCAT(CONCAT(oi.quantity, 'x ', b.title) SEPARATOR '\n') as items_list
+                FROM orders o 
+                JOIN users u ON o.user_id = u.user_id 
+                LEFT JOIN order_items oi ON o.order_id = oi.order_id 
+                LEFT JOIN books b ON oi.book_id = b.book_id
+                GROUP BY o.order_id 
+                ORDER BY o.created_at DESC
+                LIMIT ? OFFSET ?
+            ", [$items_per_page, $offset])->fetchAll();
+            
+            $total_items = $db->query("SELECT COUNT(*) as count FROM orders")->fetch()['count'];
             break;
             
         case 'users':
-            $data = $db->query(
-                "SELECT user_id, username, email, full_name, created_at, status 
-                 FROM users 
-                 WHERE is_admin = 0 
-                 ORDER BY created_at DESC"
-            )->fetchAll();
-            break;
+            $data = $db->query("
+                SELECT u.*, 
+                       COUNT(DISTINCT o.order_id) as total_orders,
+                       SUM(o.total_amount) as total_spent
+                FROM users u 
+                LEFT JOIN orders o ON u.user_id = o.user_id
+                WHERE u.is_admin = 0 
+                GROUP BY u.user_id
+                ORDER BY u.created_at DESC
+                LIMIT ? OFFSET ?
+            ", [$items_per_page, $offset])->fetchAll();
             
-        case 'books':
-        default:
-            $data = $db->query(
-                "SELECT b.*, c.name as category_name 
-                 FROM books b 
-                 LEFT JOIN categories c ON b.category_id = c.category_id 
-                 ORDER BY b.created_at DESC"
-            )->fetchAll();
+            $total_items = $db->query("SELECT COUNT(*) as count FROM users WHERE is_admin = 0")->fetch()['count'];
             break;
     }
+    
+    $total_pages = ceil($total_items / $items_per_page);
     
 } catch (Exception $e) {
     error_log("Error in admin dashboard: " . $e->getMessage());
     $data = [];
+    $total_pages = 0;
 }
 
 $page_title = "Admin Dashboard";
@@ -198,19 +222,19 @@ $page_title = "Admin Dashboard";
             <div class="stats-cards">
                 <div class="stat-card">
                     <h3>Total Books</h3>
-                    <div class="value"><?php echo number_format($total_books); ?></div>
+                    <div class="value"><?php echo number_format($statistics['total_books']); ?></div>
                 </div>
                 <div class="stat-card">
                     <h3>Total Orders</h3>
-                    <div class="value"><?php echo number_format($total_orders); ?></div>
+                    <div class="value"><?php echo number_format($statistics['total_orders']); ?></div>
                 </div>
                 <div class="stat-card">
                     <h3>Total Users</h3>
-                    <div class="value"><?php echo number_format($total_users); ?></div>
+                    <div class="value"><?php echo number_format($statistics['total_users']); ?></div>
                 </div>
                 <div class="stat-card">
                     <h3>Total Revenue</h3>
-                    <div class="value">$<?php echo number_format($total_revenue, 2); ?></div>
+                    <div class="value">$<?php echo number_format($statistics['total_revenue'], 2); ?></div>
                 </div>
             </div>
 
@@ -696,5 +720,20 @@ const bookForm = document.getElementById('bookForm');
     window.saveUser = saveUser;
 });
 </script>
+
+<!-- Add pagination controls -->
+<?php if ($total_pages > 1): ?>
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                <li class="page-item <?php echo $i === $page ? 'active' : ''; ?>">
+                    <a class="page-link" href="?page=<?php echo $current_page; ?>&p=<?php echo $i; ?>">
+                        <?php echo $i; ?>
+                    </a>
+                </li>
+            <?php endfor; ?>
+        </ul>
+    </nav>
+<?php endif; ?>
 </body>
 </html>

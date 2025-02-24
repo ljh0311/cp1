@@ -1,4 +1,8 @@
 <?php
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Define root path if not already defined
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', __DIR__);
@@ -11,6 +15,35 @@ require_once 'database/DatabaseManager.php';
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+
+try {
+    $db = DatabaseManager::getInstance();
+    
+    // Get total number of books
+    $books_count = $db->fetchOne("SELECT COUNT(*) FROM books");
+    
+    // Get total number of categories
+    $categories_count = $db->fetchOne("SELECT COUNT(*) FROM categories");
+    
+    // Get total number of customers (users)
+    $customers_count = $db->fetchOne("SELECT COUNT(*) FROM users WHERE role = 'customer'");
+    
+    // Calculate satisfaction rate based on reviews (if you have a reviews table)
+    $satisfaction_query = "SELECT 
+        ROUND(
+            (COUNT(CASE WHEN rating >= 4 THEN 1 END) * 100.0) / NULLIF(COUNT(*), 0)
+        ) as satisfaction_rate
+        FROM reviews";
+    $satisfaction_rate = $db->fetchOne($satisfaction_query) ?? 0;
+    
+} catch (Exception $e) {
+    error_log('Error in about.php: ' . $e->getMessage());
+    // Set default values in case of database error
+    $books_count = 0;
+    $categories_count = 0;
+    $customers_count = 0;
+    $satisfaction_rate = 0;
 }
 ?>
 <!DOCTYPE html>
@@ -53,17 +86,29 @@ if (session_status() === PHP_SESSION_NONE) {
         .stats-section {
             background-color: #f8f9fa;
             padding: 4rem 0;
-            margin: 3rem 0;
+            margin: 2rem 0;
         }
         .stat-item {
             text-align: center;
             padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
         }
         .stat-item .number {
             font-size: 2.5rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #0d6efd;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-item p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
         .timeline {
             position: relative;
@@ -152,25 +197,25 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="row g-4">
                     <div class="col-md-3">
                         <div class="stat-item">
-                            <div class="number">5000+</div>
+                            <div class="number"><?php echo number_format($books_count); ?>+</div>
                             <p class="mb-0">IT Books</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stat-item">
-                            <div class="number">20+</div>
+                            <div class="number"><?php echo number_format($categories_count); ?>+</div>
                             <p class="mb-0">Tech Categories</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stat-item">
-                            <div class="number">10000+</div>
+                            <div class="number"><?php echo number_format($customers_count); ?>+</div>
                             <p class="mb-0">Happy Customers</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stat-item">
-                            <div class="number">99%</div>
+                            <div class="number"><?php echo $satisfaction_rate; ?>%</div>
                             <p class="mb-0">Satisfaction Rate</p>
                         </div>
                     </div>

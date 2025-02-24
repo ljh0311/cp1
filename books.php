@@ -32,7 +32,7 @@ try {
     $order = $_GET['order'] ?? 'asc';
     
     // Validate sort and order
-    $allowed_sorts = ['title', 'price', 'author'];
+    $allowed_sorts = ['title', 'price', 'author', 'category'];
     $allowed_orders = ['asc', 'desc'];
     
     if (!in_array($sort, $allowed_sorts)) $sort = 'title';
@@ -43,7 +43,7 @@ try {
         "SELECT b.*, c.name as category 
          FROM books b 
          LEFT JOIN categories c ON b.category_id = c.category_id 
-         ORDER BY b.$sort $order"
+         ORDER BY " . ($sort === 'category' ? "c.name" : "b.$sort") . " $order"
     );
     
     $books = $db->fetchAll($books_query);
@@ -79,6 +79,24 @@ if (DEBUG_MODE) {
             object-fit: cover;
             border-top-left-radius: calc(0.375rem - 1px);
             border-top-right-radius: calc(0.375rem - 1px);
+            background-color: #f8f9fa;
+        }
+        .no-image-placeholder {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            color: #6c757d;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+            border-top-left-radius: calc(0.375rem - 1px);
+            border-top-right-radius: calc(0.375rem - 1px);
+        }
+        .no-image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
         }
         .book-price {
             font-size: 1.25rem;
@@ -156,6 +174,12 @@ if (DEBUG_MODE) {
                     <option value="author-desc" <?php echo $sort === 'author' && $order === 'desc' ? 'selected' : ''; ?>>
                         Author (Z-A)
                     </option>
+                    <option value="category-asc" <?php echo $sort === 'category' && $order === 'asc' ? 'selected' : ''; ?>>
+                        Category (A-Z)
+                    </option>
+                    <option value="category-desc" <?php echo $sort === 'category' && $order === 'desc' ? 'selected' : ''; ?>>
+                        Category (Z-A)
+                    </option>
                 </select>
             </div>
         </div>
@@ -177,11 +201,20 @@ if (DEBUG_MODE) {
                             </div>
                         <?php endif; ?>
                         
-                        <img src="<?php echo !empty($book['image_url']) ? htmlspecialchars($book['image_url']) : 'images/placeholders/book-placeholder.jpg'; ?>" 
-                             class="card-img-top" 
-                             alt="<?php echo htmlspecialchars($book['title']); ?>"
-                             onerror="this.src='images/placeholders/book-placeholder.jpg'">
-                             
+                        <?php if (!empty($book['image_url'])): ?>
+                            <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
+                                 class="card-img-top" 
+                                 alt="<?php echo htmlspecialchars($book['title']); ?>"
+                                 onerror="this.parentElement.innerHTML = '<div class=\'no-image-placeholder\'><div class=\'d-flex flex-column align-items-center\'><i class=\'fas fa-book mb-3\'></i><div>No Image Available</div></div></div>'">
+                        <?php else: ?>
+                            <div class="no-image-placeholder">
+                                <div class="d-flex flex-column align-items-center">
+                                    <i class="fas fa-book mb-3"></i>
+                                    <div>No Image Available</div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        
                         <div class="card-body d-flex flex-column">
                             <h5 class="book-title">
                                 <?php echo htmlspecialchars($book['title']); ?>

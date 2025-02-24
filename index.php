@@ -235,20 +235,69 @@ try {
         </div>
     </section>
 
-    <!-- Statistics Section -->
+    <!-- Statistics Section with More Details -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-3 col-6">
-                    <div class="stats-card text-center">
-                        <div class="display-4 fw-bold text-primary mb-2">
-                            <span class="counter"><?php echo number_format($stats['total_students']); ?></span>+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Impact</h2>
+                <p class="text-muted">Growing together with our community</p>
+            </div>
+            <?php if (
+                $stats['total_students'] == 0 && $stats['total_books'] == 0 &&
+                $stats['total_orders'] == 0 && $stats['satisfaction_rate'] == 0
+            ): ?>
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No statistics available at the moment.
+                </div>
+            <?php else: ?>
+                <div class="row g-4">
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-users fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['total_students']); ?>+
+                            </div>
+                            <p class="text-muted mb-0">Happy Students</p>
                         </div>
-                        <p class="text-muted mb-0">Happy Students</p>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-book fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['total_books']); ?>
+                            </div>
+                            <p class="text-muted mb-0">Books Available</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-star fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['satisfaction_rate']); ?>%
+                            </div>
+                            <p class="text-muted mb-0">Satisfaction Rate</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-shopping-cart fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['total_orders']); ?>+
+                            </div>
+                            <p class="text-muted mb-0">Orders Completed</p>
+                        </div>
                     </div>
                 </div>
-                <!-- ... other stats cards ... -->
-            </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -391,71 +440,7 @@ try {
         </div>
     </section>
 
-    <!-- Statistics Section with More Details -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Our Impact</h2>
-                <p class="text-muted">Growing together with our community</p>
-            </div>
-            <?php if (
-                $stats['total_students'] == 0 && $stats['total_books'] == 0 &&
-                $stats['total_orders'] == 0 && $stats['satisfaction_rate'] == 0
-            ): ?>
-                <div class="alert alert-info text-center">
-                    <i class="fas fa-info-circle me-2"></i>
-                    No statistics available at the moment.
-                </div>
-            <?php else: ?>
-                <div class="row g-4">
-                    <div class="col-md-3 col-6">
-                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                            <div class="stats-icon mb-3">
-                                <i class="fas fa-users fa-2x text-primary"></i>
-                            </div>
-                            <div class="display-6 fw-bold text-primary mb-2">
-                                <?php echo number_format($stats['total_students']); ?>+
-                            </div>
-                            <p class="text-muted mb-0">Happy Students</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                            <div class="stats-icon mb-3">
-                                <i class="fas fa-book fa-2x text-primary"></i>
-                            </div>
-                            <div class="display-6 fw-bold text-primary mb-2">
-                                <?php echo number_format($stats['total_books']); ?>
-                            </div>
-                            <p class="text-muted mb-0">Books Available</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                            <div class="stats-icon mb-3">
-                                <i class="fas fa-star fa-2x text-primary"></i>
-                            </div>
-                            <div class="display-6 fw-bold text-primary mb-2">
-                                <?php echo number_format($stats['satisfaction_rate']); ?>%
-                            </div>
-                            <p class="text-muted mb-0">Satisfaction Rate</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                            <div class="stats-icon mb-3">
-                                <i class="fas fa-shopping-cart fa-2x text-primary"></i>
-                            </div>
-                            <div class="display-6 fw-bold text-primary mb-2">
-                                <?php echo number_format($stats['total_orders']); ?>+
-                            </div>
-                            <p class="text-muted mb-0">Orders Completed</p>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
-    </section>
+
 
     <!-- Call to Action Section -->
     <section class="py-5">

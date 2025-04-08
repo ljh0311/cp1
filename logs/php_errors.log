@@ -27991,3 +27991,442 @@ Stack trace:
 #2 C:\Users\user\Documents\SITstuffs\CloudC\cp1\index.php(30): DatabaseManager::getInstance()
 #3 {main}
   thrown in C:\Users\user\Documents\SITstuffs\CloudC\cp1\database\DatabaseManager.php on line 31
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 00:54:30 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 00:54:30 Asia/Singapore] Session Configuration:
+[22-Mar-2025 00:54:30 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 00:54:30 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 00:54:30 Asia/Singapore] Session Status: 1
+[22-Mar-2025 00:54:30 Asia/Singapore] Session ID: 
+[22-Mar-2025 00:54:30 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 00:54:30 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742576070
+    [user_agent] => 
+)
+
+[22-Mar-2025 00:54:30 Asia/Singapore] Session status: 1
+[22-Mar-2025 00:54:30 Asia/Singapore] Session ID: 
+[22-Mar-2025 00:54:30 Asia/Singapore] Session data: Array
+(
+    [created] => 1742576070
+    [user_agent] => 
+)
+
+[22-Mar-2025 00:54:30 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 00:54:31 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 00:55:32 Asia/Singapore] Session Configuration:
+[22-Mar-2025 00:55:32 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 00:55:32 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 00:55:32 Asia/Singapore] Session Status: 1
+[22-Mar-2025 00:55:32 Asia/Singapore] Session ID: 
+[22-Mar-2025 00:55:32 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 00:55:32 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742576132
+    [user_agent] => 
+)
+
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 21
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_URI" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[22-Mar-2025 00:55:32 Asia/Singapore] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:02:48 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:02:48 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:02:48 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:02:48 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:02:48 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:02:48 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:02:48 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:02:48 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580168
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:02:48 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:02:48 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:02:48 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580168
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:02:48 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:02:48 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:03:00 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580180
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:00 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:03:00 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:00 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580180
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:00 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:03:00 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:03:00 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:03:00 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:03:00 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580180
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:00 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:03:00 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:00 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580180
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:00 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:03:00 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:03:01 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580181
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:01 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:03:01 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:01 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580181
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:01 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:03:01 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:03:01 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:03:01 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:03:01 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580181
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:01 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:03:01 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:01 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580181
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:01 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:03:01 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:03:02 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580182
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:02 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:03:02 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:02 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580182
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:02 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:03:02 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[22-Mar-2025 02:03:02 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Configuration:
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Writable: Yes
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Status: 1
+[22-Mar-2025 02:03:02 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Name: PHPSESSID
+[22-Mar-2025 02:03:02 Asia/Singapore] Session Data: Array
+(
+    [created] => 1742580182
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:02 Asia/Singapore] Session status: 1
+[22-Mar-2025 02:03:02 Asia/Singapore] Session ID: 
+[22-Mar-2025 02:03:02 Asia/Singapore] Session data: Array
+(
+    [created] => 1742580182
+    [user_agent] => 
+)
+
+[22-Mar-2025 02:03:02 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[22-Mar-2025 02:03:02 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[05-Apr-2025 23:51:30 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[05-Apr-2025 23:51:30 Asia/Singapore] Session Configuration:
+[05-Apr-2025 23:51:30 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[05-Apr-2025 23:51:30 Asia/Singapore] Session Writable: Yes
+[05-Apr-2025 23:51:30 Asia/Singapore] Session Status: 1
+[05-Apr-2025 23:51:30 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:51:30 Asia/Singapore] Session Name: PHPSESSID
+[05-Apr-2025 23:51:30 Asia/Singapore] Session Data: Array
+(
+    [created] => 1743868290
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:51:30 Asia/Singapore] Session status: 1
+[05-Apr-2025 23:51:30 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:51:30 Asia/Singapore] Session data: Array
+(
+    [created] => 1743868290
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:51:30 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[05-Apr-2025 23:51:30 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[05-Apr-2025 23:51:34 Asia/Singapore] Session Configuration:
+[05-Apr-2025 23:51:34 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[05-Apr-2025 23:51:34 Asia/Singapore] Session Writable: Yes
+[05-Apr-2025 23:51:34 Asia/Singapore] Session Status: 1
+[05-Apr-2025 23:51:34 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:51:34 Asia/Singapore] Session Name: PHPSESSID
+[05-Apr-2025 23:51:34 Asia/Singapore] Session Data: Array
+(
+    [created] => 1743868294
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 21
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_URI" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[05-Apr-2025 23:51:34 Asia/Singapore] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[05-Apr-2025 23:55:56 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[05-Apr-2025 23:55:56 Asia/Singapore] Session Configuration:
+[05-Apr-2025 23:55:56 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[05-Apr-2025 23:55:56 Asia/Singapore] Session Writable: Yes
+[05-Apr-2025 23:55:56 Asia/Singapore] Session Status: 1
+[05-Apr-2025 23:55:56 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:55:56 Asia/Singapore] Session Name: PHPSESSID
+[05-Apr-2025 23:55:56 Asia/Singapore] Session Data: Array
+(
+    [created] => 1743868556
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:55:56 Asia/Singapore] Session status: 1
+[05-Apr-2025 23:55:56 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:55:56 Asia/Singapore] Session data: Array
+(
+    [created] => 1743868556
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:55:56 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[05-Apr-2025 23:55:56 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[05-Apr-2025 23:55:58 Asia/Singapore] Session Configuration:
+[05-Apr-2025 23:55:58 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[05-Apr-2025 23:55:58 Asia/Singapore] Session Writable: Yes
+[05-Apr-2025 23:55:58 Asia/Singapore] Session Status: 1
+[05-Apr-2025 23:55:58 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:55:58 Asia/Singapore] Session Name: PHPSESSID
+[05-Apr-2025 23:55:58 Asia/Singapore] Session Data: Array
+(
+    [created] => 1743868558
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 21
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_URI" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[05-Apr-2025 23:55:58 Asia/Singapore] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[05-Apr-2025 23:56:34 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\signup.php on line 10
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[05-Apr-2025 23:56:35 Asia/Singapore] Session Configuration:
+[05-Apr-2025 23:56:35 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[05-Apr-2025 23:56:35 Asia/Singapore] Session Writable: Yes
+[05-Apr-2025 23:56:35 Asia/Singapore] Session Status: 1
+[05-Apr-2025 23:56:35 Asia/Singapore] Session ID: 
+[05-Apr-2025 23:56:35 Asia/Singapore] Session Name: PHPSESSID
+[05-Apr-2025 23:56:35 Asia/Singapore] Session Data: Array
+(
+    [created] => 1743868595
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 21
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Warning:  Undefined array key "REQUEST_URI" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[05-Apr-2025 23:56:35 Asia/Singapore] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\login.php on line 135
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 35
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 36
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 39
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 40
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 41
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 42
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 43
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 44
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 45
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 46
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 49
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 50
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[05-Apr-2025 23:57:04 Asia/Singapore] Session Configuration:
+[05-Apr-2025 23:57:04 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[05-Apr-2025 23:57:04 Asia/Singapore] Session Writable: Yes
+[05-Apr-2025 23:57:04 Asia/Singapore] Session Status: 2
+[05-Apr-2025 23:57:04 Asia/Singapore] Session ID: 2aug2qps3rn0pc17ervd4vc62e
+[05-Apr-2025 23:57:04 Asia/Singapore] Session Name: PHPSESSID
+[05-Apr-2025 23:57:04 Asia/Singapore] Session Data: Array
+(
+    [created] => 1743868624
+    [user_agent] => 
+)
+
+[05-Apr-2025 23:57:04 Asia/Singapore] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php:35) in C:\Users\user\Documents\SITstuffs\CloudC\cp1\admin\admin_dashboard.php on line 8
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Deprecated:  md5(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Warning:  session_name(): Session name cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 53
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 57
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 80
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Warning:  Undefined array key "HTTP_HOST" in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 87
+[08-Apr-2025 16:10:47 Asia/Singapore] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed after headers have already been sent in C:\Users\user\Documents\SITstuffs\CloudC\cp1\inc\session_config.php on line 84
+[08-Apr-2025 16:10:47 Asia/Singapore] Session Configuration:
+[08-Apr-2025 16:10:47 Asia/Singapore] Session Path: C:\Users\user\Documents\SITstuffs\CloudC\cp1/sessions
+[08-Apr-2025 16:10:47 Asia/Singapore] Session Writable: Yes
+[08-Apr-2025 16:10:47 Asia/Singapore] Session Status: 1
+[08-Apr-2025 16:10:47 Asia/Singapore] Session ID: 
+[08-Apr-2025 16:10:47 Asia/Singapore] Session Name: PHPSESSID
+[08-Apr-2025 16:10:47 Asia/Singapore] Session Data: Array
+(
+    [created] => 1744099847
+    [user_agent] => 
+)
+
+[08-Apr-2025 16:10:47 Asia/Singapore] Session status: 1
+[08-Apr-2025 16:10:47 Asia/Singapore] Session ID: 
+[08-Apr-2025 16:10:47 Asia/Singapore] Session data: Array
+(
+    [created] => 1744099847
+    [user_agent] => 
+)
+
+[08-Apr-2025 16:10:47 Asia/Singapore] Attempting to connect to database at cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com
+[08-Apr-2025 16:10:47 Asia/Singapore] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com failed: No such host is known. 

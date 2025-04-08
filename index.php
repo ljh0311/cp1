@@ -43,7 +43,7 @@ try {
         (SELECT COUNT(*) FROM orders) as total_orders,
         (SELECT COALESCE(ROUND((COUNT(CASE WHEN status = 'completed' THEN 1 END) * 100.0 / 
             NULLIF(COUNT(*), 0)), 0), 0) FROM orders) as satisfaction_rate";
-    
+
     $result = $db->query($stats_query);
     if ($row = $db->fetch($result)) {
         $stats = array_merge($stats, $row);
@@ -59,10 +59,10 @@ try {
         LEFT JOIN books b ON b.category_id = c.category_id
         GROUP BY c.category_id, c.name, c.image_url, c.description
         ORDER BY c.name";
-    
+
     $result = $db->query($categories_query);
     $categories_data = $db->fetchAll($result);
-    
+
     // Format categories data
     foreach ($categories_data as $category) {
         $categories[$category['name']] = [
@@ -87,7 +87,6 @@ try {
                                LEFT JOIN categories c ON b.category_id = c.category_id 
                                ORDER BY b.created_at DESC 
                                LIMIT 6");
-
 } catch (Exception $e) {
     ErrorHandler::logError("Database error: " . $e->getMessage(), __FILE__, __LINE__);
     $featured_books = [];
@@ -105,13 +104,13 @@ try {
 
 <body>
     <?php if (!$db_connected): ?>
-    <div class="alert alert-warning alert-dismissible fade show m-0" role="alert">
-        <div class="container">
-            <i class="fas fa-exclamation-triangle me-2"></i>
-            Database connection failed. Showing demo content only.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert alert-warning alert-dismissible fade show m-0" role="alert">
+            <div class="container">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Database connection failed. Showing demo content only.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
-    </div>
     <?php endif; ?>
 
     <?php if (isset($error_message)): ?>
@@ -170,16 +169,16 @@ try {
                     <?php foreach ($featured_books as $book): ?>
                         <div class="col-md-3">
                             <div class="card book-card h-100">
-                                <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
-                                     class="card-img-top" 
-                                     alt="<?php echo htmlspecialchars($book['title']); ?>">
+                                <img src="<?php echo htmlspecialchars($book['image_url']); ?>"
+                                    class="card-img-top"
+                                    alt="<?php echo htmlspecialchars($book['title']); ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo htmlspecialchars($book['title']); ?></h5>
                                     <p class="card-text text-muted"><?php echo htmlspecialchars($book['author']); ?></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="book-price">$<?php echo number_format($book['price'], 2); ?></span>
-                                        <button class="btn btn-primary rounded-pill add-to-cart" 
-                                                data-book-id="<?php echo $book['book_id']; ?>">
+                                        <button class="btn btn-primary rounded-pill add-to-cart"
+                                            data-book-id="<?php echo $book['book_id']; ?>">
                                             Add to Cart
                                         </button>
                                     </div>
@@ -205,27 +204,27 @@ try {
                     No categories available at the moment.
                 </div>
             <?php else: ?>
-            <div class="row g-4">
-                <?php foreach ($categories as $name => $data): ?>
-                    <div class="col-md-3">
-                        <a href="books.php?category=<?php echo urlencode(strtolower($name)); ?>" 
-                           class="text-decoration-none">
-                            <div class="card category-card h-100">
-                                <img src="<?php echo htmlspecialchars($data['image']); ?>"
-                                     class="card-img-top" alt="<?php echo htmlspecialchars($name); ?>">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($name); ?></h5>
-                                    <p class="card-text text-muted"><?php echo htmlspecialchars($data['description']); ?></p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="badge bg-primary rounded-pill"><?php echo $data['count']; ?> Books</span>
-                                        <i class="fas fa-arrow-right text-primary"></i>
+                <div class="row g-4">
+                    <?php foreach ($categories as $name => $data): ?>
+                        <div class="col-md-3">
+                            <a href="books.php?category=<?php echo urlencode(strtolower($name)); ?>"
+                                class="text-decoration-none">
+                                <div class="card category-card h-100">
+                                    <img src="<?php echo htmlspecialchars($data['image']); ?>"
+                                        class="card-img-top" alt="<?php echo htmlspecialchars($name); ?>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo htmlspecialchars($name); ?></h5>
+                                        <p class="card-text text-muted"><?php echo htmlspecialchars($data['description']); ?></p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-primary rounded-pill"><?php echo $data['count']; ?> Books</span>
+                                            <i class="fas fa-arrow-right text-primary"></i>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
         </div>
     </section>
@@ -246,28 +245,28 @@ try {
                     No books available at the moment.
                 </div>
             <?php else: ?>
-            <div class="row g-4">
-                <?php foreach ($latest_books as $book): ?>
-                    <div class="col-md-4">
-                        <div class="card book-card h-100">
-                            <img src="<?php echo htmlspecialchars($book['image_url']); ?>" 
-                                 class="card-img-top" alt="<?php echo htmlspecialchars($book['title']); ?>">
-                            <div class="card-body">
-                                <div class="badge bg-primary mb-2"><?php echo htmlspecialchars($book['category']); ?></div>
-                                <h5 class="card-title"><?php echo htmlspecialchars($book['title']); ?></h5>
-                                <p class="card-text text-muted"><?php echo htmlspecialchars($book['description']); ?></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="book-price">$<?php echo number_format($book['price'], 2); ?></span>
-                                    <button class="btn btn-primary rounded-pill add-to-cart" 
+                <div class="row g-4">
+                    <?php foreach ($latest_books as $book): ?>
+                        <div class="col-md-4">
+                            <div class="card book-card h-100">
+                                <img src="<?php echo htmlspecialchars($book['image_url']); ?>"
+                                    class="card-img-top" alt="<?php echo htmlspecialchars($book['title']); ?>">
+                                <div class="card-body">
+                                    <div class="badge bg-primary mb-2"><?php echo htmlspecialchars($book['category']); ?></div>
+                                    <h5 class="card-title"><?php echo htmlspecialchars($book['title']); ?></h5>
+                                    <p class="card-text text-muted"><?php echo htmlspecialchars($book['description']); ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="book-price">$<?php echo number_format($book['price'], 2); ?></span>
+                                        <button class="btn btn-primary rounded-pill add-to-cart"
                                             data-book-id="<?php echo $book['book_id']; ?>">
-                                        Add to Cart
-                                    </button>
+                                            Add to Cart
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
         </div>
     </section>
@@ -279,59 +278,61 @@ try {
                 <h2 class="fw-bold">Our Impact</h2>
                 <p class="text-muted">Growing together with our community</p>
             </div>
-            <?php if ($stats['total_students'] == 0 && $stats['total_books'] == 0 && 
-                      $stats['total_orders'] == 0 && $stats['satisfaction_rate'] == 0): ?>
+            <?php if (
+                $stats['total_students'] == 0 && $stats['total_books'] == 0 &&
+                $stats['total_orders'] == 0 && $stats['satisfaction_rate'] == 0
+            ): ?>
                 <div class="alert alert-info text-center">
                     <i class="fas fa-info-circle me-2"></i>
                     No statistics available at the moment.
                 </div>
             <?php else: ?>
-            <div class="row g-4">
-                <div class="col-md-3 col-6">
-                    <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                        <div class="stats-icon mb-3">
-                            <i class="fas fa-users fa-2x text-primary"></i>
+                <div class="row g-4">
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-users fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['total_students']); ?>+
+                            </div>
+                            <p class="text-muted mb-0">Happy Students</p>
                         </div>
-                        <div class="display-6 fw-bold text-primary mb-2">
-                            <?php echo number_format($stats['total_students']); ?>+
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-book fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['total_books']); ?>
+                            </div>
+                            <p class="text-muted mb-0">Books Available</p>
                         </div>
-                        <p class="text-muted mb-0">Happy Students</p>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-star fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['satisfaction_rate']); ?>%
+                            </div>
+                            <p class="text-muted mb-0">Satisfaction Rate</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
+                            <div class="stats-icon mb-3">
+                                <i class="fas fa-shopping-cart fa-2x text-primary"></i>
+                            </div>
+                            <div class="display-6 fw-bold text-primary mb-2">
+                                <?php echo number_format($stats['total_orders']); ?>+
+                            </div>
+                            <p class="text-muted mb-0">Orders Completed</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                        <div class="stats-icon mb-3">
-                            <i class="fas fa-book fa-2x text-primary"></i>
-                        </div>
-                        <div class="display-6 fw-bold text-primary mb-2">
-                            <?php echo number_format($stats['total_books']); ?>
-                        </div>
-                        <p class="text-muted mb-0">Books Available</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                        <div class="stats-icon mb-3">
-                            <i class="fas fa-star fa-2x text-primary"></i>
-                        </div>
-                        <div class="display-6 fw-bold text-primary mb-2">
-                            <?php echo number_format($stats['satisfaction_rate']); ?>%
-                        </div>
-                        <p class="text-muted mb-0">Satisfaction Rate</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stats-card text-center p-4 bg-white rounded-4 shadow-sm">
-                        <div class="stats-icon mb-3">
-                            <i class="fas fa-shopping-cart fa-2x text-primary"></i>
-                        </div>
-                        <div class="display-6 fw-bold text-primary mb-2">
-                            <?php echo number_format($stats['total_orders']); ?>+
-                        </div>
-                        <p class="text-muted mb-0">Orders Completed</p>
-                    </div>
-                </div>
-            </div>
             <?php endif; ?>
         </div>
     </section>
@@ -374,9 +375,9 @@ try {
                     const updateCount = () => {
                         if (current < target) {
                             current = Math.min(current + increment, target);
-                            counter.innerText = isPercentage 
-                                ? Math.round(current).toLocaleString() + '%'
-                                : Math.round(current).toLocaleString();
+                            counter.innerText = isPercentage ?
+                                Math.round(current).toLocaleString() + '%' :
+                                Math.round(current).toLocaleString();
                             requestAnimationFrame(updateCount);
                         }
                     };
@@ -391,7 +392,9 @@ try {
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.5 });
+                }, {
+                    threshold: 0.5
+                });
 
                 counters.forEach(counter => {
                     if (counter) {
@@ -423,7 +426,7 @@ try {
                             book_id: bookId
                         })
                     });
-                    
+
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }

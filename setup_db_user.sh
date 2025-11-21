@@ -3,12 +3,12 @@
 echo "Connecting to RDS to create user and set permissions..."
 
 # Connect to MySQL and execute commands
-mysql -h cloudbookdb.czsa24cac7y5.us-east-1.rds.amazonaws.com -u admin -p'BookStore123!' << EOF
-CREATE DATABASE IF NOT EXISTS MyBookDB;
-GRANT ALL PRIVILEGES ON MyBookDB.* TO 'admin'@'%';
+mysql -h <URL> -u <usernane> -p'<PW>!' << EOF
+CREATE DATABASE IF NOT EXISTS <DBNAME>;
+GRANT ALL PRIVILEGES ON  <DBNAME>.* TO '<usernane>'@'%';
 FLUSH PRIVILEGES;
 
-SHOW GRANTS FOR 'admin'@'%';
+SHOW GRANTS FOR '<usernane>'@'%';
 EOF
 
 echo "Database user setup completed!" 
